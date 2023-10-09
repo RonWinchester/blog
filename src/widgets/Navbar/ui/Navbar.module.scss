@@ -1,6 +1,9 @@
 .navbar {
 	padding: 1rem;
 	background-color: var(--inverted);
+
+	display: flex;
+	justify-content: space-between;
 }
 
 .linkContainer {

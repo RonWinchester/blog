@@ -8,7 +8,6 @@ interface IUseThemResult {
 
 const useTheme = (): IUseThemResult => {
 	const { theme, setTheme } = useContext(ThemeControl);
-
 	const toggleTheme = () => {
 		const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
 		setTheme(newTheme);

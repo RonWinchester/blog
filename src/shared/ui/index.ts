@@ -1,3 +1,3 @@
 import { AppLink } from "./AppLink/AppLink";
-
-export { AppLink };
+import { Button } from "./Button/Button";
+export { AppLink, Button };
