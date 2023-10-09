@@ -1,0 +1,10 @@
+.navbar {
+	padding: 1rem;
+	background-color: var(--inverted);
+}
+
+.linkContainer {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.5rem;
+}
