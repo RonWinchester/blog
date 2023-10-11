@@ -5,7 +5,7 @@ import style from "./Navbar.module.scss";
 
 interface NavbarProps {
 	className?: string;
-	children: React.ReactNode
+	children?: React.ReactNode
 }
 
 export const Navbar = ({ className, children }: NavbarProps) => {
