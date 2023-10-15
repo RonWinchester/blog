@@ -8,6 +8,7 @@ module.exports = {
 		"plugin:@typescript-eslint/recommended",
 		"plugin:react/recommended",
 		"plugin:react/jsx-runtime",
+		"plugin:i18next/recommended"
 	],
 	overrides: [
 		{
@@ -25,8 +26,9 @@ module.exports = {
 		ecmaVersion: "latest",
 		sourceType: "module",
 	},
-	plugins: ["@typescript-eslint", "react"],
+	plugins: ["@typescript-eslint", "react", "i18next"],
 	rules: {
 		indent: ["error", "tab"],
+		"i18next/no-literal-string": ['error', {markupOnly : true}]
 	},
 };
