@@ -1,5 +1,4 @@
 import { ThemeSwitcherIcon } from "shared/assets/icons";
-import { Theme } from "shared/config/theme/ThemeContext";
 import useTheme from "shared/config/theme/useTheme";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "shared/ui";
@@ -9,6 +8,7 @@ import style from "./ThemeSwitcher.module.scss";
 interface ThemeSwitcherProps {
 	className?: string;
 }
+
 
 export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
 	const { theme, toggleTheme } = useTheme();

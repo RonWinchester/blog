@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import "./styles/index.scss";
 import useTheme from "shared/config/theme/useTheme";
 import { classNames } from "shared/lib/classNames/classNames";
