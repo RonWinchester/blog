@@ -8,7 +8,7 @@ module.exports = {
 		"plugin:@typescript-eslint/recommended",
 		"plugin:react/recommended",
 		"plugin:react/jsx-runtime",
-		"plugin:i18next/recommended"
+		"plugin:i18next/recommended",
 	],
 	overrides: [
 		{
@@ -20,6 +20,12 @@ module.exports = {
 				sourceType: "script",
 			},
 		},
+		{
+			files: ["**/src/**/*.test.{ts,tsx}"],
+			rules: {
+				"i18next/no-literal-string": "off",
+			},
+		},
 	],
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
@@ -29,6 +35,6 @@ module.exports = {
 	plugins: ["@typescript-eslint", "react", "i18next"],
 	rules: {
 		indent: ["error", "tab"],
-		"i18next/no-literal-string": ['error', {markupOnly : true}]
+		"i18next/no-literal-string": ["error", { markupOnly: true }],
 	},
 };

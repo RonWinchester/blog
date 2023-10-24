@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SidebarIcon } from "shared/assets/icons";
 import { classNames } from "shared/lib/classNames/classNames";
 import { LangSwitcher } from "widgets/LangSwitcher";
 import { ThemeSwitcher } from "widgets/ThemeSwitcher";
@@ -18,11 +19,14 @@ export const Sidebar = ({ className, children }: SidebarProps) => {
 
 	return (
 		<div
+			data-testid="sidebar"
 			className={classNames(style.sidebar, { [style.collapsed]: collapsed }, [
 				className,
 			])}
 		>
-			<button onClick={onToggle}>toggle</button>
+			<button data-testid="sidebar-toggle" onClick={onToggle}>
+				<SidebarIcon />
+			</button>
 			<div className={classNames(style.switchers)}>
 				<ThemeSwitcher />
 				<LangSwitcher />
