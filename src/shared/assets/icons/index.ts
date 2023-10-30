@@ -1,3 +1,3 @@
 import ThemeSwitcherIcon from "./themeIcon.svg";
-
-export { ThemeSwitcherIcon };
+import SidebarIcon from "./sidebar.svg";
+export { ThemeSwitcherIcon, SidebarIcon };
