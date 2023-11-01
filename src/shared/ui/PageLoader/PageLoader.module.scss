@@ -14,6 +14,7 @@
 	border-right-color: #25b09b;
 	animation: l15 1s infinite linear;
   }
+
   .loader::before,
   .loader::after {
 	content: "";
@@ -23,10 +24,12 @@
 	border-radius: 50%;
 	animation: l15 2s infinite;
   }
+
   .loader::after {
 	margin: 8px;
 	animation-duration: 3s;
   }
+
   @keyframes l15{
 	100%{transform: rotate(1turn)}
   }

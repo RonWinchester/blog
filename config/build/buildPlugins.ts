@@ -9,7 +9,7 @@ export function buildPLugins(
 	paths: BuildPaths,
 	isDev: boolean
 ): webpack.WebpackPluginInstance[] {
-	return [
+	const plugins = [
 		new webpack.ProgressPlugin(),
 		new HTMLWebpackPlugin({
 			template: paths.html,
@@ -21,10 +21,17 @@ export function buildPLugins(
 		new webpack.DefinePlugin({
 			__IS__DEV__: JSON.stringify(isDev),
 		}),
-		new webpack.HotModuleReplacementPlugin(),
-		isDev && new ReactRefreshWebpackPlugin(),
-		new BundleAnalyzerPlugin({
-			openAnalyzer: false
-		})
 	];
+
+	if (isDev) {
+		plugins.push(
+			new webpack.HotModuleReplacementPlugin(),
+			new ReactRefreshWebpackPlugin(),
+			new BundleAnalyzerPlugin({
+				openAnalyzer: false,
+			})
+		);
+	}
+
+	return plugins;
 }
