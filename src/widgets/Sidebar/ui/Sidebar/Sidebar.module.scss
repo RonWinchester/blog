@@ -1,20 +1,26 @@
 .sidebar {
-    height: calc(100vh - var( --navbar-height));
-    width: var(--sidebar-width);
-    background: var(--inverted);
-    transition: width .3s ease-in-out;
-    position: relative;
+	height: calc(100vh - var(--header-height));
+	width: var(--sidebar-width);
+	background: var(--inverted);
+	transition: width 0.3s ease-in-out;
+	position: relative;
+	padding: 1rem;
+	box-sizing: border-box;
 }
 
 .collapsed {
-    width: var(--sidebar-collapsed);
+	width: var(--sidebar-collapsed);
 }
 
 .switchers {
-    position: absolute;
-    bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+	position: absolute;
+	bottom: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
+
+.swicher-collapsed {
+	flex-direction: column;
 }

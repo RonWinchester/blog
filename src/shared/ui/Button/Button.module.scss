@@ -16,3 +16,27 @@
     background: none;
     color: var(--primary-color);
 }
+
+.small {
+    padding: .5rem;
+}
+
+.medium {
+    padding: 1rem;
+}
+
+.large {
+    padding: 1.5rem;
+}
+
+.background {
+    background: var(--bg-color);
+    color: var(--primary-color);
+    border: none;
+}
+
+.background_inverted {
+    background: var(--inverted);
+    color: var(--inverted-primary-color);
+    border: none;
+}

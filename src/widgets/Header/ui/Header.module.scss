@@ -1,0 +1,12 @@
+.header {
+	padding: 1rem;
+	background-color: var(--inverted);
+	height: var(--header-height);
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+}
+
+.button {
+	color: var(--inverted-primary-color);
+}
