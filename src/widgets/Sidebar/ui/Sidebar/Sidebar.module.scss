@@ -17,4 +17,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    gap: 1rem;
+}
+
+.swicher-collapsed {
+    flex-direction: column;
 }

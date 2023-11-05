@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { SidebarIcon } from "shared/assets/icons";
 import { classNames } from "shared/lib/classNames/classNames";
+import { Button } from "shared/ui";
+import { ButtonTheme, ButtonSize } from "shared/ui/Button/Button";
 import { LangSwitcher } from "widgets/LangSwitcher";
 import { ThemeSwitcher } from "widgets/ThemeSwitcher";
 import style from "./Sidebar.module.scss";
@@ -24,10 +26,10 @@ export const Sidebar = ({ className, children }: SidebarProps) => {
 				className,
 			])}
 		>
-			<button data-testid="sidebar-toggle" onClick={onToggle}>
+			<Button className={classNames(style.button)} size={ButtonSize.S} theme={ButtonTheme.CLEAR} data-testid="sidebar-toggle" onClick={onToggle}>
 				<SidebarIcon />
-			</button>
-			<div className={classNames(style.switchers)}>
+			</Button>
+			<div className={classNames(style.switchers, {[`${style["swicher-collapsed"]}`]: collapsed})}>
 				<ThemeSwitcher />
 				<LangSwitcher />
 			</div>
