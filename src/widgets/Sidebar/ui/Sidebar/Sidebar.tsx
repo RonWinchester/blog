@@ -26,7 +26,7 @@ export const Sidebar = ({ className, children }: SidebarProps) => {
 				className,
 			])}
 		>
-			<Button className={classNames(style.button)} size={ButtonSize.S} theme={ButtonTheme.CLEAR} data-testid="sidebar-toggle" onClick={onToggle}>
+			<Button className={classNames(style.button)} size={ButtonSize.S} theme={ButtonTheme.BACKGROUND} data-testid="sidebar-toggle" onClick={onToggle}>
 				<SidebarIcon />
 			</Button>
 			<div className={classNames(style.switchers, {[`${style["swicher-collapsed"]}`]: collapsed})}>
