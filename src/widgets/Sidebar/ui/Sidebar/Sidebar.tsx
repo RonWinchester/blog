@@ -1,24 +1,16 @@
-import { useState } from "react";
-import { SidebarIcon } from "shared/assets/icons";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Button } from "shared/ui";
-import { ButtonTheme, ButtonSize } from "shared/ui/Button/Button";
 import { LangSwitcher } from "widgets/LangSwitcher";
+import { Navbar } from "widgets/Navbar";
 import { ThemeSwitcher } from "widgets/ThemeSwitcher";
 import style from "./Sidebar.module.scss";
 
 interface SidebarProps {
 	className?: string;
 	children?: React.ReactNode;
+	collapsed?: boolean;
 }
 
-export const Sidebar = ({ className, children }: SidebarProps) => {
-	const [collapsed, setCollapsed] = useState(false);
-
-	const onToggle = () => {
-		setCollapsed((prev) => !prev);
-	};
-
+export const Sidebar = ({ className, children, collapsed }: SidebarProps) => {
 	return (
 		<div
 			data-testid="sidebar"
@@ -26,10 +18,12 @@ export const Sidebar = ({ className, children }: SidebarProps) => {
 				className,
 			])}
 		>
-			<Button className={classNames(style.button)} size={ButtonSize.S} theme={ButtonTheme.BACKGROUND} data-testid="sidebar-toggle" onClick={onToggle}>
-				<SidebarIcon />
-			</Button>
-			<div className={classNames(style.switchers, {[`${style["swicher-collapsed"]}`]: collapsed})}>
+			<Navbar collapsed={collapsed} />
+			<div
+				className={classNames(style.switchers, {
+					[`${style["swicher-collapsed"]}`]: collapsed,
+				})}
+			>
 				<ThemeSwitcher />
 				<LangSwitcher />
 			</div>
