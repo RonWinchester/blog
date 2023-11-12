@@ -3,15 +3,13 @@ import { Theme } from "shared/config/theme/ThemeContext";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Modal } from "./Modal";
 
-const isOpen = false;
-
 const meta: Meta<typeof Modal> = {
 	title: "shared/Modal",
 	component: Modal,
 	parameters: {
 		layout: "centered",
+		loki: { skip: true },
 	},
-	tags: ["autodocs"],
 };
 
 export default meta;
@@ -20,14 +18,14 @@ type Story = StoryObj<typeof meta>;
 export const Light: Story = {
 	args: {
 		children: "Главная",
-		isOpen,
+		isOpen: true,
 	},
 };
 
 export const Dark: Story = {
 	args: {
 		children: "Главная",
-		isOpen,
+		isOpen: true,
 	},
 	decorators: [ThemeDecorator(Theme.DARK)],
 };

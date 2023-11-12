@@ -16,8 +16,15 @@ const meta: Meta<typeof LangSwitcher> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Light: Story = {};
+export const Light: Story = {
+	args: {
+		children: "RU",
+	},
+};
 
 export const Dark: Story = {
+	args: {
+		children: "RU",
+	},
 	decorators: [ThemeDecorator(Theme.DARK)],
 };

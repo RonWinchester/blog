@@ -2,6 +2,10 @@
 	cursor: pointer;
 }
 
+.clear_inverted {
+	color: var(--inverted-primary-color);
+}
+
 .clear,
 .clear_inverted {
 	padding: 0;
@@ -16,9 +20,6 @@
     }
 }
 
-.clear_inverted {
-	color: var(--inverted-primary-color);
-}
 
 .outline {
 	padding: 0.5rem;

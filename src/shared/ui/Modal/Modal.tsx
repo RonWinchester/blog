@@ -38,36 +38,29 @@ export const Modal = ({ className, isOpen, onClose, children }: ModalProps) => {
 	};
 
 	return (
-		<>
-			{portalElement && (
-				<Portal element={portalElement}>
-					<div className={classNames(style.modal, mods, [className])}>
-						<div
-							className={classNames(style.overlay)}
+		<Portal element={portalElement || document.body}>
+			<div className={classNames(style.modal, mods, [className])}>
+				<div
+					className={classNames(style.overlay)}
+					onClick={() => {
+						onClose();
+					}}
+				>
+					<div className={classNames(style.content)} onClick={onContentClick}>
+						<Button
+							theme={ButtonTheme.CLEAR}
+							size={ButtonSize.S}
+							className={style.closeButton}
 							onClick={() => {
 								onClose();
 							}}
 						>
-							<div
-								className={classNames(style.content)}
-								onClick={onContentClick}
-							>
-								<Button
-									theme={ButtonTheme.CLEAR}
-									size={ButtonSize.S}
-									className={style.closeButton}
-									onClick={() => {
-										onClose();
-									}}
-								>
-									<CloseIcon />
-								</Button>
-								{children}
-							</div>
-						</div>
+							<CloseIcon />
+						</Button>
+						{children}
 					</div>
-				</Portal>
-			)}
-		</>
+				</div>
+			</div>
+		</Portal>
 	);
 };
