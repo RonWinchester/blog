@@ -24,7 +24,7 @@ export const Navbar = ({ className, collapsed, children }: NavbarProps) => {
 					className={classNames(style.linkWrapper)}
 				>
 					<MainPageIcon className={style.icon} />
-					<span className={collapsed && style.collapsedLink}>
+					<span className={collapsed ? style.collapsedLink : undefined}>
 						{t("Главная")}
 					</span>
 				</AppLink>
@@ -34,7 +34,7 @@ export const Navbar = ({ className, collapsed, children }: NavbarProps) => {
 					to={RoutePath.about}
 				>
 					<AboutPageIcon className={style.icon} />
-					<span className={collapsed && style.collapsedLink}>
+					<span className={collapsed ? style.collapsedLink : undefined}>
 						{t("О сайте")}
 					</span>
 				</AppLink>
