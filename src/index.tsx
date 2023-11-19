@@ -6,17 +6,20 @@ import "shared/config/i18n/i18n";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "./app/providers/ThemeProvider";
 import { ErrorBoundary } from "app/providers/ErrorBoundary";
+import { StoreProvider } from "app/providers/StoreProvider";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<ErrorBoundary>
-				<ThemeProvider>
-					<App />
-				</ThemeProvider>
-			</ErrorBoundary>
-		</BrowserRouter>
+		<StoreProvider>
+			<BrowserRouter>
+				<ErrorBoundary>
+					<ThemeProvider>
+						<App />
+					</ThemeProvider>
+				</ErrorBoundary>
+			</BrowserRouter>
+		</StoreProvider>
 	</React.StrictMode>
 );
