@@ -8,6 +8,9 @@ import path from "path";
 export default {
 	clearMocks: true,
 	testEnvironment: "jsdom",
+	globals: {
+		__IS__DEV__: false,
+	},
 	coveragePathIgnorePatterns: ["\\\\node_modules\\\\"],
 	moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],
 	moduleDirectories: ["node_modules"],
