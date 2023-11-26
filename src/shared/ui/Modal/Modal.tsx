@@ -2,20 +2,28 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ButtonSize, ButtonTheme } from "../Button/Button";
 import { CloseIcon } from "shared/assets/icons";
 import style from "./Modal.module.scss";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Portal } from "../Portal/Portal";
 
 interface ModalProps {
 	className?: string;
 	children?: React.ReactNode;
+	lazy?: boolean;
 	isOpen: boolean;
 	onClose: () => void;
 }
 
-export const Modal = ({ className, isOpen, onClose, children }: ModalProps) => {
+export const Modal = ({
+	className,
+	isOpen,
+	onClose,
+	lazy = true,
+	children,
+}: ModalProps) => {
 	const mods: Record<string, boolean> = {
 		[style.opened]: isOpen,
 	};
+	const [isMounted, setIsMounted] = useState(false);
 
 	const portalElement = document.getElementById("app") as HTMLElement;
 
@@ -29,6 +37,12 @@ export const Modal = ({ className, isOpen, onClose, children }: ModalProps) => {
 	);
 
 	useEffect(() => {
+		if (isOpen) {
+			setIsMounted(true);
+		}
+	}, [isOpen]);
+
+	useEffect(() => {
 		window.addEventListener("keydown", onKeyDown);
 		return () => window.removeEventListener("keydown", onKeyDown);
 	}, [isOpen, onKeyDown]);
@@ -36,6 +50,10 @@ export const Modal = ({ className, isOpen, onClose, children }: ModalProps) => {
 	const onContentClick = (e: React.MouseEvent) => {
 		e.stopPropagation();
 	};
+
+	if (lazy && !isMounted) {
+		return null;
+	}
 
 	return (
 		<Portal element={portalElement || document.body}>

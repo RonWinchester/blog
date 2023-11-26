@@ -3,5 +3,7 @@
 	"Перевод языка": "Translate language",
 	"О сайте": "About",
 	"Главная": "Main",
-    "Войти": "Log in"
+    "Войти": "Log in",
+	"Введите логин": "Enter login",
+    "Введите пароль": "Enter your password"
 }

@@ -1,0 +1,18 @@
+.Input {
+    background-color: transparent;
+    border: transparent 2px solid;
+    border-bottom: var(--secondary-color) 2px solid;
+    padding: .3rem;
+    transition: all 0.3s ease-in;
+    border-radius: 2px;
+    color: var(--primary-color);
+
+    &:hover {
+        border: var(--secondary-color) 2px solid;
+    }
+
+    &:active, &:focus {
+        border: var(--inverted-secondary-color) 2px solid;
+        outline: none;
+    }
+}
