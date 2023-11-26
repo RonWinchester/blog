@@ -1,8 +1,9 @@
+import { LoginModal } from "features/authByUsername";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SidebarIcon } from "shared/assets/icons";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Button, Modal } from "shared/ui";
+import { Button } from "shared/ui";
 import { ButtonTheme } from "shared/ui/Button/Button";
 import style from "./Header.module.scss";
 
@@ -33,9 +34,7 @@ export const Header = ({ className, children, setCollapsed }: HeaderProps) => {
 				<SidebarIcon />
 			</Button>
 			{children}
-			<Modal isOpen={isModalOpen} onClose={onModalClose}>
-				Some text
-			</Modal>
+			<LoginModal isOpen={isModalOpen} onClose={onModalClose} />
 			<Button
 				theme={ButtonTheme.CLEAR_INVERTED}
 				onClick={() => {
