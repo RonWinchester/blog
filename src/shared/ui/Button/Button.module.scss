@@ -1,42 +1,53 @@
 .button {
-    cursor: pointer;
+	cursor: pointer;
 }
 
-.clear {
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: none;
-    outline: none;
+.clear_inverted {
+	color: var(--inverted-primary-color);
 }
+
+.clear,
+.clear_inverted {
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: none;
+	outline: none;
+    transition: opacity .3s ease;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
 
 .outline {
-    padding: .5rem;
-    border: var(--primary-color) 1px solid;
-    background: none;
-    color: var(--primary-color);
+	padding: 0.5rem;
+	border: var(--primary-color) 1px solid;
+	background: none;
+	color: var(--primary-color);
 }
 
 .small {
-    padding: .5rem;
+	padding: 0.5rem;
 }
 
 .medium {
-    padding: 1rem;
+	padding: 1rem;
 }
 
 .large {
-    padding: 1.5rem;
+	padding: 1.5rem;
 }
 
 .background {
-    background: var(--bg-color);
-    color: var(--primary-color);
-    border: none;
+	background: var(--bg-color);
+	color: var(--primary-color);
+	border: none;
 }
 
 .background_inverted {
-    background: var(--inverted);
-    color: var(--inverted-primary-color);
-    border: none;
+	background: var(--inverted);
+	color: var(--inverted-primary-color);
+	border: none;
 }

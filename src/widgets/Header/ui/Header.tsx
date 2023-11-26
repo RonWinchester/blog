@@ -1,4 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
+import { LoginModal } from "features/authByUsername";
+import { Dispatch, SetStateAction, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { SidebarIcon } from "shared/assets/icons";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "shared/ui";
@@ -12,8 +14,14 @@ interface HeaderProps {
 }
 
 export const Header = ({ className, children, setCollapsed }: HeaderProps) => {
+	const { t } = useTranslation();
+
 	const onToggle = () => {
 		setCollapsed((prev) => !prev);
+	};
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const onModalClose = () => {
+		setIsModalOpen(false);
 	};
 	return (
 		<header className={classNames(style.header, {}, [className])}>
@@ -26,6 +34,15 @@ export const Header = ({ className, children, setCollapsed }: HeaderProps) => {
 				<SidebarIcon />
 			</Button>
 			{children}
+			<LoginModal isOpen={isModalOpen} onClose={onModalClose}/>
+			<Button
+				theme={ButtonTheme.CLEAR_INVERTED}
+				onClick={() => {
+					setIsModalOpen(true);
+				}}
+			>
+				{t("Войти")}
+			</Button>
 		</header>
 	);
 };

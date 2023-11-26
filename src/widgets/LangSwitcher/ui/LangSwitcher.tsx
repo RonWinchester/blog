@@ -5,9 +5,10 @@ import { Button, ButtonTheme } from "shared/ui/Button/Button";
 
 interface LangSwitcherProps {
 	className?: string;
+	children?: React.ReactNode;
 }
 
-export const LangSwitcher = ({ className }: LangSwitcherProps) => {
+export const LangSwitcher = ({ className, children }: LangSwitcherProps) => {
 	const { i18n } = useTranslation();
 
 	const toggle = async () => {
@@ -21,6 +22,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 			onClick={toggle}
 		>
 			{i18n.language}
+			{children}
 		</Button>
 	);
 };
