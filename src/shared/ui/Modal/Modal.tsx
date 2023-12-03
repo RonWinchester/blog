@@ -39,8 +39,9 @@ export const Modal = ({
 	useEffect(() => {
 		if (isOpen) {
 			setIsMounted(true);
+			document.addEventListener("closeModal", onClose);
 		}
-	}, [isOpen]);
+	}, [isOpen, onClose]);
 
 	useEffect(() => {
 		window.addEventListener("keydown", onKeyDown);

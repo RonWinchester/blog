@@ -68,3 +68,11 @@ export const Size_l: Story = {
 		size: ButtonSize.L,
 	},
 };
+
+export const Disabled: Story = {
+	args: {
+		children: "Button",
+		size: ButtonSize.L,
+		disabled: true,
+	},
+};
