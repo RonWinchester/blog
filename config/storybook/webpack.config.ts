@@ -1,5 +1,5 @@
 import path from "path";
-import { RuleSetRule } from "webpack";
+import { DefinePlugin, RuleSetRule } from "webpack";
 import { WebpackConfiguration } from "webpack-dev-server";
 import { buildCssLoaders } from "../build/loadres/buildCssLoaders";
 import { BuildPaths } from "../build/types/config";
@@ -31,7 +31,11 @@ export default ({ config }: { config: WebpackConfiguration }) => {
 		use: ["@svgr/webpack"],
 	});
 
-	config.module?.rules?.push(buildCssLoaders({ isDev: true }));
-
+	config.module?.rules?.push(buildCssLoaders(true));
+	config.plugins?.push(
+		new DefinePlugin({
+			__IS__DEV__: true,
+		})
+	);
 	return config;
 };

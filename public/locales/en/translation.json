@@ -2,8 +2,11 @@
 	"Перевод": "Translate",
 	"Перевод языка": "Translate language",
 	"О сайте": "About",
+    "Ошибка авторизации: неверный пароль или логин": "Authorisation error: invalid password or username",
 	"Главная": "Main",
     "Войти": "Log in",
+    "Выйти": "Log out",
 	"Введите логин": "Enter login",
-    "Введите пароль": "Enter your password"
+    "Введите пароль": "Enter your password",
+	"Форма авторизации": "Authorisation form"
 }

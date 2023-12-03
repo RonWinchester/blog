@@ -1,6 +1,8 @@
+import { getUserAuth, userActions } from "entities/User";
 import { LoginModal } from "features/authByUsername";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 import { SidebarIcon } from "shared/assets/icons";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "shared/ui";
@@ -15,6 +17,8 @@ interface HeaderProps {
 
 export const Header = ({ className, children, setCollapsed }: HeaderProps) => {
 	const { t } = useTranslation();
+	const authData = useSelector(getUserAuth);
+	const dispatch = useDispatch();
 
 	const onToggle = () => {
 		setCollapsed((prev) => !prev);
@@ -23,6 +27,33 @@ export const Header = ({ className, children, setCollapsed }: HeaderProps) => {
 	const onModalClose = () => {
 		setIsModalOpen(false);
 	};
+	const onLogout = useCallback(() => {
+		dispatch(userActions.logout());
+	}, [dispatch]);
+	if (authData) {
+		return (
+			<header className={classNames(style.header, {}, [className])}>
+				<Button
+					className={classNames(style.button)}
+					theme={ButtonTheme.CLEAR}
+					data-testid="sidebar-toggle"
+					onClick={onToggle}
+				>
+					<SidebarIcon />
+				</Button>
+				{children}
+				<LoginModal isOpen={isModalOpen} onClose={onModalClose} />
+				<Button
+					theme={ButtonTheme.CLEAR_INVERTED}
+					onClick={() => {
+						onLogout();
+					}}
+				>
+					{t("Выйти")}
+				</Button>
+			</header>
+		);
+	}
 	return (
 		<header className={classNames(style.header, {}, [className])}>
 			<Button
@@ -34,7 +65,7 @@ export const Header = ({ className, children, setCollapsed }: HeaderProps) => {
 				<SidebarIcon />
 			</Button>
 			{children}
-			<LoginModal isOpen={isModalOpen} onClose={onModalClose}/>
+			<LoginModal isOpen={isModalOpen} onClose={onModalClose} />
 			<Button
 				theme={ButtonTheme.CLEAR_INVERTED}
 				onClick={() => {
