@@ -40,3 +40,27 @@ export const Dark: Story = {
 		}),
 	],
 };
+
+export const WithError: Story = {
+	args: {},
+	decorators: [
+		StoreDecorator({
+			loginForm: {
+				username: "123",
+				password: "123",
+				error: "Error",
+			},
+		}),
+	],
+};
+
+export const IsLoading: Story = {
+	args: {},
+	decorators: [
+		StoreDecorator({
+			loginForm: {
+				isLoading: true,
+			},
+		}),
+	],
+};
