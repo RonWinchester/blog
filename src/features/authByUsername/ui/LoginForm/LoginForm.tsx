@@ -1,11 +1,20 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { getLoginState } from "features/authByUsername/model/selector/getLoginState/getLoginState";
+import {
+	getLoginError,
+	getLoginIsLoading,
+	getLoginPassword,
+	getLoginUsername,
+} from "features/authByUsername/model/selector";
 import { loginByUsername } from "features/authByUsername/model/services/loginByUsername/loginByUsername";
-import { loginActions } from "features/authByUsername/model/slice/loginSlice";
+import {
+	loginActions,
+	loginReducer,
+} from "features/authByUsername/model/slice/loginSlice";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
+import { DynamicModuleLoader, ReducerList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { Button, Text } from "shared/ui";
 import { ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
@@ -17,14 +26,21 @@ interface LoginFormProps {
 	children?: React.ReactNode;
 }
 
-export const LoginForm = memo(function LoginForm({
+const initalReducers: ReducerList = {
+	loginForm: loginReducer,
+}
+
+const LoginForm = memo(function LoginForm({
 	className,
 	children,
 	...otherProps
 }: LoginFormProps) {
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
-	const { username, password, isLoading, error } = useSelector(getLoginState);
+	const username = useSelector(getLoginUsername);
+	const password = useSelector(getLoginPassword);
+	const isLoading = useSelector(getLoginIsLoading);
+	const error = useSelector(getLoginError);
 
 	const onChangeUsername = useCallback(
 		(value: string) => {
@@ -46,37 +62,41 @@ export const LoginForm = memo(function LoginForm({
 	}, [dispatch, password, username]);
 
 	return (
-		<div
-			className={classNames(style.LoginForm, {}, [className])}
-			{...otherProps}
-		>
-			<Text title={t("Форма авторизации")} />
-			{error && (
-				<Text
-					theme={TextTheme.ERROR}
-					text={t("Ошибка авторизации: неверный пароль или логин")}
-				/>
-			)}
-			<Input
-				onChange={onChangeUsername}
-				value={username}
-				type="text"
-				placeholder={t("Введите логин")}
-			/>
-			<Input
-				onChange={onChangePassword}
-				value={password}
-				type="text"
-				placeholder={t("Введите пароль")}
-			/>
-			<Button
-				theme={ButtonTheme.OUTLINE}
-				disabled={isLoading}
-				onClick={onLoginClick}
+		<DynamicModuleLoader reducers={initalReducers} removeAfterUnmount={true}>
+			<div
+				className={classNames(style.LoginForm, {}, [className])}
+				{...otherProps}
 			>
-				{t("Войти")}
-			</Button>
-			{children}
-		</div>
+				<Text title={t("Форма авторизации")} />
+				{error && (
+					<Text
+						theme={TextTheme.ERROR}
+						text={t("Ошибка авторизации: неверный пароль или логин")}
+					/>
+				)}
+				<Input
+					onChange={onChangeUsername}
+					value={username}
+					type="text"
+					placeholder={t("Введите логин")}
+				/>
+				<Input
+					onChange={onChangePassword}
+					value={password}
+					type="text"
+					placeholder={t("Введите пароль")}
+				/>
+				<Button
+					theme={ButtonTheme.OUTLINE}
+					disabled={isLoading}
+					onClick={onLoginClick}
+				>
+					{t("Войти")}
+				</Button>
+				{children}
+			</div>
+		</DynamicModuleLoader>
 	);
 });
+
+export default LoginForm;

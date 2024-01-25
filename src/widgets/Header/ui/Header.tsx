@@ -42,7 +42,7 @@ export const Header = ({ className, children, setCollapsed }: HeaderProps) => {
 					<SidebarIcon />
 				</Button>
 				{children}
-				<LoginModal isOpen={isModalOpen} onClose={onModalClose} />
+				{isModalOpen && <LoginModal isOpen={isModalOpen} onClose={onModalClose} />}
 				<Button
 					theme={ButtonTheme.CLEAR_INVERTED}
 					onClick={() => {

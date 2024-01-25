@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Theme } from "shared/config/theme/ThemeContext";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { LoginModal } from "./LoginModal";
+import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 
 const meta: Meta<typeof LoginModal> = {
 	title: "features/LoginModal",
@@ -19,10 +20,26 @@ export const Light: Story = {
 	args: {
 		isOpen: true,
 	},
-	decorators: [ThemeDecorator(Theme.LIGHT)],
+	decorators: [
+		ThemeDecorator(Theme.LIGHT),
+		StoreDecorator({
+			loginForm: {
+				username: "123",
+				password: "123",
+			},
+		}),
+	],
 };
 
 export const Dark: Story = {
 	args: { isOpen: true },
-	decorators: [ThemeDecorator(Theme.DARK)],
+	decorators: [
+		ThemeDecorator(Theme.DARK),
+		StoreDecorator({
+			loginForm: {
+				username: "123",
+				password: "123",
+			},
+		}),
+	],
 };
