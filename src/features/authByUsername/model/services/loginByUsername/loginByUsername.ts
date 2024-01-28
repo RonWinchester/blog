@@ -24,8 +24,6 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps>(
 				JSON.stringify(response.data)
 			);
 			thunkAPI.dispatch(userActions.setAuthData(response.data));
-			const closeEvent = new Event("closeModal", { bubbles: true });
-			document.dispatchEvent(closeEvent);
 			return response.data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue('error');

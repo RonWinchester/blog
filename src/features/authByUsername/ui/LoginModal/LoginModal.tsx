@@ -25,7 +25,7 @@ export const LoginModal = ({
 			{...otherProps}
 		>
 			<Suspense fallback={<PageLoader />}>
-				<LoginFormAsync />
+				<LoginFormAsync onSuccess={onClose} />
 			</Suspense>
 			{children}
 		</Modal>

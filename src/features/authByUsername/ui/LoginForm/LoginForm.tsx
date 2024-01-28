@@ -1,4 +1,3 @@
-import { AnyAction } from "@reduxjs/toolkit";
 import {
 	getLoginError,
 	getLoginIsLoading,
@@ -12,7 +11,7 @@ import {
 } from "features/authByUsername/model/slice/loginSlice";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { DynamicModuleLoader, ReducerList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { Button, Text } from "shared/ui";
@@ -20,9 +19,11 @@ import { ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
 import { TextTheme } from "shared/ui/Text/Text";
 import style from "./LoginForm.module.scss";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
 
 interface LoginFormProps {
 	className?: string;
+	onSuccess: () => void;
 	children?: React.ReactNode;
 }
 
@@ -33,10 +34,11 @@ const initalReducers: ReducerList = {
 const LoginForm = memo(function LoginForm({
 	className,
 	children,
+	onSuccess,
 	...otherProps
 }: LoginFormProps) {
 	const { t } = useTranslation();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const username = useSelector(getLoginUsername);
 	const password = useSelector(getLoginPassword);
 	const isLoading = useSelector(getLoginIsLoading);
@@ -56,14 +58,17 @@ const LoginForm = memo(function LoginForm({
 		[dispatch]
 	);
 
-	const onLoginClick = useCallback(() => {
-		//TODO: ниже явно проблема с redux, возможно конфликт типов
-		dispatch(loginByUsername({ username, password }) as unknown as AnyAction);
-	}, [dispatch, password, username]);
+	const onLoginClick = useCallback(async (e: React.SyntheticEvent) => {
+		e.preventDefault();
+		const result = await dispatch(loginByUsername({ username, password }));
+		if(result.meta.requestStatus === 'fulfilled') {
+			onSuccess();
+		}
+	}, [dispatch, onSuccess, password, username]);
 
 	return (
 		<DynamicModuleLoader reducers={initalReducers} removeAfterUnmount={true}>
-			<div
+			<form onSubmit={onLoginClick}
 				className={classNames(style.LoginForm, {}, [className])}
 				{...otherProps}
 			>
@@ -89,12 +94,12 @@ const LoginForm = memo(function LoginForm({
 				<Button
 					theme={ButtonTheme.OUTLINE}
 					disabled={isLoading}
-					onClick={onLoginClick}
+
 				>
 					{t("Войти")}
 				</Button>
 				{children}
-			</div>
+			</form>
 		</DynamicModuleLoader>
 	);
 });
