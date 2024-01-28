@@ -13,7 +13,7 @@
 
 .linkWrapper {
 	display: grid;
-	grid-template-columns: 1fr auto;
+	grid-template-columns: max-content auto;
 	gap: .5rem;
 	align-items: center;
 	color: var(--inverted-primary-color);
@@ -25,4 +25,8 @@
 
 .icon {
 	cursor: pointer;
+}
+
+.active {
+	color: var(--inverted-secondary-color);
 }

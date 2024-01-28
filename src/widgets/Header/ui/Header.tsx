@@ -1,6 +1,6 @@
 import { getUserAuth, userActions } from "entities/User";
 import { LoginModal } from "features/authByUsername";
-import { Dispatch, SetStateAction, useCallback, useState } from "react";
+import { Dispatch, SetStateAction, memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { SidebarIcon } from "shared/assets/icons";
@@ -15,7 +15,11 @@ interface HeaderProps {
 	setCollapsed?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Header = ({ className, children, setCollapsed }: HeaderProps) => {
+export const Header = memo(function Header({
+	className,
+	children,
+	setCollapsed,
+}: HeaderProps) {
 	const { t } = useTranslation();
 	const authData = useSelector(getUserAuth);
 	const dispatch = useDispatch();
@@ -42,7 +46,9 @@ export const Header = ({ className, children, setCollapsed }: HeaderProps) => {
 					<SidebarIcon />
 				</Button>
 				{children}
-				{isModalOpen && <LoginModal isOpen={isModalOpen} onClose={onModalClose} />}
+				{isModalOpen && (
+					<LoginModal isOpen={isModalOpen} onClose={onModalClose} />
+				)}
 				<Button
 					theme={ButtonTheme.CLEAR_INVERTED}
 					onClick={() => {
@@ -76,4 +82,4 @@ export const Header = ({ className, children, setCollapsed }: HeaderProps) => {
 			</Button>
 		</header>
 	);
-};
+});

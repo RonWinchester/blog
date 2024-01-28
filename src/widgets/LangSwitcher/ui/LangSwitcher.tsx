@@ -2,13 +2,17 @@ import { classNames } from "shared/lib/classNames/classNames";
 import style from "./LangSwitcher.module.scss";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { memo } from "react";
 
 interface LangSwitcherProps {
 	className?: string;
 	children?: React.ReactNode;
 }
 
-export const LangSwitcher = ({ className, children }: LangSwitcherProps) => {
+export const LangSwitcher = memo(function LangSwitcher({
+	className,
+	children,
+}: LangSwitcherProps) {
 	const { i18n } = useTranslation();
 
 	const toggle = async () => {
@@ -25,4 +29,4 @@ export const LangSwitcher = ({ className, children }: LangSwitcherProps) => {
 			{children}
 		</Button>
 	);
-};
+});
