@@ -10,6 +10,7 @@ export default {
 	testEnvironment: "jsdom",
 	globals: {
 		__IS__DEV__: false,
+		__API__: "",
 	},
 	coveragePathIgnorePatterns: ["\\\\node_modules\\\\"],
 	moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],

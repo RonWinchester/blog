@@ -18,7 +18,7 @@ const ProfilePage = ({
 	children,
 	...otherProps
 }: ProfilePageProps) => {
-	const { t } = useTranslation();
+	const { t } = useTranslation("profile");
 	return (
 		<DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
 			<div
