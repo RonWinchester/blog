@@ -20,7 +20,7 @@ const ProfilePage = ({
 }: ProfilePageProps) => {
 	const { t } = useTranslation();
 	return (
-		<DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={true}>
+		<DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
 			<div
 				className={classNames(style.ProfilePage, {}, [className])}
 				{...otherProps}
