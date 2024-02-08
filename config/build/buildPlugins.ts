@@ -7,7 +7,8 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 export function buildPLugins(
 	paths: BuildPaths,
-	isDev: boolean
+	isDev: boolean,
+	apiUrl: string
 ): webpack.WebpackPluginInstance[] {
 	const plugins = [
 		new webpack.ProgressPlugin(),
@@ -20,6 +21,7 @@ export function buildPLugins(
 		}),
 		new webpack.DefinePlugin({
 			__IS__DEV__: JSON.stringify(isDev),
+			__API__: JSON.stringify(apiUrl),
 		}),
 	];
 

@@ -14,3 +14,4 @@ declare module "*.png";
 declare module "*.jpeg";
 
 declare const __IS__DEV__: boolean;
+declare const __API__: string;

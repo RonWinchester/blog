@@ -3,6 +3,7 @@ import { LangSwitcher } from "widgets/LangSwitcher";
 import { Navbar } from "widgets/Navbar";
 import { ThemeSwitcher } from "widgets/ThemeSwitcher";
 import style from "./Sidebar.module.scss";
+import { memo } from "react";
 
 interface SidebarProps {
 	className?: string;
@@ -10,7 +11,11 @@ interface SidebarProps {
 	collapsed?: boolean;
 }
 
-export const Sidebar = ({ className, children, collapsed }: SidebarProps) => {
+export const Sidebar = memo(function Sidebar({
+	className,
+	children,
+	collapsed,
+}: SidebarProps) {
 	return (
 		<div
 			data-testid="sidebar"
@@ -30,4 +35,4 @@ export const Sidebar = ({ className, children, collapsed }: SidebarProps) => {
 			{children}
 		</div>
 	);
-};
+});

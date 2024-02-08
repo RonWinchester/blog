@@ -12,14 +12,14 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
 	<React.StrictMode>
-		<StoreProvider>
-			<BrowserRouter>
+		<BrowserRouter>
+			<StoreProvider>
 				<ErrorBoundary>
 					<ThemeProvider>
 						<App />
 					</ThemeProvider>
 				</ErrorBoundary>
-			</BrowserRouter>
-		</StoreProvider>
+			</StoreProvider>
+		</BrowserRouter>
 	</React.StrictMode>
 );
