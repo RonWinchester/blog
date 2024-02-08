@@ -1,7 +1,7 @@
 import axios from "axios";
-import { userActions } from "entities/User";
+// import { userActions } from "entities/User";
 import { loginByUsername } from "./loginByUsername";
-import { USER_LOCALSTORAGE_KEY } from "shared/const/localStorage";
+// import { USER_LOCALSTORAGE_KEY } from "shared/const/localStorage";
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 
 jest.mock("axios");
