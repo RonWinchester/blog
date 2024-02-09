@@ -11,7 +11,7 @@ interface InputProps extends HTMLInputProps {
 	className?: string;
 	type?: string;
 	placeholder?: string;
-	value: string;
+	value: string | undefined;
 	onChange: (value: string) => void;
 }
 
