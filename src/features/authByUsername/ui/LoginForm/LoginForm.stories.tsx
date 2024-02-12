@@ -23,6 +23,7 @@ export const Light: Story = {
 			loginForm: {
 				username: "123",
 				password: "123",
+				isLoading: false,
 			},
 		}),
 	],
@@ -36,6 +37,7 @@ export const Dark: Story = {
 			loginForm: {
 				username: "123",
 				password: "123",
+				isLoading: false,
 			},
 		}),
 	],
@@ -49,6 +51,7 @@ export const WithError: Story = {
 				username: "123",
 				password: "123",
 				error: "Error",
+				isLoading: false,
 			},
 		}),
 	],
@@ -60,6 +63,9 @@ export const IsLoading: Story = {
 		StoreDecorator({
 			loginForm: {
 				isLoading: true,
+				error: "Error",
+				username: "123",
+				password: "123",
 			},
 		}),
 	],

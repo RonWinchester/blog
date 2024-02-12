@@ -25,7 +25,9 @@ export const Header = memo(function Header({
 	const dispatch = useDispatch();
 
 	const onToggle = () => {
-		setCollapsed((prev) => !prev);
+		if (setCollapsed) {
+			setCollapsed((prev) => !prev);
+		}
 	};
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const onModalClose = () => {
