@@ -14,6 +14,7 @@ describe("authByUsername", () => {
 		expect(getLoginState(state as StateSchema)).toEqual({
 			password: "password",
 			username: "username",
+			isLoading: false,
 		});
 	});
 	test("getLoginState with empty state", () => {
