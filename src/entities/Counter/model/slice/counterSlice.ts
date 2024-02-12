@@ -10,10 +10,18 @@ export const counterSlice = createSlice({
 	initialState,
 	reducers: {
 		increment: (state) => {
-			state.value += 1;
+			if (state && state.value !== undefined) {
+				state.value += 1;
+			} else {
+				throw new Error("Invalid state object");
+			}
 		},
 		decrement: (state) => {
-			state.value -= 1;
+			if (state && state.value !== undefined) {
+				state.value -= 1;
+			} else {
+				throw new Error("Invalid state object");
+			}
 		},
 	},
 });

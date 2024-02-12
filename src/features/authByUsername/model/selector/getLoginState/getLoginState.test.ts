@@ -8,6 +8,7 @@ describe("authByUsername", () => {
 			loginForm: {
 				password: "password",
 				username: "username",
+				isLoading: false,
 			},
 		};
 		expect(getLoginState(state as StateSchema)).toEqual({

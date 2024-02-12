@@ -26,6 +26,7 @@ export const Light: Story = {
 			loginForm: {
 				username: "123",
 				password: "123",
+				isLoading: false
 			},
 		}),
 	],
@@ -39,6 +40,7 @@ export const Dark: Story = {
 			loginForm: {
 				username: "123",
 				password: "123",
+				isLoading: false
 			},
 		}),
 	],
