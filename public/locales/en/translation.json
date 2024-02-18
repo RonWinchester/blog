@@ -9,5 +9,8 @@
 	"Введите логин": "Enter login",
     "Введите пароль": "Enter your password",
 	"Форма авторизации": "Authorisation form",
-    "Профиль": "Profile"
+    "Профиль": "Profile",
+	"Редактировать": "Edit",
+	"Отменить": "Cancel",
+	"Сохранить": "Save"
 }
