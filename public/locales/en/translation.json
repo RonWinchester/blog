@@ -8,5 +8,6 @@
     "Выйти": "Log out",
 	"Введите логин": "Enter login",
     "Введите пароль": "Enter your password",
-	"Форма авторизации": "Authorisation form"
+	"Форма авторизации": "Authorisation form",
+    "Профиль": "Profile"
 }

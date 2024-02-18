@@ -8,25 +8,28 @@ import { getProfile } from "entities/Profile/model/selector/getProfile/getProfil
 import { Button, Text } from "shared/ui";
 import { ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
+import { useState } from "react";
 
 interface ProfileCardProps {
 	className?: string;
 	children?: React.ReactNode;
 }
 
-export const ProfileCard = ({
-	className,
-	...otherProps
-}: ProfileCardProps) => {
+export const ProfileCard = ({ className, ...otherProps }: ProfileCardProps) => {
 	const { t } = useTranslation("profile");
-
 	const data = useSelector(getProfile);
+
+	const [firstname, setFirstname] = useState(data?.firstname || "");
+	const [lastname, setLastname] = useState(data?.lastname || "");
 
 	// const isLoading = useSelector(getProfileIsLoading);
 	// const error = useSelector(getProfileError);
 
 	return (
-		<div className={classNames(style.ProfileCard, {}, [className])} {...otherProps}>
+		<div
+			className={classNames(style.ProfileCard, {}, [className])}
+			{...otherProps}
+		>
 			<div className={style.header}>
 				<Text title={t("Профиль")} />
 				<Button className={style.editBtn} theme={ButtonTheme.OUTLINE}>
@@ -35,16 +38,16 @@ export const ProfileCard = ({
 			</div>
 			<div className={style.data}>
 				<Input
-					value={data?.firstname}
+					value={firstname}
 					placeholder={t("Ваше имя")}
 					className={style.input}
-					onChange={(e) => console.log(e)}
+					onChange={setFirstname}
 				/>
 				<Input
-					value={data?.lastname}
+					value={lastname}
 					placeholder={t("Ваша фамилия")}
 					className={style.input}
-					onChange={(e) => console.log(e)}
+					onChange={setLastname}
 				/>
 			</div>
 		</div>
