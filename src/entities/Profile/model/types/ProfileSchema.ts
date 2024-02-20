@@ -13,7 +13,7 @@ export interface Profile {
 	lastname?: string;
 	age?: number;
 	currency?: Currency;
-	country?: Country.RU;
+	country?: Country;
 	city?: string;
 	username?: string;
 	avatar?: string;

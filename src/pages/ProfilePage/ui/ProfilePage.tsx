@@ -18,6 +18,7 @@ import { getProfileIsLoading } from "entities/Profile/model/selector/getProfileI
 import { useSelector } from "react-redux";
 import { getProfileReadonly } from "entities/Profile/model/selector/getProfileReadonly/getProfileReadonly";
 import { getProfileFormdata } from "entities/Profile/model/selector/getProfileFormdata/getProfileFormdata";
+import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 
 interface ProfilePageProps {
 	className?: string;
@@ -106,6 +107,7 @@ const ProfilePage = ({
 				className={classNames(style.ProfilePage, {}, [className])}
 				{...otherProps}
 			>
+				<ProfilePageHeader />
 				<ProfileCard
 					{...{
 						data,

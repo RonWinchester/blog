@@ -1,11 +1,10 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import style from "./ProfileCard.module.scss";
 import { useTranslation } from "react-i18next";
-import { PageLoader, Text } from "shared/ui";
+import { Avatar, PageLoader, Text } from "shared/ui";
 import { Input } from "shared/ui/Input/Input";
 import { Profile } from "entities/Profile/model/types/ProfileSchema";
 import { TextAlign, TextTheme } from "shared/ui/Text/Text";
-import { ProfilePageHeader } from "pages/ProfilePage/ui/ProfilePageHeader/ProfilePageHeader";
 
 interface ProfileCardProps {
 	className?: string;
@@ -72,8 +71,12 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
 	return (
 		<div className={classNames(style.ProfileCard, {}, [className])}>
-			<ProfilePageHeader />
 			<div className={style.data}>
+				{data?.avatar && (
+					<div className={style.avatarWrapper}>
+						<Avatar src={data.avatar} />
+					</div>
+				)}
 				<Input
 					value={data?.firstname}
 					placeholder={t("Ваше имя")}
