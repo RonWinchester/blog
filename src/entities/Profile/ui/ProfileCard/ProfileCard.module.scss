@@ -1,6 +1,6 @@
 .ProfileCard {
 	padding: 20px;
-	border: 2px solid var(--inverted-bg-color);
+	border: 1px solid var(--inverted-bg-color);
 }
 
 .data {
@@ -31,4 +31,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.editing {
+	border: 1px solid var(--primary-color);
+	border-radius: 0.5rem;
 }

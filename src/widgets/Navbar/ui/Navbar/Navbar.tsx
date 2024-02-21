@@ -6,6 +6,8 @@ import style from "./Navbar.module.scss";
 import { configNavbarItems } from "./configs/configNavbarItems";
 import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
+import { getUserAuth } from "entities/User";
+import { useSelector } from "react-redux";
 
 interface NavbarProps {
 	className?: string;
@@ -16,9 +18,13 @@ interface NavbarProps {
 export const Navbar = ({ className, collapsed, children }: NavbarProps) => {
 	const { t } = useTranslation();
 	const location = useLocation();
+	const isAuth = useSelector(getUserAuth);
 
 	const list = useMemo(() => {
 		return configNavbarItems.map((item) => {
+			if (item.authOnly && !isAuth) {
+				return null;
+			}
 			const activePage = item.path === location.pathname ? style.active : "";
 			return (
 				<AppLink
@@ -34,7 +40,7 @@ export const Navbar = ({ className, collapsed, children }: NavbarProps) => {
 				</AppLink>
 			);
 		});
-	}, [collapsed, location.pathname, t]);
+	}, [collapsed, isAuth, location.pathname, t]);
 
 	return (
 		<div className={classNames(style.navbar, {}, [className])}>

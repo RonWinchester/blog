@@ -1,7 +1,7 @@
 .Input {
 	background-color: transparent;
 	border: transparent 2px solid;
-	border-bottom: var(--secondary-color) 2px solid;
+	border-bottom: var(--inverted-secondary-color) 2px solid;
 	padding: 0.3rem;
 	transition: all 0.3s ease-in;
 	border-radius: 2px;
@@ -20,4 +20,15 @@
 
 .readonly {
 	border-bottom: var(--inverted-secondary-color) 2px solid;
+
+	&:hover {
+		border: transparent 2px solid;
+		border-bottom: var(--inverted-secondary-color) 2px solid;
+	}
+
+	&:active,
+	&:focus {
+		border: transparent 2px solid;
+		border-bottom: var(--inverted-secondary-color) 2px solid;
+	}
 }

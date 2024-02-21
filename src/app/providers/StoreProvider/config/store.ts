@@ -3,7 +3,7 @@ import { counterReducer } from "entities/Counter";
 import { userReducer } from "entities/User";
 import { createReducerManager } from "./reducerManager";
 import { StateSchema } from "./StateSchema";
-import { $axios } from "shared/api/api";
+import { $api } from "shared/api/api";
 import { NavigateOptions, To } from "react-router-dom";
 
 export function createReduxStore(initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>, navigate?: (to: To, options?: NavigateOptions) => void) {
@@ -21,7 +21,7 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: {
 			extraArgument: {
-				api: $axios,
+				api: $api,
 				navigate
 			}
 		} }),

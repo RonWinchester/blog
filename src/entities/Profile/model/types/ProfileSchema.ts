@@ -1,4 +1,5 @@
-import { Country, Currency } from "shared/const/common";
+import { Currency } from "entities/Currency";
+import { Country } from "entities/Country";
 
 export interface ProfileSchema {
 	data?: Profile,

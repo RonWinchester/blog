@@ -16,5 +16,6 @@ export const configNavbarItems = [
 		text: "Профиль",
 		path: RoutePath.profile,
 		icon: UserIcon,
+		authOnly: true,
 	},
 ];

@@ -19,6 +19,9 @@ import { useSelector } from "react-redux";
 import { getProfileReadonly } from "entities/Profile/model/selector/getProfileReadonly/getProfileReadonly";
 import { getProfileFormdata } from "entities/Profile/model/selector/getProfileFormdata/getProfileFormdata";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
+import { Currency } from "entities/Currency";
+import { Country } from "entities/Country";
+import { getUserAuth } from "entities/User";
 
 interface ProfilePageProps {
 	className?: string;
@@ -83,19 +86,22 @@ const ProfilePage = ({
 		[dispatch]
 	);
 
-	// const onChangeCurrency = useCallback(
-	// 	(currency: Currency) => {
-	// 		dispatch(profileActions.updateProfile({ currency }));
-	// 	},
-	// 	[dispatch]
-	// );
+	const onChangeCurrency = useCallback(
+		(currency: Currency) => {
+			dispatch(profileActions.updateProfile({ currency }));
+		},
+		[dispatch]
+	);
 
-	// const onChangeCountry = useCallback(
-	// 	(country: Country) => {
-	// 		dispatch(profileActions.updateProfile({ country }));
-	// 	},
-	// 	[dispatch]
-	// );
+	const onChangeCountry = useCallback(
+		(country: Country) => {
+			dispatch(profileActions.updateProfile({ country }));
+		},
+		[dispatch]
+	);
+
+	const isAuth = useSelector(getUserAuth);
+	console.log("isAuth", isAuth);
 
 	useEffect(() => {
 		dispatch(fetchProfileData());
@@ -120,8 +126,8 @@ const ProfilePage = ({
 						onChangeAge,
 						onChangeUsername,
 						onChangeAvatar,
-						// onChangeCurrency,
-						// onChangeCountry,
+						onChangeCurrency,
+						onChangeCountry,
 					}}
 				/>
 				{children}

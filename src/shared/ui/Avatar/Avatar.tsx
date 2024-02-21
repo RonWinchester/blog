@@ -1,6 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import style from "./Avatar.module.scss";
-import { useMemo } from "react";
+import { CSSProperties, useMemo } from "react";
 
 interface AvatarProps {
 	className?: string;
@@ -10,7 +10,7 @@ interface AvatarProps {
 }
 
 export const Avatar = ({ className, src, size, alt, ...otherProps }: AvatarProps) => {
-	const styles = useMemo(
+	const styles = useMemo<CSSProperties>(
 		() => ({
 			width: size,
 			height: size,
