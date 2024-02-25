@@ -4,4 +4,6 @@ import { PageLoader } from "./PageLoader/PageLoader";
 import { Modal } from "./Modal/Modal";
 import { Text } from "./Text/Text";
 import { Portal } from "./Portal/Portal";
-export { AppLink, Button, PageLoader, Modal, Portal, Text };
+import { Avatar } from "./Avatar/Avatar";
+
+export { AppLink, Button, PageLoader, Modal, Portal, Text, Avatar };

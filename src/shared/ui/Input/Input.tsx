@@ -4,15 +4,16 @@ import style from "./Input.module.scss";
 
 type HTMLInputProps = Omit<
 	InputHTMLAttributes<HTMLInputElement>,
-	"value" | "onChange"
+	"value" | "onChange" | "readOnly"
 >;
 
 interface InputProps extends HTMLInputProps {
 	className?: string;
 	type?: string;
 	placeholder?: string;
-	value: string | undefined;
+	value: string | number | undefined;
 	onChange: (value: string) => void;
+	readonly?: boolean;
 }
 
 export const Input = memo(function Input({
@@ -21,18 +22,24 @@ export const Input = memo(function Input({
 	placeholder,
 	value,
 	onChange,
+	readonly = false,
 	...otherProps
 }: InputProps) {
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange?.(e.target.value);
 	};
+	const mods = {
+		[style.readonly]: readonly,
+	};
+
 	return (
 		<input
 			value={value}
 			onChange={onChangeHandler}
 			type={type}
 			placeholder={placeholder}
-			className={classNames(style.Input, {}, [className])}
+			readOnly={readonly}
+			className={classNames(style.Input, mods, [className])}
 			{...otherProps}
 		/>
 	);

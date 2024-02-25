@@ -28,6 +28,13 @@
 	color: var(--primary-color);
 }
 
+.outline_red {
+	padding: 0.5rem;
+	border: var(--red-light) 1px solid;
+	background: none;
+	color: var(--red-light);
+}
+
 .small {
 	padding: 0.5rem;
 }

@@ -36,7 +36,7 @@ module.exports = {
 	},
 	plugins: ["@typescript-eslint", "react", "i18next"],
 	rules: {
-		indent: ["error", "tab"],
+		// indent: ["error", "tab"],
 		// "i18next/no-literal-string": ["error", { markupOnly: true }],
 	},
 };
