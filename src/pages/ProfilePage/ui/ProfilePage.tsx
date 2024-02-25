@@ -12,8 +12,7 @@ import {
 } from "entities/Profile";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
 import { useCallback, useEffect } from "react";
-import { getProfileError } from "entities/Profile/model/getProfileError/getProfileError";
-// import { getProfile } from "entities/Profile/model/selector/getProfile/getProfile";
+import { getProfileError } from "entities/Profile/model/selector/getProfileError/getProfileError";
 import { getProfileIsLoading } from "entities/Profile/model/selector/getProfileIsLoading/getProfileIsLoading";
 import { useSelector } from "react-redux";
 import { getProfileReadonly } from "entities/Profile/model/selector/getProfileReadonly/getProfileReadonly";
@@ -22,6 +21,11 @@ import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 import { Currency } from "entities/Currency";
 import { Country } from "entities/Country";
 import { getUserAuth } from "entities/User";
+import { getValidateErrors } from "entities/Profile/model/selector/getValidateErrors/getValidateErrors";
+import { TextTheme } from "shared/ui/Text/Text";
+import { Text } from "shared/ui";
+import { ValidetaProfileErrorCode } from "entities/Profile/model/types/ProfileSchema";
+import { useTranslation } from "react-i18next";
 
 interface ProfilePageProps {
 	className?: string;
@@ -37,12 +41,33 @@ const ProfilePage = ({
 	children,
 	...otherProps
 }: ProfilePageProps) => {
+	const { t } = useTranslation("profile");
 	const data = useSelector(getProfileFormdata);
 	const isLoading = useSelector(getProfileIsLoading);
 	const error = useSelector(getProfileError);
 	const readonly = useSelector(getProfileReadonly);
+	const errors = useSelector(getValidateErrors);
 
 	const dispatch = useAppDispatch();
+
+	const validateErrorsMap = {
+		[ValidetaProfileErrorCode.INCORRECT_NO_DATA]: t(
+			"Некорректные данные пользователя"
+		),
+		[ValidetaProfileErrorCode.INCORRECT_FIRSTNAME]: t(
+			"Имя пользователя должно содержать не менее 2 символов"
+		),
+		[ValidetaProfileErrorCode.INCORRECT_LASTNAME]: t(
+			"Фамилия пользователя должна содержать не менее 2 символов"
+		),
+		[ValidetaProfileErrorCode.INCORRECT_USERNAME]: t(
+			"Имя пользователя должно содержать не менее 2 символов"
+		),
+		[ValidetaProfileErrorCode.INCORRECT_AGE]: t(
+			"Возраст пользователя должен быть больше 10 и меньше 120"
+		),
+		[ValidetaProfileErrorCode.INCOORECT_SERVER_ERROR]: t("Серверная ошибка"),
+	};
 
 	const onChangeFirstName = useCallback(
 		(value?: string) => {
@@ -114,6 +139,14 @@ const ProfilePage = ({
 				{...otherProps}
 			>
 				<ProfilePageHeader />
+				{errors &&
+					errors.map((err) => (
+						<Text
+							key={err}
+							theme={TextTheme.ERROR}
+							text={validateErrorsMap[err]}
+						/>
+					))}
 				<ProfileCard
 					{...{
 						data,
