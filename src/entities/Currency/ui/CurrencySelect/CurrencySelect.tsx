@@ -23,7 +23,7 @@ export const CurrencySelect = memo(function CurrencySelect({
 	onChange,
 	readonly,
 }: CurrencySelectProps) {
-	const { t } = useTranslation();
+	const { t } = useTranslation("profile");
 
 	const onChangeHandler = useCallback(
 		(value: string) => {
