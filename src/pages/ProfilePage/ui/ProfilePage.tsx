@@ -20,7 +20,6 @@ import { getProfileFormdata } from "entities/Profile/model/selector/getProfileFo
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 import { Currency } from "entities/Currency";
 import { Country } from "entities/Country";
-import { getUserAuth } from "entities/User";
 import { getValidateErrors } from "entities/Profile/model/selector/getValidateErrors/getValidateErrors";
 import { TextTheme } from "shared/ui/Text/Text";
 import { Text } from "shared/ui";
@@ -47,6 +46,7 @@ const ProfilePage = ({
 	const error = useSelector(getProfileError);
 	const readonly = useSelector(getProfileReadonly);
 	const errors = useSelector(getValidateErrors);
+
 
 	const dispatch = useAppDispatch();
 
@@ -124,9 +124,6 @@ const ProfilePage = ({
 		},
 		[dispatch]
 	);
-
-	const isAuth = useSelector(getUserAuth);
-	console.log("isAuth", isAuth);
 
 	useEffect(() => {
 		dispatch(fetchProfileData());

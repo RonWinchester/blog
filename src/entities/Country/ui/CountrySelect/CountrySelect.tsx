@@ -23,7 +23,7 @@ export const CountrySelect = memo(function CountrySelect({
 	onChange,
 	readonly,
 }: CountrySelectProps) {
-	const { t } = useTranslation();
+	const { t } = useTranslation("profile");
 
 	const onChangeHandler = useCallback(
 		(value: string) => {
