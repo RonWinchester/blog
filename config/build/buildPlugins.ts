@@ -8,7 +8,8 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 export function buildPLugins(
 	paths: BuildPaths,
 	isDev: boolean,
-	apiUrl: string
+	apiUrl: string,
+	project: "storybook" | "frontend" | "jest"
 ): webpack.WebpackPluginInstance[] {
 	const plugins = [
 		new webpack.ProgressPlugin(),
@@ -20,8 +21,9 @@ export function buildPLugins(
 			chunkFilename: "css/[name].[contenthash:8].css",
 		}),
 		new webpack.DefinePlugin({
-			__IS__DEV__: JSON.stringify(isDev),
+			__IS_DEV__: JSON.stringify(isDev),
 			__API__: JSON.stringify(apiUrl),
+			__PROJECT__: JSON.stringify(project),
 		}),
 	];
 

@@ -10,7 +10,7 @@ i18n
 	.use(initReactI18next)
 	.init({
 		fallbackLng: "ru",
-		// debug: __IS__DEV__, // TODO: remove
+		// debug: __IS_DEV__, // TODO: remove
 		debug: false,
 
 		interpolation: {
