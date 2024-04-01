@@ -4,6 +4,9 @@ import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from "shared/config/theme/ThemeContext";
 
 import ProfilePage from "./ProfilePage";
+import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
+import { Currency } from "entities/Currency";
+import { Country } from "entities/Country";
 
 const meta: Meta<typeof ProfilePage> = {
 	title: "pages/ProfilePage",
@@ -14,8 +17,44 @@ const meta: Meta<typeof ProfilePage> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Light: Story = { decorators: [StylePageDecorator] };
+export const Light: Story = {
+	decorators: [
+		StylePageDecorator,
+		ThemeDecorator(Theme.LIGHT),
+		StoreDecorator({
+			profile: {
+				formData: {
+					firstname: "Roman12333",
+					lastname: "lastname",
+					age: 2,
+					currency: Currency.USD,
+					country: Country.RU,
+					city: "spb",
+					username: "admin",
+					avatar: "https://mui.com/static/images/avatar/1.jpg",
+				},
+			},
+		}),
+	],
+};
 
 export const Dark: Story = {
-	decorators: [StylePageDecorator, ThemeDecorator(Theme.DARK)],
+	decorators: [
+		StylePageDecorator,
+		ThemeDecorator(Theme.DARK),
+		StoreDecorator({
+			profile: {
+				formData: {
+					firstname: "Roman12333",
+					lastname: "lastname",
+					age: 2,
+					currency: Currency.USD,
+					country: Country.RU,
+					city: "spb",
+					username: "admin",
+					avatar: "https://mui.com/static/images/avatar/1.jpg",
+				},
+			},
+		}),
+	],
 };

@@ -9,8 +9,9 @@ export default {
 	clearMocks: true,
 	testEnvironment: "jsdom",
 	globals: {
-		__IS__DEV__: false,
+		__IS_DEV__: false,
 		__API__: "",
+		__PROJECT__: "jest",
 	},
 	coveragePathIgnorePatterns: ["\\\\node_modules\\\\"],
 	moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],
