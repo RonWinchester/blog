@@ -9,7 +9,20 @@ interface IUseThemResult {
 const useTheme = (): IUseThemResult => {
 	const { theme, setTheme } = useContext(ThemeControl);
 	const toggleTheme = () => {
-		const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+		let newTheme: Theme;
+		switch (theme) {
+			case Theme.DARK:
+				newTheme = Theme.LIGHT;
+				break;
+			case Theme.LIGHT:
+				newTheme = Theme.USER;
+				break;
+			case Theme.USER:
+				newTheme = Theme.DARK;
+				break;
+			default:
+				newTheme = Theme.LIGHT;
+		}
 		setTheme?.(newTheme);
 		localStorage.setItem(LOCAL_THEME_KEY, newTheme);
 	};

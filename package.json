@@ -10,6 +10,7 @@
 		"test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
 		"test:ui:ok": "npx loki approve",
 		"start": "webpack serve --env port=3000",
+		"start:dev": "concurrently \"npm run start\" \"npm run start:dev:server\" \"npm run storybook\"",
 		"start:dev:server": "node ./json-server/index.js",
 		"build:prod": "webpack --env mode=production",
 		"build:dev": "webpack --env mode=development",
@@ -86,6 +87,7 @@
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.7",
 		"axios": "^1.6.2",
+		"concurrently": "^8.2.2",
 		"i18next": "^23.5.1",
 		"i18next-browser-languagedetector": "^7.1.0",
 		"i18next-http-backend": "^2.2.2",
