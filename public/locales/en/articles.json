@@ -1,1 +1,5 @@
-{ "Страница статей": "Article page", "Статья": "Article" }
+{
+	"Страница статей": "Article page",
+	"Статья": "Article",
+	"Статья не найдена": "Article not found"
+}
