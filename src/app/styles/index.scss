@@ -12,9 +12,12 @@
 
 .content-page {
     display: flex;
+    height: calc(100vh - var(--header-height));
+    overflow: hidden;
 }
 
 .page-wrapper {
     flex-grow: 1;
     padding: 1rem;
+    overflow: auto;
 }

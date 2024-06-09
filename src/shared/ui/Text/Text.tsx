@@ -15,7 +15,7 @@ export enum TextAlign {
 interface TextProps {
 	className?: string;
 	children?: React.ReactNode;
-	text?: string;
+	text?: string | number;
 	title?: string;
 	theme?: TextTheme;
 	align?: TextAlign;

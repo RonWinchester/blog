@@ -1,5 +1,4 @@
 .sidebar {
-	min-height: calc(100vh - var(--header-height));
 	width: var(--sidebar-width);
 	background: var(--inverted);
 	transition: width 0.3s ease-in-out;

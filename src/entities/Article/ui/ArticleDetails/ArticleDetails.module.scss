@@ -1,3 +1,20 @@
 .ArticleDetails {
-    position: relative;
+    display: grid;
+	height: 100%;
+	width: 100%;
+	gap: 3rem;
+}
+
+.avatar {
+	justify-self: center;
+}
+
+.articleInfoWrapper {
+    display: grid;
+    gap: 1rem;
+}
+
+.articleInfo {
+    display: flex;
+    gap: 1rem;
 }

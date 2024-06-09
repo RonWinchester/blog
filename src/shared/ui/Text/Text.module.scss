@@ -10,6 +10,16 @@
     margin: 0;
 }
 
+.primary {
+    .title {
+        color: var(--primary-color);
+    }
+
+    .text {
+        color: var(--secondary-color);
+    }
+}
+
 .error {
     .title {
         color: var(--red-light);

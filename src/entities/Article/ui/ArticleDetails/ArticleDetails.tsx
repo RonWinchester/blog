@@ -14,9 +14,10 @@ import {
 	getArticleDetailsError,
 	getArticleDetailsIsLoading,
 } from "entities/Article/model/selectors/articleDetails";
-import { PageLoader, Text } from "shared/ui";
+import { Avatar, Skeleton, Text } from "shared/ui";
 import { useTranslation } from "react-i18next";
 import { TextAlign, TextTheme } from "shared/ui/Text/Text";
+import { EyeIcon, CalendarIcon } from "shared/assets/icons";
 
 interface ArticleDetailsProps {
 	className?: string;
@@ -37,7 +38,7 @@ export const ArticleDetails = memo(
 		const data = useSelector(getArticleDetailsData);
 		const error = useSelector(getArticleDetailsError);
 
-        let content = null;
+		let content = null;
 
 		useEffect(() => {
 			if (__PROJECT__ === "storybook") {
@@ -49,18 +50,27 @@ export const ArticleDetails = memo(
 		if (isLoading) {
 			content = (
 				<div
-					className={classNames(style.ProfileCard, {}, [
+					className={classNames(style.ArticleDetails, {}, [
 						className,
 						style.loading,
 					])}
 				>
-					<PageLoader />
+					<Skeleton
+						width={200}
+						height={200}
+						borderRadius={"50%"}
+						className={style.avatar}
+					/>
+					<Skeleton width={"100%"} height={20} borderRadius={"10px"} />
+					<Skeleton width={"100%"} height={20} borderRadius={"10px"} />
+					<Skeleton width={"100%"} height={100} borderRadius={"10px"} />
+					<Skeleton width={"100%"} height={100} borderRadius={"10px"} />
 				</div>
 			);
 		} else if (error) {
 			content = (
 				<div
-					className={classNames(style.ProfileCard, {}, [
+					className={classNames(style.ArticleDetails, {}, [
 						className,
 						style.error,
 					])}
@@ -73,10 +83,27 @@ export const ArticleDetails = memo(
 				</div>
 			);
 		} else {
-            content = (<code>{JSON.stringify(data, null, 2)}</code>);
-        }
+			content = (
+				<>
+					{data?.img && (
+						<Avatar size={200} src={data.img} className={style.avatar} />
+					)}
+					<Text title={data?.title} text={data?.subtitle} />
+					<div className={style.articleInfoWrapper}>
+						<div className={style.articleInfo}>
+							<EyeIcon className={style.icon} />
+							<Text text={data?.views} className={style.views} />
+						</div>
+						<div className={style.articleInfo}>
+							<CalendarIcon className={style.icon} />
+							<Text text={data?.createdAt} className={style.date} />
+						</div>
+					</div>
+				</>
+			);
+		}
 
-        // TODO: стилизация карточки
+		// TODO: стилизация карточки
 
 		return (
 			<DynamicModuleLoader reducers={initalReducers} removeAfterUnmount={true}>
