@@ -1,13 +1,47 @@
 .title {
-    font: var(--font-l);
     color: var(--primary-color);
     margin: 0;
 }
 
 .text {
-    font: var(--font-m);
     color: var(--secondary-color);
     margin: 0;
+}
+
+.medium {
+    .title {
+        font-size: var(--font-size-l);
+        line-height: var(--font-line-l);
+    }
+
+    .text {
+        font-size: var(--font-size-m);
+        line-height: var(--font-line-m);
+    }
+}
+
+.small {
+    .title {
+        font-size: var(--font-size-m);
+        line-height: var(--font-line-m);
+    }
+
+    .text {
+        font-size: var(--font-size-s);
+        line-height: var(--font-line-s);
+    }
+}
+
+.large {
+    .title {
+        font-size: var(--font-size-xl);
+        line-height: var(--font-line-xl);
+    }
+
+    .text {
+        font-size: var(--font-size-l);
+        line-height: var(--font-line-l);
+    }
 }
 
 .primary {

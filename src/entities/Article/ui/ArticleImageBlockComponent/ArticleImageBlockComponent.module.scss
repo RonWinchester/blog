@@ -1,3 +1,11 @@
 .ArticleImageBlockComponent {
     position: relative;
+    display: grid;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 100%;
+    }
 }

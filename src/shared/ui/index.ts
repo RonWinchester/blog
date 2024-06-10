@@ -6,5 +6,16 @@ import { Text } from "./Text/Text";
 import { Portal } from "./Portal/Portal";
 import { Avatar } from "./Avatar/Avatar";
 import { Skeleton } from "./Skeleton/Skeleton";
+import { Code } from "./Code/Code";
 
-export { AppLink, Button, PageLoader, Modal, Portal, Text, Avatar, Skeleton };
+export {
+	AppLink,
+	Button,
+	PageLoader,
+	Modal,
+	Portal,
+	Text,
+	Avatar,
+	Skeleton,
+	Code,
+};
