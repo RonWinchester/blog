@@ -14,6 +14,6 @@ describe("getUserInited.test", () => {
 				_inited: true,
 			},
 		};
-		expect(getUserInited(state as StateSchema)).toEqual(data);
+		expect(getUserInited(state as StateSchema)).toEqual(data._inited);
 	});
 });
