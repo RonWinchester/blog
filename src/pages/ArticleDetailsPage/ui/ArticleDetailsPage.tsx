@@ -4,6 +4,8 @@ import { memo } from "react";
 import { ArticleDetails } from "entities/Article";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Text } from "shared/ui";
+import { CommentList } from "entities/Comment";
 
 interface ArticleDetailsPageProps {
 	className?: string;
@@ -21,7 +23,15 @@ const ArticleDetailsPage = ({
 			className={classNames(style.ArticleDetailsPage, {}, [className])}
 			{...otherProps}
 		>
-			{id ? <ArticleDetails id={id} /> : <div>{t("Статья не найдена")}</div>}
+			{id ? (
+				<>
+					<ArticleDetails id={id} />
+					<Text title={t("Комментарии")} />
+					<CommentList />
+				</>
+			) : (
+				<div>{t("Статья не найдена")}</div>
+			)}
 		</div>
 	);
 };

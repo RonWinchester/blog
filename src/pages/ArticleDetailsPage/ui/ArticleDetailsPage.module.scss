@@ -1,3 +1,6 @@
-.ArticlesDetailsPage {
+.ArticleDetailsPage {
     position: relative;
+    display: grid;
+    gap: 2rem;
+    justify-items: flex-start;
 }
