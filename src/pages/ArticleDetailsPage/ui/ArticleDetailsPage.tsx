@@ -27,7 +27,10 @@ const ArticleDetailsPage = ({
 				<>
 					<ArticleDetails id={id} />
 					<Text title={t("Комментарии")} />
-					<CommentList />
+					<CommentList
+						comments={[]}
+						isLoading={true}
+					/>
 				</>
 			) : (
 				<div>{t("Статья не найдена")}</div>
