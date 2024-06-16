@@ -5,7 +5,7 @@ import {
 	ReducerList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { articleDetailsReducer } from "entities/Article/model/slice/articleSlice";
-import { memo, useCallback, useEffect } from "react";
+import { memo, useCallback } from "react";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
 import { fetchArticleById } from "entities/Article/model/services/fetchArticleById";
 import { useSelector } from "react-redux";
@@ -25,6 +25,7 @@ import {
 import { ArticleCodeBlockComponent } from "../ArticleCodeBlockComponent/ArticleCodeBlockComponent";
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
+import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 
 interface ArticleDetailsProps {
 	className?: string;
@@ -59,12 +60,9 @@ export const ArticleDetails = memo(
 			}
 		}, []);
 
-		useEffect(() => {
-			if (__PROJECT__ === "storybook") {
-				return;
-			}
+		useInitialEffect(() => {
 			dispatch(fetchArticleById(id));
-		}, [dispatch, id]);
+		});
 
 		if (isLoading) {
 			content = (
