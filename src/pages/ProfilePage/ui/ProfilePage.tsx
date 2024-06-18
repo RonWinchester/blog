@@ -11,7 +11,7 @@ import {
 	profileReducer,
 } from "entities/Profile";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { getProfileError } from "entities/Profile/model/selector/getProfileError/getProfileError";
 import { getProfileIsLoading } from "entities/Profile/model/selector/getProfileIsLoading/getProfileIsLoading";
 import { useSelector } from "react-redux";
@@ -25,6 +25,7 @@ import { TextTheme } from "shared/ui/Text/Text";
 import { Text } from "shared/ui";
 import { ValidetaProfileErrorCode } from "entities/Profile/model/types/ProfileSchema";
 import { useTranslation } from "react-i18next";
+import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 
 interface ProfilePageProps {
 	className?: string;
@@ -46,7 +47,6 @@ const ProfilePage = ({
 	const error = useSelector(getProfileError);
 	const readonly = useSelector(getProfileReadonly);
 	const errors = useSelector(getValidateErrors);
-
 
 	const dispatch = useAppDispatch();
 
@@ -125,12 +125,9 @@ const ProfilePage = ({
 		[dispatch]
 	);
 
-	useEffect(() => {
-		if(__PROJECT__ === "storybook") {
-			return;
-		}
+	useInitialEffect(() => {
 		dispatch(fetchProfileData());
-	}, [dispatch]);
+	});
 
 	return (
 		<DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>

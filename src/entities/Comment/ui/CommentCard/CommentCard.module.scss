@@ -1,0 +1,15 @@
+.CommentCard {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 1rem;
+}

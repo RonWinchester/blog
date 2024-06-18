@@ -38,6 +38,7 @@ module.exports = {
 	rules: {
 		// indent: ["error", "tab"],
 		// "i18next/no-literal-string": ["error", { markupOnly: true }],
+		"react/display-name": "off",
 	},
 };
 // TODO: перед деплоем на прод вернуть правило и проверить на переводы

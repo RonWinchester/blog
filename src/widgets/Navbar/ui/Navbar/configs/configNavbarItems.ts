@@ -1,4 +1,4 @@
-import { MainPageIcon, AboutPageIcon, UserIcon } from "shared/assets/icons";
+import { MainPageIcon, AboutPageIcon, UserIcon, ArticleIcon } from "shared/assets/icons";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 
 export const configNavbarItems = [
@@ -18,4 +18,10 @@ export const configNavbarItems = [
 		icon: UserIcon,
 		authOnly: true,
 	},
+	{
+		text: "Статьи",
+		path: RoutePath.articles,
+		icon: ArticleIcon,
+		authOnly: true,
+	}
 ];

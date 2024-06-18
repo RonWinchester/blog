@@ -1,5 +1,9 @@
 .button {
 	cursor: pointer;
+
+	&:hover {
+        opacity: .8;
+    }
 }
 
 .clear_inverted {
@@ -15,9 +19,9 @@
 	outline: none;
     transition: opacity .3s ease;
 
-    &:hover {
-        opacity: .8;
-    }
+	&:active {
+		color: var(--inverted-primary-color);
+	}
 }
 
 

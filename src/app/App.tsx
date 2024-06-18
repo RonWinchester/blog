@@ -4,14 +4,14 @@ import { AppRouter } from "./providers/router";
 import { Sidebar } from "widgets/Sidebar";
 import { Suspense, useEffect, useState } from "react";
 import { Header } from "widgets/Header";
-import { useDispatch } from "react-redux";
-import { userActions } from "entities/User";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInited, userActions } from "entities/User";
 
 export const App = () => {
 	const { theme } = useTheme();
 	const [collapsed, setCollapsed] = useState(false);
 	const dispatch = useDispatch();
-
+	const inited = useSelector(getUserInited)
 	useEffect(() => {
 		dispatch(userActions.initAuthData());
 	}, [dispatch]);
@@ -22,7 +22,7 @@ export const App = () => {
 				<Header setCollapsed={setCollapsed} />
 				<div className={classNames("content-page")}>
 					<Sidebar collapsed={collapsed} />
-					<AppRouter />
+					{inited && <AppRouter />}
 				</div>
 			</Suspense>
 		</div>
