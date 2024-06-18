@@ -19,6 +19,7 @@ import { getArticleCommentsIsLoading } from "../model/selectors/comments";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { fetchCommentsByArticleId } from "../model/services/fetchCommentsByArticleId";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
+import { AddCommentForm } from "features/addProfileForm";
 
 interface ArticleDetailsPageProps {
 	className?: string;
@@ -54,6 +55,7 @@ const ArticleDetailsPage = ({
 					<>
 						<ArticleDetails id={id} />
 						<Text title={t("Комментарии")} />
+						<AddCommentForm />
 						<CommentList comments={comments} isLoading={isLoading} />
 					</>
 				) : (

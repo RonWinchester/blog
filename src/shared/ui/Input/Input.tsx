@@ -14,6 +14,7 @@ interface InputProps extends HTMLInputProps {
 	value: string | number | undefined;
 	onChange: (value: string) => void;
 	readonly?: boolean;
+	error? : string
 }
 
 export const Input = memo(function Input({
@@ -23,13 +24,16 @@ export const Input = memo(function Input({
 	value,
 	onChange,
 	readonly = false,
+	error,
 	...otherProps
 }: InputProps) {
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange?.(e.target.value);
 	};
+
 	const mods = {
 		[style.readonly]: readonly,
+		[style.error]: error
 	};
 
 	return (
