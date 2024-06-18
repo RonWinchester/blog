@@ -95,13 +95,13 @@
 			"id": "2",
 			"text": "some comment 2",
 			"articleId": "1",
-			"userId": "1"
+			"userId": "3"
 		},
 		{
 			"id": "3",
 			"text": "some comment 3",
 			"articleId": "1",
-			"userId": "1"
+			"userId": "2"
 		}
 	],
 	"users": [
@@ -118,16 +118,48 @@
 			"password": "123",
 			"role": "USER",
 			"avatar": "https://mui.com/static/images/avatar/2.jpg"
+		},
+		{
+			"id": "3",
+			"username": "user2",
+			"password": "123",
+			"role": "USER",
+			"avatar": "https://mui.com/static/images/avatar/3.jpg"
 		}
 	],
-	"profile": {
-		"firstname": "Roman12333",
-		"lastname": "lastname",
-		"age": 2,
-		"currency": "USD",
-		"country": "RU",
-		"city": "spb",
-		"username": "admin",
-		"avatar": "https://mui.com/static/images/avatar/1.jpg"
-	}
+	"profile": [
+		{
+			"id": "1",
+			"firstname": "Roman12333",
+			"lastname": "lastname",
+			"age": 2,
+			"currency": "USD",
+			"country": "RU",
+			"city": "spb",
+			"username": "admin",
+			"avatar": "https://mui.com/static/images/avatar/1.jpg"
+		},
+		{
+			"id": "2",
+			"firstname": "Ivan",
+			"lastname": "Ivanov",
+			"age": 30,
+			"currency": "USD",
+			"country": "RU",
+			"city": "spb",
+			"username": "user2",
+			"avatar": "https://mui.com/static/images/avatar/2.jpg"
+		},
+		{
+			"id": "3",
+			"firstname": "Pavel",
+			"lastname": "Ivanov",
+			"age": 30,
+			"currency": "USD",
+			"country": "RU",
+			"city": "spb",
+			"username": "user3",
+			"avatar": "https://mui.com/static/images/avatar/3.jpg"
+		}
+	]
 }
