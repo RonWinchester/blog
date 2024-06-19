@@ -15,13 +15,21 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-	args: {},
+	args: {
+		comment: {
+			id: "1",
+			text: "some comment",
+			user: {
+				id: "1",
+				username: "Roman",
+			},
+		},
+	},
 };
 
-export const Error: Story = {
-	args: {},
-};
 
 export const Loading: Story = {
-	args: {},
+	args: {
+		isLoading: true,
+	},
 };

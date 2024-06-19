@@ -16,6 +16,7 @@ describe("saveProfileData.test", () => {
 			city: "spb",
 			username: "admin",
 			avatar: "https://mui.com/static/images/avatar/1.jpg",
+			id: "1",
 		},
 	};
 

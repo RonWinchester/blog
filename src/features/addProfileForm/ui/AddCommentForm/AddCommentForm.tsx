@@ -10,23 +10,27 @@ import {
 	getAddCommentFormText,
 } from "features/addProfileForm/model/selector";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
-import { addCommentFormActions, addCommentFormReducer } from "features/addProfileForm/model/slice/addCommentFormSlice";
+import {
+	addCommentFormActions,
+	addCommentFormReducer,
+} from "features/addProfileForm/model/slice/addCommentFormSlice";
 import { useCallback } from "react";
 import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { sendComment } from "features/addProfileForm/model/services/sendComment";
 
-interface AddCommentFormProps {
+export interface AddCommentFormProps {
 	className?: string;
 	children?: React.ReactNode;
+	onSendComment: (text: string) => void;
 }
 
 const reducers = {
 	addCommentForm: addCommentFormReducer,
-}
+};
 
 const AddCommentForm = ({
 	className,
 	children,
+	onSendComment,
 	...otherProps
 }: AddCommentFormProps) => {
 	const { t } = useTranslation();
@@ -38,12 +42,13 @@ const AddCommentForm = ({
 		dispatch(addCommentFormActions.setText(value));
 	}, []);
 
-	const onSendComment = useCallback(() => {
-		dispatch(sendComment());
-	}, []);
+	const onSetHandler = useCallback(() => {
+		onSendComment(text || "");
+		onCommentTextChange("");
+	}, [onSendComment, text, onCommentTextChange]);
 
 	return (
-		<DynamicModuleLoader removeAfterUnmount={true} reducers={reducers} >
+		<DynamicModuleLoader removeAfterUnmount={true} reducers={reducers}>
 			<div
 				className={classNames(style.AddCommentForm, {}, [className])}
 				{...otherProps}
@@ -52,8 +57,11 @@ const AddCommentForm = ({
 					value={text || ""}
 					placeholder={t("Комментарий")}
 					onChange={onCommentTextChange}
+					error={error}
 				/>
-				<Button onClick={onSendComment} theme={ButtonTheme.OUTLINE}>{t("Отправить")}</Button>
+				<Button onClick={onSetHandler} theme={ButtonTheme.OUTLINE}>
+					{t("Отправить")}
+				</Button>
 				{children}
 			</div>
 		</DynamicModuleLoader>

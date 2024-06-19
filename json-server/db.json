@@ -128,6 +128,12 @@
       "userId": "1",
       "text": "выв",
       "id": "kyAPNs8"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "hello world!",
+      "id": "9r3jgur"
     }
   ],
   "users": [
@@ -156,7 +162,7 @@
   "profile": [
     {
       "id": "1",
-      "firstname": "Roman12333",
+      "firstname": "Roma",
       "lastname": "lastname",
       "age": 2,
       "currency": "USD",
