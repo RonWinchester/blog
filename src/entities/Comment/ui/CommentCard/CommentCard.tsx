@@ -1,7 +1,7 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import style from "./CommentCard.module.scss";
 import { CommentItem } from "entities/Comment";
-import { Avatar, Skeleton, Text } from "shared/ui";
+import { AppLink, Avatar, Skeleton, Text } from "shared/ui";
 import { TextAlign, TextSize } from "shared/ui/Text/Text";
 
 interface CommentCardProps {
@@ -38,7 +38,7 @@ export const CommentCard = ({
 				className={classNames(style.CommentCard, {}, [className])}
 				{...otherProps}
 			>
-				<div className={style.header}>
+				<AppLink to={`/profile/${comment.user.id}`} className={style.header}>
 					<Avatar
 						size={32}
 						src={
@@ -52,7 +52,7 @@ export const CommentCard = ({
 						align={TextAlign.LEFT}
 						size={TextSize.S}
 					/>
-				</div>
+				</AppLink>
 				<Text text={comment.text} />
 				{children}
 			</div>

@@ -1,0 +1,8 @@
+.AddCommentForm {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: 100%;
+    gap: 2rem;
+    padding: 1rem;
+    box-sizing: border-box;
+}

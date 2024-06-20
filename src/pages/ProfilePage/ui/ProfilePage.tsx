@@ -26,6 +26,7 @@ import { Text } from "shared/ui";
 import { ValidetaProfileErrorCode } from "entities/Profile/model/types/ProfileSchema";
 import { useTranslation } from "react-i18next";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
+import { useParams } from "react-router-dom";
 
 interface ProfilePageProps {
 	className?: string;
@@ -47,6 +48,7 @@ const ProfilePage = ({
 	const error = useSelector(getProfileError);
 	const readonly = useSelector(getProfileReadonly);
 	const errors = useSelector(getValidateErrors);
+	const { id } = useParams<{ id: string }>();
 
 	const dispatch = useAppDispatch();
 
@@ -126,7 +128,9 @@ const ProfilePage = ({
 	);
 
 	useInitialEffect(() => {
-		dispatch(fetchProfileData());
+		if (id) {
+			dispatch(fetchProfileData(id));
+		}
 	});
 
 	return (

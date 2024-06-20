@@ -1,6 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import style from "./ArticleDetailsPage.module.scss";
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { ArticleDetails } from "entities/Article";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -17,8 +17,10 @@ import {
 import { useSelector } from "react-redux";
 import { getArticleCommentsIsLoading } from "../model/selectors/comments";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
-import { fetchCommentsByArticleId } from "../model/services/fetchCommentsByArticleId";
+import { fetchCommentsByArticleId } from "../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
+import { AddCommentForm } from "features/addProfileForm";
+import { addCommentFormArticle } from "../model/services/addCommentForAricle/addCommentFormArticle";
 
 interface ArticleDetailsPageProps {
 	className?: string;
@@ -44,6 +46,13 @@ const ArticleDetailsPage = ({
 	const comments = useSelector(getArticleComments.selectAll);
 	const isLoading = useSelector(getArticleCommentsIsLoading);
 
+	const onSendComment = useCallback(
+		(text: string) => {
+			dispatch(addCommentFormArticle(text));
+		},
+		[dispatch]
+	);
+
 	return (
 		<DynamicModuleLoader removeAfterUnmount reducers={reducers}>
 			<div
@@ -54,6 +63,7 @@ const ArticleDetailsPage = ({
 					<>
 						<ArticleDetails id={id} />
 						<Text title={t("Комментарии")} />
+						<AddCommentForm onSendComment={onSendComment} />
 						<CommentList comments={comments} isLoading={isLoading} />
 					</>
 				) : (
