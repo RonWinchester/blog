@@ -77,7 +77,7 @@ const ArticlesPage = ({
 						createdAt: "26.02.2022",
 						updatedAt: "26.02.2022",
 						userId: "1",
-						type: ["IT"],
+						type: ["IT", "SCIENCE", "POLITICS", "ECONOMICS", "TECHNOLOGY", "EDUCATION"],
 						blocks: [
 							{
 								id: "1",

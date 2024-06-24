@@ -1,3 +1,70 @@
 .AricleListItem {
-    position: relative;
+	position: relative;
+}
+
+.LIST {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+}
+
+.GRID {
+	.date {
+		color: var(--inverted-bg-color);
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 2;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	.card {
+		&:hover {
+			.date {
+				transition: opacity 0.3s ease;
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	.imageWrapper {
+		position: relative;
+		width: 100%;
+		height: 200px;
+		overflow: hidden;
+		border-radius: 0.5rem;
+	}
+
+	.img {
+		width: 100%;
+		position: absolute;
+		object-fit: contain;
+		height: 100%;
+	}
+
+	.infoWrapper {
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: 12.625rem auto;
+	}
+
+	.views {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 0.5rem;
+		align-items: center;
+	}
+
+	.title,
+	.type {
+		color: var(--inverted-bg-color);
+
+		p {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
 }
