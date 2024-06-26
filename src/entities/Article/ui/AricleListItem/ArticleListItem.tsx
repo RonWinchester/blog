@@ -2,7 +2,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import style from "./ArticleListItem.module.scss";
 import { memo } from "react";
 import { Article, ArticleView } from "entities/Article";
-import { Card, Text } from "shared/ui";
+import { Avatar, Card, Text } from "shared/ui";
 import { EyeIcon } from "shared/assets/icons";
 import { TextAlign } from "shared/ui/Text/Text";
 
@@ -21,6 +21,23 @@ export const ArticleListItem = memo(
 		view,
 		...otherProps
 	}: AricleListItemProps) => {
+		if (view === ArticleView.LIST) {
+			return (
+				<div
+					className={classNames(style.AricleListItem, {}, [
+						className,
+						style[view],
+					])}
+					{...otherProps}
+				>
+					<Card className={style.card}>
+						<div className={style.header}>
+							<Avatar size={32} src={article.user.avatar || ""} />
+						</div>
+					</Card>
+				</div>
+			);
+		}
 		return (
 			<div
 				className={classNames(style.AricleListItem, {}, [
@@ -39,13 +56,21 @@ export const ArticleListItem = memo(
 						/>
 					</div>
 					<div className={style.infoWrapper}>
-						<Text text={article.type.join(", ")}  className={style.type} align={TextAlign.LEFT}/>
+						<Text
+							text={article.type.join(", ")}
+							className={style.type}
+							align={TextAlign.LEFT}
+						/>
 						<div className={style.views}>
 							<Text text={article.views} />
 							<EyeIcon />
 						</div>
 					</div>
-					<Text align={TextAlign.CENTER} text={article.title} className={style.title} />
+					<Text
+						align={TextAlign.CENTER}
+						text={article.title}
+						className={style.title}
+					/>
 				</Card>
 				{children}
 			</div>

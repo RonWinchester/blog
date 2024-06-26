@@ -26,7 +26,11 @@ const article: Article = {
 	createdAt: "26.02.2022",
 	type: ["IT"],
 	updatedAt: "26.02.2022",
-	userId: "1",
+	user: {
+		id: "1",
+		username: "admin",
+		avatar: "https://mui.com/static/images/avatar/1.jpg",
+	},
 	blocks: [
 		{
 			id: "1",

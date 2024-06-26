@@ -20,7 +20,7 @@ export const ArticleList = memo(
 		children,
 		articles,
 		isLoading,
-		view = ArticleView.GRID,
+		view = ArticleView.LIST,
 		...otherProps
 	}: ArticleListProps) => {
 		if (articles?.length === 0) {
