@@ -1,36 +1,28 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { StylePageDecorator } from "shared/config/storybook/StylePageDecorator/StylePageDecorator";
+
+import { ArticleListItem } from "./ArticleListItem";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Theme } from "shared/config/theme/ThemeContext";
+import {
+	Article,
+	ArticleBlockType,
+	ArticleView,
+} from "entities/Article/model/types/article";
 
-import ArticleDetailsPage from "./ArticleDetailsPage";
-import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
-import { Article } from "entities/Article";
-import { ArticleBlockType } from "entities/Article/model/types/article";
-
-const meta: Meta<typeof ArticleDetailsPage> = {
-	title: "pages/ArticleDetailsPage",
-	component: ArticleDetailsPage,
-	tags: ["autodocs"],
-};
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-const article: Article = {
+const articles: Article = {
 	id: "1",
 	title: "Javascript news",
 	subtitle: "Что нового в JS за 2022 год?",
 	img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
 	views: 1022,
 	createdAt: "26.02.2022",
-	type: ["IT"],
 	updatedAt: "26.02.2022",
 	user: {
 		id: "1",
 		username: "admin",
 		avatar: "https://mui.com/static/images/avatar/1.jpg",
 	},
+	type: ["IT"],
 	blocks: [
 		{
 			id: "1",
@@ -42,32 +34,45 @@ const article: Article = {
 				"Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:",
 			],
 		},
-		{
-			id: "4",
-			type: ArticleBlockType.CODE,
-			code: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;',
-		},
-		{
-			id: "5",
-			type: ArticleBlockType.TEXT,
-			title: "Заголовок этого блока",
-			paragraphs: [
-				"Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.",
-				"Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:",
-			],
-		},
 	],
 };
 
-export const Light: Story = {
-	decorators: [
-		StylePageDecorator,
-		ThemeDecorator(Theme.DARK),
-		StoreDecorator({
-			articleDetails: {
-				data: article,
-			},
-		}),
-	],
+const meta: Meta<typeof ArticleListItem> = {
+	title: "entities/ArticleListItem",
+	component: ArticleListItem,
+	tags: ["autodocs"],
 };
 
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const PrimaryLIST: Story = {
+	args: {
+		article: articles,
+		view: ArticleView.LIST,
+	},
+	decorators: [],
+};
+
+export const DarkLIST: Story = {
+	args: {
+		article: articles,
+		view: ArticleView.LIST,
+	},
+	decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const GRID: Story = {
+	args: {
+		article: articles,
+		view: ArticleView.GRID,
+	},
+};
+
+export const DarkGRID: Story = {
+	args: {
+		view: ArticleView.GRID,
+		article: articles,
+	},
+	decorators: [ThemeDecorator(Theme.DARK)],
+};

@@ -1,0 +1,8 @@
+.Card {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--card-bg-color);
+    display: grid;
+    gap: 1rem;
+    box-sizing: border-box;
+}
