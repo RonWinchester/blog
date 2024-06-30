@@ -18,7 +18,7 @@ const articlesItem: Article = {
 		username: "admin",
 		avatar: "https://mui.com/static/images/avatar/1.jpg",
 	},
-	type: ["IT"],
+	type: ["IT", "SCIENCE", "POLITICS", "ECONOMICS"],
 	blocks: [
 		{
 			id: "1",

@@ -6,6 +6,56 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 1rem;
+
+	.header {
+		display: grid;
+		grid-template-columns: repeat(3, min-content);
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.infoWrapper {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 1rem;
+	}
+
+	.views {
+		display: grid;
+		grid-template-columns: min-content min-content;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.type {
+		color: var(--inverted-bg-color);
+		overflow: hidden;
+
+		p {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
+	.img {
+		max-height: 32.5rem; // 520px
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+		object-fit: contain;
+	}
+
+	.textBlock {
+		max-height: 7.5rem; // 120px
+		overflow: hidden;
+
+		p {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
 }
 
 .GRID {
@@ -20,6 +70,8 @@
 	}
 
 	.card {
+		max-width: 18rem;
+
 		&:hover {
 			transform: scale(1.01);
 			transition: all 0.3s ease;

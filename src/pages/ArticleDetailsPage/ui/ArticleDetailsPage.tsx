@@ -2,9 +2,9 @@ import { classNames } from "shared/lib/classNames/classNames";
 import style from "./ArticleDetailsPage.module.scss";
 import { memo, useCallback } from "react";
 import { ArticleDetails } from "entities/Article";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Text } from "shared/ui";
+import { Button, Text } from "shared/ui";
 import { CommentList } from "entities/Comment";
 import {
 	DynamicModuleLoader,
@@ -21,6 +21,8 @@ import { fetchCommentsByArticleId } from "../model/services/fetchCommentsByArtic
 import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
 import { AddCommentForm } from "features/addProfileForm";
 import { addCommentFormArticle } from "../model/services/addCommentForAricle/addCommentFormArticle";
+import { ButtonTheme } from "shared/ui/Button/Button";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
 
 interface ArticleDetailsPageProps {
 	className?: string;
@@ -38,6 +40,11 @@ const ArticleDetailsPage = ({
 	const { t } = useTranslation("articles");
 	const { id } = useParams<{ id: string }>();
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+
+	const onBackToArticleList = useCallback(() => {
+		navigate(RoutePath.articles);
+	}, [navigate]);
 
 	useInitialEffect(() => {
 		dispatch(fetchCommentsByArticleId(id));
@@ -61,6 +68,7 @@ const ArticleDetailsPage = ({
 			>
 				{id ? (
 					<>
+						<Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onBackToArticleList}>{t("Назад")}</Button>
 						<ArticleDetails id={id} />
 						<Text title={t("Комментарии")} />
 						<AddCommentForm onSendComment={onSendComment} />

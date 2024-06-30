@@ -5,6 +5,7 @@ import { ArticleView } from "entities/Article/model/types/article";
 import { Text } from "shared/ui";
 import { ArticleListItem } from "../AricleListItem/ArticleListItem";
 import { memo } from "react";
+import { ArticleListItemSkeleton } from "../AricleListItem/ArticleListItemSkeleton";
 
 interface ArticleListProps {
 	className?: string;
@@ -20,7 +21,7 @@ export const ArticleList = memo(
 		children,
 		articles,
 		isLoading,
-		view = ArticleView.LIST,
+		view = ArticleView.GRID,
 		...otherProps
 	}: ArticleListProps) => {
 		if (articles?.length === 0) {
@@ -28,7 +29,20 @@ export const ArticleList = memo(
 		}
 
 		if (isLoading) {
-			return <Text text="Загрузка..." />;
+			const list = new Array(view === ArticleView.GRID ? 6 : 3).fill(0);
+			return (
+				<div
+					className={classNames(style.ArticleList, {}, [
+						className,
+						style[view],
+					])}
+					{...otherProps}
+				>
+					{list.map((_, index) => (
+						<ArticleListItemSkeleton view={view} key={index} />
+					))}
+				</div>
+			);
 		}
 
 		return (
@@ -37,11 +51,7 @@ export const ArticleList = memo(
 				{...otherProps}
 			>
 				{articles?.map((article) => (
-					<ArticleListItem
-						key={article.id}
-						view={view}
-						article={article}
-					/>
+					<ArticleListItem key={article.id} view={view} article={article} />
 				))}
 				{children}
 			</div>
