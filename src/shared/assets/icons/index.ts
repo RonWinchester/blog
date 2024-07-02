@@ -9,6 +9,8 @@ import CalendarIcon from "./calendar.svg";
 import CopyIcon from "./copy.svg";
 import DoneIcon from "./done.svg";
 import EyeIcon from "./eye.svg";
+import ListIcon from "./list.svg";
+import GridIcon from "./grid.svg";
 
 export {
 	ThemeSwitcherIcon,
@@ -22,4 +24,6 @@ export {
 	CopyIcon,
 	DoneIcon,
 	EyeIcon,
+	ListIcon,
+	GridIcon,
 };

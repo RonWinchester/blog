@@ -13,6 +13,7 @@ interface ArticleListProps {
 	articles?: Article[];
 	isLoading?: boolean;
 	view?: ArticleView;
+	error?: string;
 }
 
 export const ArticleList = memo(
@@ -22,10 +23,15 @@ export const ArticleList = memo(
 		articles,
 		isLoading,
 		view = ArticleView.GRID,
+		error,
 		...otherProps
 	}: ArticleListProps) => {
 		if (articles?.length === 0) {
 			return <Text text="Статьи не найдены" />;
+		}
+
+		if (error) {
+			return <Text text={error} />;
 		}
 
 		if (isLoading) {
