@@ -22,7 +22,7 @@ import { Currency } from "entities/Currency";
 import { Country } from "entities/Country";
 import { getValidateErrors } from "entities/Profile/model/selector/getValidateErrors/getValidateErrors";
 import { TextTheme } from "shared/ui/Text/Text";
-import { Text } from "shared/ui";
+import { Page, Text } from "shared/ui";
 import { ValidetaProfileErrorCode } from "entities/Profile/model/types/ProfileSchema";
 import { useTranslation } from "react-i18next";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
@@ -135,7 +135,7 @@ const ProfilePage = ({
 
 	return (
 		<DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-			<div
+			<Page
 				className={classNames(style.ProfilePage, {}, [className])}
 				{...otherProps}
 			>
@@ -165,7 +165,7 @@ const ProfilePage = ({
 					}}
 				/>
 				{children}
-			</div>
+			</Page>
 		</DynamicModuleLoader>
 	);
 };

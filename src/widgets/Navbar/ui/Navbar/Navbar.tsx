@@ -3,11 +3,11 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink } from "shared/ui";
 import { AppLinkTheme } from "shared/ui/AppLink/AppLink";
 import style from "./Navbar.module.scss";
-import { configNavbarItems } from "./configs/configNavbarItems";
 import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
 import { getUserAuth } from "entities/User";
 import { useSelector } from "react-redux";
+import { getNavbarItems } from "widgets/Navbar/model/selector";
 
 interface NavbarProps {
 	className?: string;
@@ -19,6 +19,7 @@ export const Navbar = ({ className, collapsed, children }: NavbarProps) => {
 	const { t } = useTranslation();
 	const location = useLocation();
 	const isAuth = useSelector(getUserAuth);
+	const configNavbarItems = useSelector(getNavbarItems);
 
 	const list = useMemo(() => {
 		return configNavbarItems.map((item) => {

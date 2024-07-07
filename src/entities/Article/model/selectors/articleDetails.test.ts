@@ -17,7 +17,11 @@ describe("getArticleDetails.test", () => {
 			views: 1022,
 			createdAt: "26.02.2022",
 			updatedAt: "26.02.2022",
-			userId: "1",
+			user: {
+				id: "1",
+				username: "admin",
+				avatar: "https://mui.com/static/images/avatar/1.jpg",
+			},
 			type: ["IT"],
 			blocks: [
 				{
