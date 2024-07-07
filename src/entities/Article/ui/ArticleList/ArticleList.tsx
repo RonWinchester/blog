@@ -16,6 +16,18 @@ interface ArticleListProps {
 	error?: string;
 }
 
+const getSkeletonList = (view: ArticleView) => {
+	const list = new Array(view === ArticleView.GRID ? 6 : 3).fill(0);
+
+	return (
+		<>
+			{list.map((_, index) => (
+				<ArticleListItemSkeleton view={view} key={index} />
+			))}
+		</>
+	);
+};
+
 export const ArticleList = memo(
 	({
 		className,
@@ -26,29 +38,8 @@ export const ArticleList = memo(
 		error,
 		...otherProps
 	}: ArticleListProps) => {
-		if (articles?.length === 0) {
-			return <Text text="Статьи не найдены" />;
-		}
-
 		if (error) {
 			return <Text text={error} />;
-		}
-
-		if (isLoading) {
-			const list = new Array(view === ArticleView.GRID ? 6 : 3).fill(0);
-			return (
-				<div
-					className={classNames(style.ArticleList, {}, [
-						className,
-						style[view],
-					])}
-					{...otherProps}
-				>
-					{list.map((_, index) => (
-						<ArticleListItemSkeleton view={view} key={index} />
-					))}
-				</div>
-			);
 		}
 
 		return (
@@ -60,6 +51,7 @@ export const ArticleList = memo(
 					<ArticleListItem key={article.id} view={view} article={article} />
 				))}
 				{children}
+				{isLoading && getSkeletonList(view)}
 			</div>
 		);
 	}

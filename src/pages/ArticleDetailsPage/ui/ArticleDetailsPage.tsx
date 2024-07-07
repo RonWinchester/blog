@@ -4,7 +4,7 @@ import { memo, useCallback } from "react";
 import { ArticleDetails } from "entities/Article";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Button, Text } from "shared/ui";
+import { Button, Page, Text } from "shared/ui";
 import { CommentList } from "entities/Comment";
 import {
 	DynamicModuleLoader,
@@ -62,7 +62,7 @@ const ArticleDetailsPage = ({
 
 	return (
 		<DynamicModuleLoader removeAfterUnmount reducers={reducers}>
-			<div
+			<Page
 				className={classNames(style.ArticleDetailsPage, {}, [className])}
 				{...otherProps}
 			>
@@ -77,7 +77,7 @@ const ArticleDetailsPage = ({
 				) : (
 					<div>{t("Статья не найдена")}</div>
 				)}
-			</div>
+			</Page>
 		</DynamicModuleLoader>
 	);
 };
