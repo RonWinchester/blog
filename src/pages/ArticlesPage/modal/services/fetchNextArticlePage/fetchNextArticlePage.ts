@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ThunkConfig } from "app/providers/StoreProvider";
 import {
-	getArticleListHasMore,
-	getArticlesListIsLoading,
-	getArticlesListPage,
-} from "../../selectors/articlesList";
+	getArticlesPageHasMore,
+	getArticlesPageIsLoading,
+	getArticlesPageNumber,
+} from "../../selectors/articlesPageSelector";
 import { fetchArticlesList } from "../fetchArticlesList/fetchArticlesList";
 import { articlePageActions } from "../../slice/artilcePageSlice";
 
@@ -14,9 +14,9 @@ export const fetchNextArticlePage = createAsyncThunk<
 	ThunkConfig<string>
 >("articlesPage/fetchNextArticlePage", async (_, thunkApi) => {
 	const {  dispatch } = thunkApi;
-	const isLoading = getArticlesListIsLoading(thunkApi.getState());
-	const hasMore = getArticleListHasMore(thunkApi.getState());
-	const page = getArticlesListPage(thunkApi.getState());
+	const isLoading = getArticlesPageIsLoading(thunkApi.getState());
+	const hasMore = getArticlesPageHasMore(thunkApi.getState());
+	const page = getArticlesPageNumber(thunkApi.getState());
 
 	if (hasMore && !isLoading) {
 		dispatch(articlePageActions.setPage(page + 1));

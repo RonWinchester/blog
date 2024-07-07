@@ -11,7 +11,7 @@ export const App = () => {
 	const { theme } = useTheme();
 	const [collapsed, setCollapsed] = useState(false);
 	const dispatch = useDispatch();
-	const inited = useSelector(getUserInited)
+	const inited = useSelector(getUserInited);
 	useEffect(() => {
 		dispatch(userActions.initAuthData());
 	}, [dispatch]);

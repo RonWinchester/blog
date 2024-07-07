@@ -11,6 +11,8 @@ import { StoreProvider } from "app/providers/StoreProvider";
 const container = document.getElementById("root");
 const root = container ? createRoot(container) : null;
 root?.render(
+	// React.StrictMode намеренно вызывает двойное рендеринг всех компонентов в режиме разработки
+	// для выявления побочных эффектов и неподходящих паттернов использования.
 	<React.StrictMode>
 		<BrowserRouter>
 			<StoreProvider>

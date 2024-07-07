@@ -15,19 +15,19 @@ interface DynamicModuleLoaderProps {
 }
 
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
-	const {
-		children,
-		reducers,
-		removeAfterUnmount,
-	} = props;
+	const { children, reducers, removeAfterUnmount } = props;
 
 	const store = useStore() as ReduxStoreWithManager;
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		const mountedReducers = store.reducerManager.getReducerMap();
+
 		Object.entries(reducers).forEach(([name, reducer]) => {
-			store.reducerManager.add(name as StateSchemaKey, reducer);
-			dispatch({ type: `@INIT ${name} reducer` });
+			if (!mountedReducers[name as StateSchemaKey]) {
+				store.reducerManager.add(name as StateSchemaKey, reducer);
+				dispatch({ type: `@INIT ${name} reducer` });
+			}
 		});
 
 		return () => {
@@ -39,11 +39,7 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
 			}
 		};
 		// eslint-disable-next-line
-    }, []);
+	}, []);
 
-	return (
-		<>
-			{children}
-		</>
-	);
+	return <>{children}</>;
 };
