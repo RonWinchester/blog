@@ -18,15 +18,15 @@ import {
 } from "../modal/slice/artilcePageSlice";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
-import { fetchArticlesList } from "../modal/services/fetchArticlesList/fetchArticlesList";
 import { useSelector } from "react-redux";
 import {
-	getArticleListError,
-	getArticlesListIsLoading,
-	getArticlesListView,
-} from "../modal/selectors/articlesList";
+	getArticlesPageError,
+	getArticlesPageIsLoading,
+	getArticlesPageView,
+} from "../modal/selectors/articlesPageSelector";
 import { Page, Text } from "shared/ui";
 import { fetchNextArticlePage } from "../modal/services/fetchNextArticlePage/fetchNextArticlePage";
+import { initArticlesPage } from "../modal/services/initArticlesPage/initArticlesPage";
 
 interface ArticlesPageProps {
 	className?: string;
@@ -45,9 +45,9 @@ const ArticlesPage = ({
 	const { t } = useTranslation("articles");
 	const dispatch = useAppDispatch();
 	const articles = useSelector(getArticles.selectAll);
-	const isLoading = useSelector(getArticlesListIsLoading);
-	const error = useSelector(getArticleListError);
-	const view = useSelector(getArticlesListView);
+	const isLoading = useSelector(getArticlesPageIsLoading);
+	const error = useSelector(getArticlesPageError);
+	const view = useSelector(getArticlesPageView);
 
 	const onChangeView = (view: ArticleView) => {
 		dispatch(articlePageActions.setView(view));
@@ -58,15 +58,10 @@ const ArticlesPage = ({
 	}, [dispatch]);
 
 	useInitialEffect(() => {
-		dispatch(articlePageActions.initState());
-		dispatch(
-			fetchArticlesList({
-				page: 1,
-			})
-		);
+		dispatch(initArticlesPage());
 	});
 	return (
-		<DynamicModuleLoader removeAfterUnmount reducers={reducers}>
+		<DynamicModuleLoader removeAfterUnmount={false} reducers={reducers}>
 			<Page
 				onScrollEnd={onLoadMore}
 				className={classNames(style.ArticlesPage, {}, [className])}

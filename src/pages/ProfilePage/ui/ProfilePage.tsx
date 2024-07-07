@@ -134,7 +134,7 @@ const ProfilePage = ({
 	});
 
 	return (
-		<DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+		<DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={false}>
 			<Page
 				className={classNames(style.ProfilePage, {}, [className])}
 				{...otherProps}
