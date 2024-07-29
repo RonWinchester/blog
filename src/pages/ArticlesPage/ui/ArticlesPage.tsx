@@ -24,9 +24,10 @@ import {
 	getArticlesPageIsLoading,
 	getArticlesPageView,
 } from "../modal/selectors/articlesPageSelector";
-import { Page, Text } from "shared/ui";
+import { Text } from "shared/ui";
 import { fetchNextArticlePage } from "../modal/services/fetchNextArticlePage/fetchNextArticlePage";
 import { initArticlesPage } from "../modal/services/initArticlesPage/initArticlesPage";
+import { Page } from "widgets/Page";
 
 interface ArticlesPageProps {
 	className?: string;

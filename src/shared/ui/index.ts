@@ -8,7 +8,6 @@ import { Avatar } from "./Avatar/Avatar";
 import { Skeleton } from "./Skeleton/Skeleton";
 import { Code } from "./Code/Code";
 import { Card } from "./Card/Card";
-import { Page } from "./Page/Page";
 export {
 	AppLink,
 	Button,
@@ -20,5 +19,4 @@ export {
 	Skeleton,
 	Code,
 	Card,
-	Page,
 };

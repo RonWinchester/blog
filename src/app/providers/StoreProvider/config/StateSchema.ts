@@ -12,12 +12,14 @@ import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
 import { AddCommentsFormSchema } from "features/addProfileForm";
 import { LoginSchema } from "features/authByUsername";
+import { ScrollSchema } from "features/scrollSave/model/types/scrollSaveSchhema";
 import { ArticleDetailsCommentSchema } from "pages/ArticleDetailsPage";
 import { ArticlePageSchema } from "pages/ArticlesPage";
 
 export interface StateSchema {
 	counter: CounterSchema;
 	user: UserSchema;
+	ui: ScrollSchema;
 
 	// Async reducers
 	loginForm?: LoginSchema;
