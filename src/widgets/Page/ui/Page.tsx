@@ -53,7 +53,7 @@ export const Page = ({
 			{...otherProps}
 		>
 			{children}
-			<div ref={triggerRef}></div>
+			{onScrollEnd ? <div className={style.trigger} ref={triggerRef}></div> : null}
 		</section>
 	);
 };

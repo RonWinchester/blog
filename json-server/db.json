@@ -17,8 +17,8 @@
       "title": "Javascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 102,
+      "createdAt": "23.02.2022",
       "updatedAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -57,15 +57,15 @@
     },
     {
       "id": "2",
-      "title": "Javascript Вторая новость",
-      "subtitle": "Что нового в JS за 2023 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/css.png",
+      "title": "Экономические новости",
+      "subtitle": "Что нового в глобальном экономическом кризисе?",
+      "img": "https://vera.kz/wp-content/uploads/2021/08/photo_145915.jpg",
       "views": 9999,
       "createdAt": "27.02.2022",
       "updatedAt": "27.02.2022",
       "userId": "1",
       "type": [
-        "IT"
+        "ECONOMICS"
       ],
       "blocks": [
         {
@@ -100,9 +100,9 @@
     },
     {
       "id": "3",
-      "title": "Javascript Третья новость",
-      "subtitle": "Что нового в JS за 2024 год?",
-      "img": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "title": "Новые фичи в CSS",
+      "subtitle": "Какие новые фичи в CSS?",
+      "img": "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/3741599/original/07.02.11/fix-any-css-issue-in-your-website.jpg",
       "views": 12,
       "createdAt": "12.02.2022",
       "updatedAt": "12.02.2022",
@@ -143,9 +143,9 @@
     },
     {
       "id": "4",
-      "title": "Javascript первая новость",
-      "subtitle": "Что нового в JS за 2045 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "title": "ES6 в действительности?",
+      "subtitle": "Что нового в ES6?",
+      "img": "https://s3.amazonaws.com/coursera-course-photos/28/415a0930c541d2ab1044ed15980e48/wtwD646nQf8w2gV0QDDxpf5zDHOL43j6xWT-.png",
       "views": 0,
       "createdAt": "11.02.2022",
       "updatedAt": "11.02.2022",
@@ -186,15 +186,15 @@
     },
     {
       "id": "5",
-      "title": "Javascript пятая новость",
-      "subtitle": "Что нового в JS за 1222 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "title": "Вирусы в мире",
+      "subtitle": "Какие вирусы в мире?",
+      "img": "https://moyakoja.ru/wp-content/uploads/2016/07/virus-700x400.jpg",
       "views": 33,
-      "createdAt": "26.02.2022",
-      "updatedAt": "26.02.2022",
+      "createdAt": "11.02.2022",
+      "updatedAt": "12.02.2022",
       "userId": "1",
       "type": [
-        "IT"
+        "SCIENCE"
       ],
       "blocks": [
         {
@@ -229,12 +229,12 @@
     },
     {
       "id": "6",
-      "title": "Javascript news 6",
-      "subtitle": "Что нового в JS за 2222 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
-      "updatedAt": "26.02.2022",
+      "title": "Новые HTMl элементы",
+      "subtitle": "Что нового в HTML 5",
+      "img": "https://www.taste-of-it.de/wp-content/uploads/2014/01/html5-logo.jpg",
+      "views": 1021,
+      "createdAt": "13.02.2022",
+      "updatedAt": "22.02.2022",
       "userId": "1",
       "type": [
         "IT"
@@ -272,15 +272,15 @@
     },
     {
       "id": "7",
-      "title": "Javascript news 7",
-      "subtitle": "Что нового в JS за 111 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
-      "updatedAt": "26.02.2022",
+      "title": "Заголовок этого блока",
+      "subtitle": "Подзаголовок этого блока",
+      "img": "https://www.bobrlife.by/wp-content/uploads/2020/09/b_NEG_ekonomipng8.png",
+      "views": 10223,
+      "createdAt": "26.02.2023",
+      "updatedAt": "26.02.2023",
       "userId": "1",
       "type": [
-        "IT"
+        "ECONOMICS"
       ],
       "blocks": [
         {
@@ -319,8 +319,8 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
-      "createdAt": "26.02.2022",
-      "updatedAt": "26.02.2022",
+      "createdAt": "26.02.2024",
+      "updatedAt": "26.02.2024",
       "userId": "1",
       "type": [
         "IT"
