@@ -1,5 +1,6 @@
 import { StateSchema } from "app/providers/StoreProvider";
 import { ArticleSortField } from "entities/Article";
+import { ArticleType } from "entities/Article/model/types/article";
 import { LIMIT_PAGE_GRID } from "shared/const/const";
 
 const getArticlesPageIsLoading = (state: StateSchema) =>
@@ -14,6 +15,7 @@ const getArticlesPageInited = (state: StateSchema) => state.articlesPage?._inite
 const getArticlesPageSearch = (state: StateSchema) => state.articlesPage?.search;
 const getArticlesPageOrder = (state: StateSchema) => state.articlesPage?.order ?? "asc";
 const getArticlesPageSort = (state: StateSchema) => state.articlesPage?.sort ?? ArticleSortField.CREATED_AT;
+const getArticlesType = (state: StateSchema) => state.articlesPage?.type ?? ArticleType.ALL;
 
 export {
 	getArticlesPageIsLoading,
@@ -25,5 +27,6 @@ export {
 	getArticlesPageInited,
 	getArticlesPageSearch,
 	getArticlesPageOrder,
-	getArticlesPageSort
+	getArticlesPageSort,
+	getArticlesType
 };

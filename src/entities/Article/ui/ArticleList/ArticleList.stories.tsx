@@ -6,6 +6,7 @@ import { Theme } from "shared/config/theme/ThemeContext";
 import {
 	Article,
 	ArticleBlockType,
+	ArticleType,
 	ArticleView,
 } from "entities/Article/model/types/article";
 
@@ -23,7 +24,7 @@ const articles: Article[] = [
 			username: "admin",
 			avatar: "https://mui.com/static/images/avatar/1.jpg",
 		},
-		type: ["IT"],
+		type: [ArticleType.IT],
 		blocks: [
 			{
 				id: "1",
@@ -50,7 +51,7 @@ const articles: Article[] = [
 			username: "admin",
 			avatar: "https://mui.com/static/images/avatar/1.jpg",
 		},
-		type: ["IT"],
+		type: [ArticleType.IT],
 		blocks: [
 			{
 				id: "1",

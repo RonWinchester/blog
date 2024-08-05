@@ -3,6 +3,7 @@ import style from "./ArticlesPageFilters.module.scss";
 import {
 	ArticleSortField,
 	ArticleSortSelector,
+	ArticleTypeTabs,
 	ArticleView,
 	ArticleViewSelector,
 } from "entities/Article";
@@ -13,10 +14,11 @@ import {
 	getArticlesPageSearch,
 	getArticlesPageSort,
 	getArticlesPageView,
+	getArticlesType,
 } from "pages/ArticlesPage/modal/selectors/articlesPageSelector";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { Card } from "shared/ui";
+import { Card, TabItem } from "shared/ui";
 import { Input } from "shared/ui/Input/Input";
 import { SortOrder } from "shared/types";
 import { useCallback } from "react";
@@ -36,13 +38,14 @@ const ArticlesPageFilters = ({
 	const search = useSelector(getArticlesPageSearch);
 	const order = useSelector(getArticlesPageOrder);
 	const sort = useSelector(getArticlesPageSort);
+	const type = useSelector(getArticlesType);
 	const { t } = useTranslation();
 
 	const fetchData = useCallback(() => {
 		dispatch(fetchArticlesList({ replace: true }));
 	}, [dispatch]);
 
-	const debounceFetchData = useDebounce(fetchData, 500)
+	const debounceFetchData = useDebounce(fetchData, 500);
 
 	const onChangeView = useCallback(
 		(view: ArticleView) => {
@@ -78,6 +81,15 @@ const ArticlesPageFilters = ({
 		[dispatch, debounceFetchData]
 	);
 
+	const onChangeType = useCallback(
+		(tab: TabItem) => {
+			dispatch(articlePageActions.setType(tab.value));
+			dispatch(articlePageActions.setPage(1));
+			debounceFetchData();
+		},
+		[dispatch, debounceFetchData]
+	);
+
 	return (
 		<div
 			className={classNames(style.ArticlesPageFilters, {}, [className])}
@@ -96,6 +108,7 @@ const ArticlesPageFilters = ({
 					onChange={onChangeSearch}
 				/>
 			</Card>
+			<ArticleTypeTabs value={type} onChangeType={onChangeType} />
 		</div>
 	);
 };

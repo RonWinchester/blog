@@ -2,7 +2,7 @@ import { DeepPartial } from "@reduxjs/toolkit";
 import { articleDetailsReducer } from "./articleSlice";
 
 import { fetchArticleById } from "../services/fetchArticleById";
-import { Article, ArticleBlockType } from "../types/article";
+import { Article, ArticleBlockType, ArticleType } from "../types/article";
 import { ArticleDetailsSchema } from "../types/articleDetailsSchema";
 
 describe("articleSlice.test", () => {
@@ -19,7 +19,7 @@ describe("articleSlice.test", () => {
 			username: "admin",
 			avatar: "https://mui.com/static/images/avatar/1.jpg",
 		},
-		type: ["IT"],
+		type: [ArticleType.IT],
 		blocks: [
 			{
 				id: "1",

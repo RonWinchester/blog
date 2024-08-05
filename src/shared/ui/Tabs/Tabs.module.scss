@@ -1,0 +1,15 @@
+.Tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(5rem, max-content));
+    gap: 1rem;
+}
+
+.tab {
+    color: var(--inverted);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

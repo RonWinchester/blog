@@ -17,6 +17,13 @@ export enum ArticleView {
 	GRID = "GRID",
 }
 
+export enum ArticleType {
+	ALL = "ALL",
+	IT = "IT",
+	SCIENCE = "SCIENCE",
+	ECONOMICS = "ECONOMICS",
+}
+
 export interface ArticleBlockBase {
 	id: string;
 	type: ArticleBlockType;
@@ -53,6 +60,6 @@ export interface Article {
 	createdAt: string;
 	updatedAt: string;
 	user: User;
-	type: string[];
+	type: ArticleType[];
 	blocks: ArticleBlock[];
 }

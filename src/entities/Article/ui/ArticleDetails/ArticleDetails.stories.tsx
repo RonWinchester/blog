@@ -6,6 +6,7 @@ import { Theme } from "shared/config/theme/ThemeContext";
 import {
 	Article,
 	ArticleBlockType,
+	ArticleType,
 } from "entities/Article/model/types/article";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 
@@ -22,7 +23,7 @@ const articles: Article = {
 		username: "admin",
 		avatar: "https://mui.com/static/images/avatar/1.jpg",
 	},
-	type: ["IT"],
+	type: [ArticleType.IT],
 	blocks: [
 		{
 			id: "1",

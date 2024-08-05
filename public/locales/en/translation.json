@@ -25,5 +25,9 @@
 	"Дата": "Date",
 	"Просмотры": "Views",
 	"Поиск": "Search",
-	"По": "by"
+	"По": "by",
+	"Все статьи": "All articles",
+	"Экономика": "Economy",
+	"Наука": "Science",
+	"Технологии": "Technologies"
 }

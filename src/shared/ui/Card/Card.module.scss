@@ -1,8 +1,16 @@
 .Card {
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background-color: var(--card-bg-color);
-    display: grid;
-    gap: 1rem;
-    box-sizing: border-box;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	display: grid;
+	gap: 1rem;
+	box-sizing: border-box;
+}
+
+.default {
+	background-color: var(--card-bg-color);
+}
+
+.outlined {
+    background-color: transparent;
+    border: 1px solid var(--inverted-primary-color);
 }

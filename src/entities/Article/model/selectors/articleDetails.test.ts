@@ -5,7 +5,7 @@ import {
 	getArticleDetailsError,
 	getArticleDetailsIsLoading,
 } from "./articleDetails";
-import { Article, ArticleBlockType } from "../types/article";
+import { Article, ArticleBlockType, ArticleType } from "../types/article";
 
 describe("getArticleDetails.test", () => {
 	test("getArticleDetails", () => {
@@ -22,7 +22,7 @@ describe("getArticleDetails.test", () => {
 				username: "admin",
 				avatar: "https://mui.com/static/images/avatar/1.jpg",
 			},
-			type: ["IT"],
+			type: [ArticleType.IT],
 			blocks: [
 				{
 					id: "1",

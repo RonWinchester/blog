@@ -1,4 +1,4 @@
-import { Article, ArticleBlockType } from "../types/article";
+import { Article, ArticleBlockType, ArticleType } from "../types/article";
 import { fetchArticleById } from "./fetchArticleById";
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 
@@ -18,7 +18,7 @@ describe("fetchProfileData.test", () => {
 			username: "admin",
 			avatar: "https://mui.com/static/images/avatar/1.jpg",
 		},
-		type: ["IT"],
+		type: [ArticleType.IT],
 		blocks: [
 			{
 				id: "1",
