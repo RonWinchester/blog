@@ -44,7 +44,7 @@ export const fetchArticlesList = createAsyncThunk<
 				q: search,
 				_order: order,
 				_sort: sort,
-				_type: type === ArticleType.ALL ? undefined : type,
+				type_like: type === ArticleType.ALL ? undefined : type, // необходимо для json-server
 			},
 		});
 		if (!response.data) {

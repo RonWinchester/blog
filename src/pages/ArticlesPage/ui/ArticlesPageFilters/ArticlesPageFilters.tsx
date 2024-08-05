@@ -58,18 +58,18 @@ const ArticlesPageFilters = ({
 		(sort: ArticleSortField) => {
 			dispatch(articlePageActions.setSort(sort));
 			dispatch(articlePageActions.setPage(1));
-			debounceFetchData();
+			fetchData();
 		},
-		[dispatch, debounceFetchData]
+		[dispatch, fetchData]
 	);
 
 	const onChangeOrder = useCallback(
 		(order: SortOrder) => {
 			dispatch(articlePageActions.setOrder(order));
 			dispatch(articlePageActions.setPage(1));
-			debounceFetchData();
+			fetchData();
 		},
-		[dispatch, debounceFetchData]
+		[dispatch, fetchData]
 	);
 
 	const onChangeSearch = useCallback(
@@ -85,9 +85,9 @@ const ArticlesPageFilters = ({
 		(tab: TabItem) => {
 			dispatch(articlePageActions.setType(tab.value));
 			dispatch(articlePageActions.setPage(1));
-			debounceFetchData();
+			fetchData();
 		},
-		[dispatch, debounceFetchData]
+		[dispatch, fetchData]
 	);
 
 	return (

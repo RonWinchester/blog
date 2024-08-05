@@ -1,6 +1,5 @@
 .Tabs {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(5rem, max-content));
+    display: flex;
     gap: 1rem;
 }
 

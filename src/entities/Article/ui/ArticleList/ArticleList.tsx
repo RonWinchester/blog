@@ -6,6 +6,7 @@ import { Text } from "shared/ui";
 import { ArticleListItem } from "../AricleListItem/ArticleListItem";
 import { memo } from "react";
 import { ArticleListItemSkeleton } from "../AricleListItem/ArticleListItemSkeleton";
+import { t } from "i18next";
 
 interface ArticleListProps {
 	className?: string;
@@ -40,6 +41,14 @@ export const ArticleList = memo(
 	}: ArticleListProps) => {
 		if (error) {
 			return <Text text={error} />;
+		}
+
+		if (!articles?.length && !isLoading) {
+			return (
+				<Text
+					text={t("Статьи не найдены")}
+				/>
+			);
 		}
 
 		return (
