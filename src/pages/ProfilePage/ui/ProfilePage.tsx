@@ -22,11 +22,12 @@ import { Currency } from "entities/Currency";
 import { Country } from "entities/Country";
 import { getValidateErrors } from "entities/Profile/model/selector/getValidateErrors/getValidateErrors";
 import { TextTheme } from "shared/ui/Text/Text";
-import { Page, Text } from "shared/ui";
+import { Text } from "shared/ui";
 import { ValidetaProfileErrorCode } from "entities/Profile/model/types/ProfileSchema";
 import { useTranslation } from "react-i18next";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { useParams } from "react-router-dom";
+import { Page } from "widgets/Page";
 
 interface ProfilePageProps {
 	className?: string;

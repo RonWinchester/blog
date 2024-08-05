@@ -6,7 +6,7 @@ import { Theme } from "shared/config/theme/ThemeContext";
 import ArticleDetailsPage from "./ArticleDetailsPage";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { Article } from "entities/Article";
-import { ArticleBlockType } from "entities/Article/model/types/article";
+import { ArticleBlockType, ArticleType } from "entities/Article/model/types/article";
 
 const meta: Meta<typeof ArticleDetailsPage> = {
 	title: "pages/ArticleDetailsPage",
@@ -24,7 +24,7 @@ const article: Article = {
 	img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
 	views: 1022,
 	createdAt: "26.02.2022",
-	type: ["IT"],
+	type: [ArticleType.IT],
 	updatedAt: "26.02.2022",
 	user: {
 		id: "1",

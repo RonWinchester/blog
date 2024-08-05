@@ -7,8 +7,8 @@ import { Portal } from "./Portal/Portal";
 import { Avatar } from "./Avatar/Avatar";
 import { Skeleton } from "./Skeleton/Skeleton";
 import { Code } from "./Code/Code";
-import { Card } from "./Card/Card";
-import { Page } from "./Page/Page";
+import { Card, CardTheme } from "./Card/Card";
+import { Tabs, TabItem } from "./Tabs/Tabs";
 export {
 	AppLink,
 	Button,
@@ -20,5 +20,7 @@ export {
 	Skeleton,
 	Code,
 	Card,
-	Page,
+	CardTheme,
+	Tabs,
+	TabItem,
 };

@@ -4,6 +4,7 @@ import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from "shared/config/theme/ThemeContext";
 
 import ErrorPage from "./ErrorPage";
+import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 
 const meta: Meta<typeof ErrorPage> = {
 	title: "pages/ErrorPage",
@@ -14,8 +15,8 @@ const meta: Meta<typeof ErrorPage> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Light: Story = { decorators: [StylePageDecorator] };
+export const Light: Story = { decorators: [StylePageDecorator, StoreDecorator({})] };
 
 export const Dark: Story = {
-	decorators: [StylePageDecorator, ThemeDecorator(Theme.DARK)],
+	decorators: [StylePageDecorator, ThemeDecorator(Theme.DARK), StoreDecorator({})],
 };

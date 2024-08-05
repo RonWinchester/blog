@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { classNames } from "shared/lib/classNames/classNames";
 import style from "./ErrorPage.module.scss";
-import { Page } from "shared/ui";
+import { Page } from "widgets/Page";
 
 function ErrorPage() {
 	const {t} = useTranslation("error")
