@@ -13,7 +13,7 @@ import { UserSchema } from "entities/User";
 import { AddCommentsFormSchema } from "features/addProfileForm";
 import { LoginSchema } from "features/authByUsername";
 import { ScrollSchema } from "features/scrollSave/model/types/scrollSaveSchhema";
-import { ArticleDetailsCommentSchema } from "pages/ArticleDetailsPage";
+import { ArticleDetailsCommentSchema, ArticleDetailsRecommendationSchema } from "pages/ArticleDetailsPage";
 import { ArticlePageSchema } from "pages/ArticlesPage";
 
 export interface StateSchema {
@@ -26,6 +26,7 @@ export interface StateSchema {
 	profile?: ProfileSchema;
 	articleDetails?: ArticleDetailsSchema;
 	articleDetailsComments?: ArticleDetailsCommentSchema;
+	articleDetailsRecommendations?: ArticleDetailsRecommendationSchema;
 	addCommentForm?: AddCommentsFormSchema;
 	articlesPage?: ArticlePageSchema;
 }

@@ -1,7 +1,7 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import style from "./ArticleDetailsPage.module.scss";
 import { memo, useCallback } from "react";
-import { ArticleDetails } from "entities/Article";
+import { ArticleDetails, ArticleList } from "entities/Article";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button, Text } from "shared/ui";
@@ -24,6 +24,9 @@ import { addCommentFormArticle } from "../model/services/addCommentForAricle/add
 import { ButtonTheme } from "shared/ui/Button/Button";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { Page } from "widgets/Page";
+import { articleDetailsRecommendationReducer, getArticleRecommendations } from "../model/slice/articleDetailsRecommendationSlice";
+import { getArticleRecommendationsIsLoading } from "../model/selectors/recommendations";
+import { fetchArticleRecommendations } from "../model/services/fetchArticleRecommendations/fetchArticleRecommendations";
 
 interface ArticleDetailsPageProps {
 	className?: string;
@@ -32,6 +35,7 @@ interface ArticleDetailsPageProps {
 
 const reducers: ReducerList = {
 	articleDetailsComments: articleDetailsCommentReducer,
+	articleDetailsRecommendations: articleDetailsRecommendationReducer,
 };
 
 const ArticleDetailsPage = ({
@@ -49,10 +53,14 @@ const ArticleDetailsPage = ({
 
 	useInitialEffect(() => {
 		dispatch(fetchCommentsByArticleId(id));
+		dispatch(fetchArticleRecommendations());
 	});
 
 	const comments = useSelector(getArticleComments.selectAll);
 	const isLoading = useSelector(getArticleCommentsIsLoading);
+
+	const recommendations = useSelector(getArticleRecommendations.selectAll);
+	const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
 
 	const onSendComment = useCallback(
 		(text: string) => {
@@ -69,8 +77,15 @@ const ArticleDetailsPage = ({
 			>
 				{id ? (
 					<>
-						<Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onBackToArticleList}>{t("Назад")}</Button>
+						<Button
+							theme={ButtonTheme.CLEAR_INVERTED}
+							onClick={onBackToArticleList}
+						>
+							{t("Назад")}
+						</Button>
 						<ArticleDetails id={id} />
+						<Text title={t("Рекомендации")} />
+						<ArticleList className={style.recommendations} isLoading={recommendationsIsLoading} articles={recommendations}/>
 						<Text title={t("Комментарии")} />
 						<AddCommentForm onSendComment={onSendComment} />
 						<CommentList comments={comments} isLoading={isLoading} />

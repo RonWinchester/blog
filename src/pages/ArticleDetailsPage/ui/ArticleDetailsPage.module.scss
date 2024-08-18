@@ -1,6 +1,15 @@
 .ArticleDetailsPage {
-    position: relative;
-    display: grid;
-    gap: 2rem;
-    justify-items: flex-start;
+	position: relative;
+	display: grid;
+	gap: 2rem;
+	justify-items: flex-start;
+
+    .recommendations {
+        grid-template-columns: repeat(4, minmax(17.5rem, max-content));
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: min-content;
+        width: 100%;
+        position: relative;
+    }
 }
