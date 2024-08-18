@@ -10,10 +10,7 @@ import {
 	DynamicModuleLoader,
 	ReducerList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import {
-	articleDetailsCommentReducer,
-	getArticleComments,
-} from "../model/slice/articleDetailsCommentSlice";
+import { getArticleComments } from "../model/slice/articleDetailsCommentSlice";
 import { useSelector } from "react-redux";
 import { getArticleCommentsIsLoading } from "../model/selectors/comments";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
@@ -24,9 +21,10 @@ import { addCommentFormArticle } from "../model/services/addCommentForAricle/add
 import { ButtonTheme } from "shared/ui/Button/Button";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { Page } from "widgets/Page";
-import { articleDetailsRecommendationReducer, getArticleRecommendations } from "../model/slice/articleDetailsRecommendationSlice";
+import { getArticleRecommendations } from "../model/slice/articleDetailsRecommendationSlice";
 import { getArticleRecommendationsIsLoading } from "../model/selectors/recommendations";
 import { fetchArticleRecommendations } from "../model/services/fetchArticleRecommendations/fetchArticleRecommendations";
+import { articleDetailsPageReducer } from "../model/slice";
 
 interface ArticleDetailsPageProps {
 	className?: string;
@@ -34,8 +32,7 @@ interface ArticleDetailsPageProps {
 }
 
 const reducers: ReducerList = {
-	articleDetailsComments: articleDetailsCommentReducer,
-	articleDetailsRecommendations: articleDetailsRecommendationReducer,
+	articleDetailsPage: articleDetailsPageReducer,
 };
 
 const ArticleDetailsPage = ({
@@ -60,7 +57,9 @@ const ArticleDetailsPage = ({
 	const isLoading = useSelector(getArticleCommentsIsLoading);
 
 	const recommendations = useSelector(getArticleRecommendations.selectAll);
-	const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
+	const recommendationsIsLoading = useSelector(
+		getArticleRecommendationsIsLoading
+	);
 
 	const onSendComment = useCallback(
 		(text: string) => {
@@ -85,7 +84,11 @@ const ArticleDetailsPage = ({
 						</Button>
 						<ArticleDetails id={id} />
 						<Text title={t("Рекомендации")} />
-						<ArticleList className={style.recommendations} isLoading={recommendationsIsLoading} articles={recommendations}/>
+						<ArticleList
+							className={style.recommendations}
+							isLoading={recommendationsIsLoading}
+							articles={recommendations}
+						/>
 						<Text title={t("Комментарии")} />
 						<AddCommentForm onSendComment={onSendComment} />
 						<CommentList comments={comments} isLoading={isLoading} />

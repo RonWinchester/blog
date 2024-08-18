@@ -8,22 +8,36 @@ import {
 describe("getArticleComments", () => {
 	test("getAddCommentFormError", () => {
 		const state: DeepPartial<StateSchema> = {
-			articleDetailsComments: {
-				error: "error",
-				isLoading: false,
-				ids: [],
-				entities: {},
+			articleDetailsPage: {
+				comments: {
+					error: "error",
+					isLoading: false,
+					ids: [],
+					entities: {},
+				},
+				recommendations: {
+					isLoading: false,
+					ids: [],
+					entities: {},
+				}
 			},
 		};
 		expect(getArticleCommentsError(state as StateSchema)).toEqual("error");
 	});
 	test("getArticleCommentsIsLoading", () => {
 		const state: DeepPartial<StateSchema> = {
-			articleDetailsComments: {
-				error: undefined,
-				isLoading: true,
-				ids: [],
-				entities: {},
+			articleDetailsPage: {
+				comments: {
+					error: "error",
+					isLoading: true,
+					ids: [],
+					entities: {},
+				},
+				recommendations: {
+					isLoading: false,
+					ids: [],
+					entities: {},
+				}
 			},
 		};
 		expect(getArticleCommentsIsLoading(state as StateSchema)).toEqual(true);

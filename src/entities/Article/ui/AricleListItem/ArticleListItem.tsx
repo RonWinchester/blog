@@ -1,8 +1,8 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import style from "./ArticleListItem.module.scss";
-import { memo, useCallback } from "react";
+import { memo } from "react";
 import { Article, ArticleView } from "entities/Article";
-import { Avatar, Button, Card, Text } from "shared/ui";
+import { AppLink, Avatar, Button, Card, Text } from "shared/ui";
 import { EyeIcon } from "shared/assets/icons";
 import { TextAlign, TextSize } from "shared/ui/Text/Text";
 import { useTranslation } from "react-i18next";
@@ -13,7 +13,6 @@ import {
 	ArticleTextBlock,
 } from "entities/Article/model/types/article";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
-import { useNavigate } from "react-router-dom";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 
 export interface AricleListItemProps {
@@ -50,15 +49,13 @@ const ArticleInfoWrapper = ({ className, article, view }: ArticleInfoProps) => {
 const GridArticle = ({
 	article,
 	view,
-	openArticle,
 }: {
 	article: Article;
 	view: ArticleView;
-	openArticle: () => void;
 }) => {
 	return (
 		<>
-			<div className={style.imageWrapper} onClick={openArticle}>
+			<div className={style.imageWrapper}>
 				<img src={article.img} alt={article.title} className={style.img} />
 				<Text
 					text={article.createdAt}
@@ -80,12 +77,10 @@ const ListArticle = ({
 	article,
 	view,
 	t,
-	openArticle,
 }: {
 	article: Article;
 	view: ArticleView;
 	t: TFunction<"articles", undefined>;
-	openArticle: () => void;
 }) => {
 	const textBlock = article.blocks.find(
 		(block) =>
@@ -113,13 +108,14 @@ const ListArticle = ({
 				/>
 			)}
 			<div className={style.footer}>
-				<Button theme={ButtonTheme.OUTLINE} onClick={openArticle}>
-					{t("Читать далeeе")}
-				</Button>
+				<AppLink target="_blank" to={RoutePath.articles_details + article.id}>
+					<Button theme={ButtonTheme.OUTLINE}>{t("Читать далeeе")}</Button>
+				</AppLink>
 			</div>
 		</>
 	);
-};``
+};
+``;
 
 export const ArticleListItem = memo(
 	({
@@ -131,12 +127,6 @@ export const ArticleListItem = memo(
 	}: AricleListItemProps) => {
 		const { t } = useTranslation("articles");
 
-		const navigate = useNavigate();
-
-		const openArticle = useCallback(() => {
-			navigate(RoutePath.articles_details + article.id);
-		}, [article.id, navigate]);
-
 		return (
 			<div
 				className={classNames(style.AricleListItem, {}, [
@@ -145,13 +135,17 @@ export const ArticleListItem = memo(
 				])}
 				{...otherProps}
 			>
-				<Card className={style.card}>
-					{view === ArticleView.GRID ? (
-						<GridArticle {...{ article, view, openArticle }} />
-					) : (
-						<ListArticle {...{ article, view, t, openArticle }} />
-					)}
-				</Card>
+				{view === ArticleView.GRID ? (
+					<AppLink target="_blank" to={RoutePath.articles_details + article.id}>
+						<Card className={style.card}>
+							<GridArticle {...{ article, view }} />
+						</Card>
+					</AppLink>
+				) : (
+					<Card className={style.card}>
+						<ListArticle {...{ article, view, t }} />
+					</Card>
+				)}
 				{children}
 			</div>
 		);

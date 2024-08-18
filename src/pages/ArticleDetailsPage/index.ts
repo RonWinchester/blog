@@ -2,3 +2,4 @@ export { ArticleDetailsPageAsync as ArticleDetailsPage } from "./ui/ArticleDetai
 
 export { ArticleDetailsCommentSchema } from "./model/types/ArticleDetailsCommentSchema";
 export { ArticleDetailsRecommendationSchema } from "./model/types/ArticleDetailsRecommendation";
+export { ArticleDetailsPageSchema } from "./model/types";
