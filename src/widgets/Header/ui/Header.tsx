@@ -5,9 +5,11 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { SidebarIcon } from "shared/assets/icons";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Button } from "shared/ui";
+import { AppLink, Button } from "shared/ui";
 import { ButtonTheme } from "shared/ui/Button/Button";
 import style from "./Header.module.scss";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
+import { AppLinkTheme } from "shared/ui/AppLink/AppLink";
 
 interface HeaderProps {
 	className?: string;
@@ -51,6 +53,12 @@ export const Header = memo(function Header({
 				{isModalOpen && (
 					<LoginModal isOpen={isModalOpen} onClose={onModalClose} />
 				)}
+				<AppLink
+					theme={AppLinkTheme.SECONDARY}
+					to={RoutePath.article_create}
+				>
+					{t("Создать статью")}
+				</AppLink>
 				<Button
 					theme={ButtonTheme.CLEAR_INVERTED}
 					onClick={() => {

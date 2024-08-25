@@ -6,7 +6,10 @@ import { Theme } from "shared/config/theme/ThemeContext";
 import ArticleDetailsPage from "./ArticleDetailsPage";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { Article } from "entities/Article";
-import { ArticleBlockType, ArticleType } from "entities/Article/model/types/article";
+import {
+	ArticleBlockType,
+	ArticleType,
+} from "entities/Article/model/types/article";
 
 const meta: Meta<typeof ArticleDetailsPage> = {
 	title: "pages/ArticleDetailsPage",
@@ -70,4 +73,3 @@ export const Light: Story = {
 		}),
 	],
 };
-

@@ -2,29 +2,28 @@ import { classNames } from "shared/lib/classNames/classNames";
 import style from "./ArticleDetailsPage.module.scss";
 import { memo, useCallback } from "react";
 import { ArticleDetails, ArticleList } from "entities/Article";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Button, Text } from "shared/ui";
+import { Text } from "shared/ui";
 import { CommentList } from "entities/Comment";
 import {
 	DynamicModuleLoader,
 	ReducerList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { getArticleComments } from "../model/slice/articleDetailsCommentSlice";
+import { getArticleComments } from "../../model/slice/articleDetailsCommentSlice";
 import { useSelector } from "react-redux";
-import { getArticleCommentsIsLoading } from "../model/selectors/comments";
+import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
-import { fetchCommentsByArticleId } from "../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
+import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
 import { AddCommentForm } from "features/addProfileForm";
-import { addCommentFormArticle } from "../model/services/addCommentForAricle/addCommentFormArticle";
-import { ButtonTheme } from "shared/ui/Button/Button";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
+import { addCommentFormArticle } from "../../model/services/addCommentForAricle/addCommentFormArticle";
 import { Page } from "widgets/Page";
-import { getArticleRecommendations } from "../model/slice/articleDetailsRecommendationSlice";
-import { getArticleRecommendationsIsLoading } from "../model/selectors/recommendations";
-import { fetchArticleRecommendations } from "../model/services/fetchArticleRecommendations/fetchArticleRecommendations";
-import { articleDetailsPageReducer } from "../model/slice";
+import { getArticleRecommendations } from "../../model/slice/articleDetailsRecommendationSlice";
+import { getArticleRecommendationsIsLoading } from "../../model/selectors/recommendations";
+import { fetchArticleRecommendations } from "../../model/services/fetchArticleRecommendations/fetchArticleRecommendations";
+import { articleDetailsPageReducer } from "../../model/slice";
+import { ArticleDetailsPageHeader } from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 
 interface ArticleDetailsPageProps {
 	className?: string;
@@ -42,11 +41,7 @@ const ArticleDetailsPage = ({
 	const { t } = useTranslation("articles");
 	const { id } = useParams<{ id: string }>();
 	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
 
-	const onBackToArticleList = useCallback(() => {
-		navigate(RoutePath.articles);
-	}, [navigate]);
 
 	useInitialEffect(() => {
 		dispatch(fetchCommentsByArticleId(id));
@@ -76,12 +71,7 @@ const ArticleDetailsPage = ({
 			>
 				{id ? (
 					<>
-						<Button
-							theme={ButtonTheme.CLEAR_INVERTED}
-							onClick={onBackToArticleList}
-						>
-							{t("Назад")}
-						</Button>
+						<ArticleDetailsPageHeader />
 						<ArticleDetails id={id} />
 						<Text title={t("Рекомендации")} />
 						<ArticleList
