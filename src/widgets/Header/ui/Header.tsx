@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { SidebarIcon } from "shared/assets/icons";
 import { classNames } from "shared/lib/classNames/classNames";
-import { AppLink, Button } from "shared/ui";
+import { AppLink, Avatar, Button, Dropdown } from "shared/ui";
 import { ButtonTheme } from "shared/ui/Button/Button";
 import style from "./Header.module.scss";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
@@ -53,20 +53,23 @@ export const Header = memo(function Header({
 				{isModalOpen && (
 					<LoginModal isOpen={isModalOpen} onClose={onModalClose} />
 				)}
-				<AppLink
-					theme={AppLinkTheme.SECONDARY}
-					to={RoutePath.article_create}
-				>
+				<AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.article_create}>
 					{t("Создать статью")}
 				</AppLink>
-				<Button
-					theme={ButtonTheme.CLEAR_INVERTED}
-					onClick={() => {
-						onLogout();
-					}}
-				>
-					{t("Выйти")}
-				</Button>
+				<Dropdown
+					direction="bottom-right"
+					trigger={<Avatar size={30} src={authData.avatar || ""} />}
+					items={[
+						{
+							content: t("Профиль"),
+							href: RoutePath.profile + authData.id,
+						},
+						{
+							content: t("Выйти"),
+							onClick: onLogout,
+						}
+					]}
+				/>
 			</header>
 		);
 	}
