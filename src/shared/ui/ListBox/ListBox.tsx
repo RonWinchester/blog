@@ -7,14 +7,13 @@ import {
 } from "@headlessui/react";
 import { classNames } from "shared/lib/classNames/classNames";
 import style from "./ListBox.module.scss";
+import { DropdownDirection } from "shared/types/ui";
 
 export interface ListBoxItem {
 	value: string;
 	content: ReactNode;
 	disabled?: boolean;
 }
-
-type DropdownDirection = "top" | "bottom";
 
 interface ListBoxProps {
 	items?: ListBoxItem[];
@@ -30,6 +29,10 @@ interface ListBoxProps {
 const mapDirectionClass: Record<DropdownDirection, string> = {
 	bottom: style.optionsBottom,
 	top: style.optionsTop,
+	"top-left": style.optionsTopLeft,
+	"top-right": style.optionsTopRight,
+	"bottom-left": style.optionsBottomLeft,
+	"bottom-right": style.optionsBottomRight,
 };
 
 export function ListBox(props: ListBoxProps) {
