@@ -15,11 +15,6 @@ describe("getArticleComments", () => {
 					ids: [],
 					entities: {},
 				},
-				recommendations: {
-					isLoading: false,
-					ids: [],
-					entities: {},
-				}
 			},
 		};
 		expect(getArticleCommentsError(state as StateSchema)).toEqual("error");
@@ -33,11 +28,6 @@ describe("getArticleComments", () => {
 					ids: [],
 					entities: {},
 				},
-				recommendations: {
-					isLoading: false,
-					ids: [],
-					entities: {},
-				}
 			},
 		};
 		expect(getArticleCommentsIsLoading(state as StateSchema)).toEqual(true);
