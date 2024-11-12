@@ -541,6 +541,12 @@
       "userId": "1",
       "text": "sdsd",
       "id": "1jraSeX"
+    },
+    {
+      "articleId": "5",
+      "userId": "1",
+      "text": "fsdf",
+      "id": "mcXw3cJ"
     }
   ],
   "users": [
@@ -569,12 +575,12 @@
   "profile": [
     {
       "id": "1",
-      "firstname": "Roma",
-      "lastname": "lastname",
-      "age": 2,
-      "currency": "USD",
-      "country": "USA",
-      "city": "spb",
+      "firstname": "Roman",
+      "lastname": "Фамилия",
+      "age": 261,
+      "currency": "EUR",
+      "country": "Belarus",
+      "city": "Msk",
       "username": "admin",
       "avatar": "https://mui.com/static/images/avatar/1.jpg"
     },

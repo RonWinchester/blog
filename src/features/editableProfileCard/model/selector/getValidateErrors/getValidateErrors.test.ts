@@ -1,7 +1,7 @@
 import { DeepPartial } from "@reduxjs/toolkit";
 import { StateSchema } from "app/providers/StoreProvider";
 import { getValidateErrors } from "./getValidateErrors";
-import { ValidetaProfileErrorCode } from "../../types/ProfileSchema";
+import { ValidetaProfileErrorCode } from "../../types/editableProfileCardSchema";
 describe("getValidateErrors.test", () => {
 	test("getValidateErrors", () => {
 		const state: DeepPartial<StateSchema> = {
