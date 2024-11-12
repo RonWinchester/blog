@@ -1,6 +1,5 @@
 import { memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
-import style from "./ArticleInfiniteList.module.scss";
 import { ArticleList } from "entities/Article";
 import { useSelector } from "react-redux";
 import { getArticles } from "pages/ArticlesPage/modal/slice/artilcePageSlice";
@@ -35,10 +34,7 @@ export const ArticleInfiniteList = memo(
 		});
 
 		return (
-			<div
-				className={classNames(style.ArticleInfiniteList, {}, [className])}
-				{...otherProps}
-			>
+			<div className={classNames("", {}, [className])} {...otherProps}>
 				<ArticleList {...{ articles, isLoading, view, error }} />
 			</div>
 		);
