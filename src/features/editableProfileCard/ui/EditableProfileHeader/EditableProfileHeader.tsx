@@ -54,6 +54,7 @@ export const EditableProfileHeader = ({
 			{canEdit &&
 				(readonly ? (
 					<Button
+						data-testid="EditableProfileHeader.editBtn"
 						className={style.editBtn}
 						theme={ButtonTheme.OUTLINE}
 						onClick={onEdit}
@@ -63,6 +64,7 @@ export const EditableProfileHeader = ({
 				) : (
 					<div className={style.buttons}>
 						<Button
+							data-testid="EditableProfileHeader.cancelBtn"
 							className={style.editBtn}
 							theme={ButtonTheme.OUTLINE}
 							onClick={onCancelEdit}
@@ -70,6 +72,7 @@ export const EditableProfileHeader = ({
 							{t("Отменить")}
 						</Button>
 						<Button
+							data-testid="EditableProfileHeader.saveBtn"
 							className={style.editBtn}
 							theme={ButtonTheme.OUTLINE_RED}
 							onClick={onSave}
