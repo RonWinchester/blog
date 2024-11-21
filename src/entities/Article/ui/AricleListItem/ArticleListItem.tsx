@@ -108,7 +108,7 @@ const ListArticle = ({
 				/>
 			)}
 			<div className={style.footer}>
-				<AppLink target="_blank" to={RoutePath.articles_details + article.id}>
+				<AppLink to={RoutePath.articles_details + article.id}>
 					<Button theme={ButtonTheme.OUTLINE}>{t("Читать далeeе")}</Button>
 				</AppLink>
 			</div>

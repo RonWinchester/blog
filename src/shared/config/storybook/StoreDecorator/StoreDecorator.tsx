@@ -3,7 +3,7 @@
 import { StateSchema, StoreProvider } from "app/providers/StoreProvider";
 import { DeepPartial } from "@reduxjs/toolkit";
 import { loginReducer } from "features/authByUsername/model/slice/loginSlice";
-import { profileReducer } from "entities/Profile";
+import { profileReducer } from "features/editableProfileCard";
 import { ReducerList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { articleDetailsReducer } from "entities/Article/model/slice/articleSlice";
 import { addCommentFormReducer } from "features/addProfileForm/model/slice/addCommentFormSlice";
@@ -19,12 +19,12 @@ const defaultAsyncReducers: ReducerList = {
 
 export const StoreDecorator =
 	(state: DeepPartial<StateSchema>, asyncReducers?: ReducerList) =>
-		(StoryComponent: any) =>
-			(
-				<StoreProvider
-					initialState={state}
-					asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
-				>
-					<StoryComponent />
-				</StoreProvider>
-			);
+	(StoryComponent: any) =>
+		(
+			<StoreProvider
+				initialState={state}
+				asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
+			>
+				<StoryComponent />
+			</StoreProvider>
+		);
