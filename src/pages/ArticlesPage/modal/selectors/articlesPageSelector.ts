@@ -1,12 +1,12 @@
 import { StateSchema } from "app/providers/StoreProvider";
 import { ArticleSortField } from "entities/Article";
-import { ArticleType } from "entities/Article/model/types/article";
+import { ArticleType, ArticleView } from "entities/Article/model/types/article";
 import { LIMIT_PAGE_GRID } from "shared/const/const";
 
 const getArticlesPageIsLoading = (state: StateSchema) =>
 	state.articlesPage?.isLoading || false;
 const getArticlesPageError = (state: StateSchema) => state.articlesPage?.error;
-const getArticlesPageView = (state: StateSchema) => state.articlesPage?.view;
+const getArticlesPageView = (state: StateSchema) => state.articlesPage?.view || ArticleView.GRID;
 const getArticlesPageLimit = (state: StateSchema) => state.articlesPage?.limit || LIMIT_PAGE_GRID;
 const getArticlesPageHasMore = (state: StateSchema) =>
 	state.articlesPage?.hasMore;

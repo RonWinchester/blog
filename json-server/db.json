@@ -554,21 +554,21 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN",
+      "role": ["ADMIN"],
       "avatar": "https://mui.com/static/images/avatar/1.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER",
+      "role": ["USER"],
       "avatar": "https://mui.com/static/images/avatar/2.jpg"
     },
     {
       "id": "3",
       "username": "user2",
       "password": "123",
-      "role": "USER",
+      "role": ["USER"],
       "avatar": "https://mui.com/static/images/avatar/3.jpg"
     }
   ],

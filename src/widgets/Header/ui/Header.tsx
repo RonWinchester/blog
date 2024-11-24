@@ -1,4 +1,5 @@
-import { getUserAuth, userActions } from "entities/User";
+/* eslint-disable no-mixed-spaces-and-tabs */
+import { getUserAuth, isAdmin, isModerator, userActions } from "entities/User";
 import { LoginModal } from "features/authByUsername";
 import { Dispatch, SetStateAction, memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -24,7 +25,11 @@ export const Header = memo(function Header({
 }: HeaderProps) {
 	const { t } = useTranslation();
 	const authData = useSelector(getUserAuth);
+	const isUserAdmin = useSelector(isAdmin);
+	const isUserModerator = useSelector(isModerator);
 	const dispatch = useDispatch();
+
+	const isAdminPanelAvailable = isUserAdmin || isUserModerator;
 
 	const onToggle = () => {
 		if (setCollapsed) {
@@ -64,10 +69,18 @@ export const Header = memo(function Header({
 							content: t("Профиль"),
 							href: RoutePath.profile + authData.id,
 						},
+						...(isAdminPanelAvailable
+							? [
+									{
+										content: t("Админ панель"),
+										href: RoutePath.admin_panel,
+									},
+							  ]
+							: []),
 						{
 							content: t("Выйти"),
 							onClick: onLogout,
-						}
+						},
 					]}
 				/>
 			</header>
