@@ -1,4 +1,4 @@
-import { memo, useCallback } from "react";
+import { memo, Suspense, useCallback } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import style from "./ArticleDetailsComments.module.scss";
 import { CommentList } from "entities/Comment";
@@ -15,7 +15,7 @@ import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEf
 
 interface ArticleDetailsCommentsProps {
 	className?: string;
-    id: string;
+	id: string;
 }
 
 export const ArticleDetailsComments = memo(
@@ -41,7 +41,9 @@ export const ArticleDetailsComments = memo(
 				{...otherProps}
 			>
 				<Text title={t("Комментарии")} />
-				<AddCommentForm onSendComment={onSendComment} />
+				<Suspense fallback={<Text text={t("Загрузка")} />}>
+					<AddCommentForm onSendComment={onSendComment} />
+				</Suspense>
 				<CommentList comments={comments} isLoading={isLoading} />
 			</div>
 		);
