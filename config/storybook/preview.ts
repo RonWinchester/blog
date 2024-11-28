@@ -1,5 +1,6 @@
 import { ThemeDecorator } from "../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { RouterDecorator } from "../../src/shared/config/storybook/RouterDecorator/RouterDecorator";
+import { SuspenseDecorator } from "../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator";
 import "../../src/app/styles/index.scss";
 import type { Preview } from "@storybook/react";
 import { Theme } from "../../src/shared/config/theme/ThemeContext";
@@ -14,7 +15,7 @@ const preview: Preview = {
 			},
 		},
 	},
-	decorators: [ThemeDecorator(Theme.LIGHT), RouterDecorator],
+	decorators: [ThemeDecorator(Theme.LIGHT), RouterDecorator, SuspenseDecorator],
 };
 
 export default preview;
