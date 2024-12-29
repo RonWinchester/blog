@@ -1,15 +1,15 @@
 .Code {
-	border: 1px solid var(--primary-color);
-	padding: 1rem;
-	border-radius: 4px;
-	background-color: var(--code-bg-color);
-	overflow: auto;
+    border: 1px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: var(--code-bg-color);
+    overflow: auto;
 }
 
 .copy {
-	position: absolute;
-	top: 2rem;
-	right: 1rem;
-	cursor: pointer;
-	color: var(--primary-color);
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    cursor: pointer;
+    color: var(--primary-color);
 }

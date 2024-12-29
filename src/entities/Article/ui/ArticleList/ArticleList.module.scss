@@ -1,14 +1,14 @@
 .ArticleList {
-	position: relative;
-	display: grid;
-	gap: 1rem;
-	align-items: center;
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    align-items: center;
 }
 
 .GRID {
-	grid-template-columns: repeat(auto-fill, minmax(17.5rem, max-content));
+    grid-template-columns: repeat(auto-fill, minmax(17.5rem, max-content));
 }
 
 .LIST {
-	grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
 }

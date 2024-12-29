@@ -10,43 +10,46 @@ import { useSelector } from "react-redux";
 import { getNavbarItems } from "widgets/Navbar/model/selector";
 
 interface NavbarProps {
-	className?: string;
-	children?: React.ReactNode;
-	collapsed?: boolean;
+    className?: string;
+    children?: React.ReactNode;
+    collapsed?: boolean;
 }
 
 export const Navbar = ({ className, collapsed, children }: NavbarProps) => {
-	const { t } = useTranslation();
-	const location = useLocation();
-	const isAuth = useSelector(getUserAuth);
-	const configNavbarItems = useSelector(getNavbarItems);
+    const { t } = useTranslation();
+    const location = useLocation();
+    const isAuth = useSelector(getUserAuth);
+    const configNavbarItems = useSelector(getNavbarItems);
 
-	const list = useMemo(() => {
-		return configNavbarItems.map((item) => {
-			if (item.authOnly && !isAuth) {
-				return null;
-			}
-			const activePage = item.path === location.pathname ? style.active : "";
-			return (
-				<AppLink
-					key={item.path}
-					theme={AppLinkTheme.SECONDARY}
-					to={item.path}
-					className={classNames(style.linkWrapper, {}, [activePage])}
-				>
-					<item.icon className={style.icon} />
-					<span className={collapsed ? style.collapsedLink : undefined}>
-						{t(item.text)}
-					</span>
-				</AppLink>
-			);
-		});
-	}, [collapsed, isAuth, location.pathname, t]);
+    const list = useMemo(() => {
+        return configNavbarItems.map((item) => {
+            if (item.authOnly && !isAuth) {
+                return null;
+            }
+            const activePage =
+                item.path === location.pathname ? style.active : "";
+            return (
+                <AppLink
+                    key={item.path}
+                    theme={AppLinkTheme.SECONDARY}
+                    to={item.path}
+                    className={classNames(style.linkWrapper, {}, [activePage])}
+                >
+                    <item.icon className={style.icon} />
+                    <span
+                        className={collapsed ? style.collapsedLink : undefined}
+                    >
+                        {t(item.text)}
+                    </span>
+                </AppLink>
+            );
+        });
+    }, [collapsed, isAuth, location.pathname, t]);
 
-	return (
-		<div className={classNames(style.navbar, {}, [className])}>
-			{children}
-			<nav className={classNames(style.linkContainer)}>{list}</nav>
-		</div>
-	);
+    return (
+        <div className={classNames(style.navbar, {}, [className])}>
+            {children}
+            <nav className={classNames(style.linkContainer)}>{list}</nav>
+        </div>
+    );
 };

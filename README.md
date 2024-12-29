@@ -43,3 +43,4 @@ Feature-Sliced Design
 ## TODO
 
 1. Реализация бекенд части с авторизацией и регистрацией. (сейчас используется JSON сервер)
+2. Выделить isolateModules и перейти на babel-loader (убрать ts-loader)

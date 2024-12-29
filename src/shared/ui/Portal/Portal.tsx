@@ -1,10 +1,10 @@
 import { createPortal } from "react-dom";
 
 interface PortapProps {
-	children: React.ReactNode;
-	element?: HTMLElement;
+    children: React.ReactNode;
+    element?: HTMLElement;
 }
 
 export const Portal = ({ children, element = document.body }: PortapProps) => {
-	return createPortal(children, element);
+    return createPortal(children, element);
 };

@@ -9,143 +9,146 @@ import { Currency, CurrencySelect } from "entities/Currency";
 import { Country, CountrySelect } from "entities/Country";
 
 interface ProfileCardProps {
-	className?: string;
-	children?: React.ReactNode;
-	data?: Profile;
-	isLoading?: boolean;
-	error?: string;
-	readonly?: boolean;
-	onChangeFirstName: (value: string) => void;
-	onChangeLastName: (value: string) => void;
-	onChangeAge: (value: string) => void;
-	onChangeCity: (value: string) => void;
-	onChangeAvatar: (value: string) => void;
-	onChangeUsername: (value: string) => void;
-	onChangeCountry: (value: Country) => void;
-	onChangeCurrency: (value: Currency) => void;
+    className?: string;
+    children?: React.ReactNode;
+    data?: Profile;
+    isLoading?: boolean;
+    error?: string;
+    readonly?: boolean;
+    onChangeFirstName: (value: string) => void;
+    onChangeLastName: (value: string) => void;
+    onChangeAge: (value: string) => void;
+    onChangeCity: (value: string) => void;
+    onChangeAvatar: (value: string) => void;
+    onChangeUsername: (value: string) => void;
+    onChangeCountry: (value: Country) => void;
+    onChangeCurrency: (value: Currency) => void;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
-	const {
-		className,
-		data,
-		isLoading,
-		error,
-		readonly,
-		onChangeFirstName,
-		onChangeLastName,
-		onChangeAge,
-		onChangeCity,
-		onChangeAvatar,
-		onChangeUsername,
-		onChangeCountry,
-		onChangeCurrency,
-	} = props;
-	const { t } = useTranslation("profile");
+    const {
+        className,
+        data,
+        isLoading,
+        error,
+        readonly,
+        onChangeFirstName,
+        onChangeLastName,
+        onChangeAge,
+        onChangeCity,
+        onChangeAvatar,
+        onChangeUsername,
+        onChangeCountry,
+        onChangeCurrency,
+    } = props;
+    const { t } = useTranslation("profile");
 
-	if (error) {
-		return (
-			<div
-				className={classNames(style.ProfileCard, {}, [className, style.error])}
-			>
-				<Text
-					theme={TextTheme.ERROR}
-					align={TextAlign.CENTER}
-					title={t("Произошла ошибка при загрузке профиля")}
-					text={t("Попробуйте обновить страницу")}
-				/>
-			</div>
-		);
-	}
+    if (error) {
+        return (
+            <div
+                className={classNames(style.ProfileCard, {}, [
+                    className,
+                    style.error,
+                ])}
+            >
+                <Text
+                    theme={TextTheme.ERROR}
+                    align={TextAlign.CENTER}
+                    title={t("Произошла ошибка при загрузке профиля")}
+                    text={t("Попробуйте обновить страницу")}
+                />
+            </div>
+        );
+    }
 
-	if (isLoading) {
-		return (
-			<div
-				className={classNames(style.ProfileCard, {}, [
-					className,
-					style.loading,
-				])}
-			>
-				<PageLoader />
-			</div>
-		);
-	}
+    if (isLoading) {
+        return (
+            <div
+                className={classNames(style.ProfileCard, {}, [
+                    className,
+                    style.loading,
+                ])}
+            >
+                <PageLoader />
+            </div>
+        );
+    }
 
-	const mods: Mods = {
-		[style.editing]: !readonly,
-	};
+    const mods: Mods = {
+        [style.editing]: !readonly,
+    };
 
-	return (
-		<div className={classNames(style.ProfileCard, mods, [className])}>
-			<div className={style.data}>
-				{data?.avatar && (
-					<div className={style.avatarWrapper}>
-						<Avatar src={data.avatar} />
-					</div>
-				)}
-				<Input
-					data-testid="ProfileCard.FirstName"
-					value={data?.firstname}
-					placeholder={t("Ваше имя")}
-					className={style.input}
-					onChange={onChangeFirstName}
-					readonly={readonly}
-				/>
-				<Input
-					data-testid="ProfileCard.LastName"
-					value={data?.lastname}
-					placeholder={t("Ваша фамилия")}
-					className={style.input}
-					onChange={onChangeLastName}
-					readonly={readonly}
-				/>
-				<Input
-					data-testid="ProfileCard.Age"
-					value={data?.age}
-					placeholder={t("Ваш возраст")}
-					className={style.input}
-					onChange={onChangeAge}
-					readonly={readonly}
-				/>
-				<Input
-					data-testid="ProfileCard.City"
-					value={data?.city}
-					placeholder={t("Город")}
-					className={style.input}
-					onChange={onChangeCity}
-					readonly={readonly}
-				/>
-				<Input
-					data-testid="ProfileCard.Username"
-					value={data?.username}
-					placeholder={t("Введите имя пользователя")}
-					className={style.input}
-					onChange={onChangeUsername}
-					readonly={readonly}
-				/>
-				<Input
-					data-testid="ProfileCard.Avatar"
-					value={data?.avatar}
-					placeholder={t("Введите ссылку на аватар")}
-					className={style.input}
-					onChange={onChangeAvatar}
-					readonly={readonly}
-				/>
-				<CurrencySelect
-					data-testid="ProfileCard.Currency"
-					className={style.input}
-					value={data?.currency}
-					onChange={onChangeCurrency}
-					readonly={readonly}
-				/>
-				<CountrySelect
-					data-testid="ProfileCard.Country"
-					className={style.input}
-					value={data?.country}
-					onChange={onChangeCountry}
-					readonly={readonly}
-				/>
-			</div>
-		</div>
-	);
+    return (
+        <div className={classNames(style.ProfileCard, mods, [className])}>
+            <div className={style.data}>
+                {data?.avatar && (
+                    <div className={style.avatarWrapper}>
+                        <Avatar src={data.avatar} />
+                    </div>
+                )}
+                <Input
+                    data-testid="ProfileCard.FirstName"
+                    value={data?.firstname}
+                    placeholder={t("Ваше имя")}
+                    className={style.input}
+                    onChange={onChangeFirstName}
+                    readonly={readonly}
+                />
+                <Input
+                    data-testid="ProfileCard.LastName"
+                    value={data?.lastname}
+                    placeholder={t("Ваша фамилия")}
+                    className={style.input}
+                    onChange={onChangeLastName}
+                    readonly={readonly}
+                />
+                <Input
+                    data-testid="ProfileCard.Age"
+                    value={data?.age}
+                    placeholder={t("Ваш возраст")}
+                    className={style.input}
+                    onChange={onChangeAge}
+                    readonly={readonly}
+                />
+                <Input
+                    data-testid="ProfileCard.City"
+                    value={data?.city}
+                    placeholder={t("Город")}
+                    className={style.input}
+                    onChange={onChangeCity}
+                    readonly={readonly}
+                />
+                <Input
+                    data-testid="ProfileCard.Username"
+                    value={data?.username}
+                    placeholder={t("Введите имя пользователя")}
+                    className={style.input}
+                    onChange={onChangeUsername}
+                    readonly={readonly}
+                />
+                <Input
+                    data-testid="ProfileCard.Avatar"
+                    value={data?.avatar}
+                    placeholder={t("Введите ссылку на аватар")}
+                    className={style.input}
+                    onChange={onChangeAvatar}
+                    readonly={readonly}
+                />
+                <CurrencySelect
+                    data-testid="ProfileCard.Currency"
+                    className={style.input}
+                    value={data?.currency}
+                    onChange={onChangeCurrency}
+                    readonly={readonly}
+                />
+                <CountrySelect
+                    data-testid="ProfileCard.Country"
+                    className={style.input}
+                    value={data?.country}
+                    onChange={onChangeCountry}
+                    readonly={readonly}
+                />
+            </div>
+        </div>
+    );
 };

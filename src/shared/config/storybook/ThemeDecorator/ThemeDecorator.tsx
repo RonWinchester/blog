@@ -3,9 +3,8 @@
 import "app/styles/index.scss";
 import { Theme } from "../../../../shared/config/theme/ThemeContext";
 
-export const ThemeDecorator = (theme: Theme) => (StoryComponent: any) =>
-	(
-		<div className={`app ${theme}`}>
-			<StoryComponent />
-		</div>
-	);
+export const ThemeDecorator = (theme: Theme) => (StoryComponent: any) => (
+    <div className={`app ${theme}`}>
+        <StoryComponent />
+    </div>
+);

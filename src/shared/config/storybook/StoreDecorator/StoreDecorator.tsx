@@ -10,21 +10,20 @@ import { addCommentFormReducer } from "features/addProfileForm/model/slice/addCo
 import { articleDetailsPageReducer } from "pages/ArticleDetailsPage/model/slice";
 
 const defaultAsyncReducers: ReducerList = {
-	loginForm: loginReducer,
-	profile: profileReducer,
-	articleDetails: articleDetailsReducer,
-	articleDetailsPage: articleDetailsPageReducer,
-	addCommentForm: addCommentFormReducer,
+    loginForm: loginReducer,
+    profile: profileReducer,
+    articleDetails: articleDetailsReducer,
+    articleDetailsPage: articleDetailsPageReducer,
+    addCommentForm: addCommentFormReducer,
 };
 
 export const StoreDecorator =
-	(state: DeepPartial<StateSchema>, asyncReducers?: ReducerList) =>
-	(StoryComponent: any) =>
-		(
-			<StoreProvider
-				initialState={state}
-				asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
-			>
-				<StoryComponent />
-			</StoreProvider>
-		);
+    (state: DeepPartial<StateSchema>, asyncReducers?: ReducerList) =>
+    (StoryComponent: any) => (
+        <StoreProvider
+            initialState={state}
+            asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
+        >
+            <StoryComponent />
+        </StoreProvider>
+    );

@@ -1,4 +1,3 @@
 export interface ScrollSchema {
-    scroll:  Record<string, number>
+    scroll: Record<string, number>;
 }
-

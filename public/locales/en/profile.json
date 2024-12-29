@@ -6,7 +6,7 @@
     "Произошла ошибка при загрузке профиля": "An error occurred while loading the profile",
     "Попробуйте обновить страницу": "Try to reload the page",
     "Отменить": "Cancel",
-	"Сохранить": "Save",
+    "Сохранить": "Save",
     "Некорректные данные пользователя": "Incorrect user data",
     "Имя пользователя должно содержать не менее 2 символов": "Name user must contain at least 2 characters",
     "Фамилия пользователя должна содержать не менее 2 символов": "Surname user must contain at least 2 characters",

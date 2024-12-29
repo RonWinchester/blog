@@ -5,28 +5,28 @@ import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { memo } from "react";
 
 interface LangSwitcherProps {
-	className?: string;
-	children?: React.ReactNode;
+    className?: string;
+    children?: React.ReactNode;
 }
 
 export const LangSwitcher = memo(function LangSwitcher({
-	className,
-	children,
+    className,
+    children,
 }: LangSwitcherProps) {
-	const { i18n } = useTranslation();
+    const { i18n } = useTranslation();
 
-	const toggle = async () => {
-		i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");
-	};
+    const toggle = async () => {
+        i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");
+    };
 
-	return (
-		<Button
-			className={classNames(style.langSwither, {}, [className])}
-			theme={ButtonTheme.CLEAR}
-			onClick={toggle}
-		>
-			{i18n.language}
-			{children}
-		</Button>
-	);
+    return (
+        <Button
+            className={classNames(style.langSwither, {}, [className])}
+            theme={ButtonTheme.CLEAR}
+            onClick={toggle}
+        >
+            {i18n.language}
+            {children}
+        </Button>
+    );
 });

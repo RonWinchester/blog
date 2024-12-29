@@ -3,19 +3,19 @@ import { StateSchema } from "app/providers/StoreProvider";
 import { getLoginError } from "./getLoginError";
 
 describe("authByUsername", () => {
-	test("getLoginError", () => {
-		const state: DeepPartial<StateSchema> = {
-			loginForm: {
-				error: "error",
-				password: "password",
-				username: "username",
-				isLoading: false,
-			},
-		};
-		expect(getLoginError(state as StateSchema)).toEqual("error");
-	});
-	test("getLoginError with empty state", () => {
-		const state: DeepPartial<StateSchema> = {};
-		expect(getLoginError(state as StateSchema)).toEqual("");
-	});
+    test("getLoginError", () => {
+        const state: DeepPartial<StateSchema> = {
+            loginForm: {
+                error: "error",
+                password: "password",
+                username: "username",
+                isLoading: false,
+            },
+        };
+        expect(getLoginError(state as StateSchema)).toEqual("error");
+    });
+    test("getLoginError with empty state", () => {
+        const state: DeepPartial<StateSchema> = {};
+        expect(getLoginError(state as StateSchema)).toEqual("");
+    });
 });

@@ -5,26 +5,26 @@ import { EditableProfileCard } from "features/editableProfileCard";
 import { useParams } from "react-router-dom";
 
 interface ProfilePageProps {
-	className?: string;
-	children?: React.ReactNode;
+    className?: string;
+    children?: React.ReactNode;
 }
 
 const ProfilePage = ({
-	className,
-	children,
-	...otherProps
+    className,
+    children,
+    ...otherProps
 }: ProfilePageProps) => {
-	const { id } = useParams<{ id: string }>();
+    const { id } = useParams<{ id: string }>();
 
-	return (
-		<Page
-			className={classNames(style.ProfilePage, {}, [className])}
-			{...otherProps}
-		>
-			<EditableProfileCard id={id} />
-			{children}
-		</Page>
-	);
+    return (
+        <Page
+            className={classNames(style.ProfilePage, {}, [className])}
+            {...otherProps}
+        >
+            <EditableProfileCard id={id} />
+            {children}
+        </Page>
+    );
 };
 
 export default ProfilePage;
