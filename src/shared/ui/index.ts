@@ -9,8 +9,7 @@ import { Skeleton } from "./Skeleton/Skeleton";
 import { Code } from "./Code/Code";
 import { Card, CardTheme } from "./Card/Card";
 import { Tabs, TabItem } from "./Tabs/Tabs";
-import { ListBox } from "./ListBox/ListBox";
-import { Dropdown } from "./Dropdown/Dropdown";
+import { ListBox, Dropdown, Popover } from "./Popups";
 
 export {
     AppLink,
@@ -28,4 +27,5 @@ export {
     TabItem,
     ListBox,
     Dropdown,
+    Popover,
 };

@@ -4,9 +4,9 @@ import { LoginModal } from "features/authByUsername";
 import { Dispatch, SetStateAction, memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { SidebarIcon } from "shared/assets/icons";
+import { NotificationIcon, SidebarIcon } from "shared/assets/icons";
 import { classNames } from "shared/lib/classNames/classNames";
-import { AppLink, Avatar, Button, Dropdown } from "shared/ui";
+import { AppLink, Avatar, Button, Dropdown, Popover } from "shared/ui";
 import { ButtonTheme } from "shared/ui/Button/Button";
 import style from "./Header.module.scss";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
@@ -64,28 +64,40 @@ export const Header = memo(function Header({
                 >
                     {t("Создать статью")}
                 </AppLink>
-                <Dropdown
-                    direction="bottom-right"
-                    trigger={<Avatar size={30} src={authData.avatar || ""} />}
-                    items={[
-                        {
-                            content: t("Профиль"),
-                            href: RoutePath.profile + authData.id,
-                        },
-                        ...(isAdminPanelAvailable
-                            ? [
-                                  {
-                                      content: t("Админ панель"),
-                                      href: RoutePath.admin_panel,
-                                  },
-                              ]
-                            : []),
-                        {
-                            content: t("Выйти"),
-                            onClick: onLogout,
-                        },
-                    ]}
-                />
+                <div className={style.button__container}>
+                    <Popover
+                        trigger={
+                            <Button theme={ButtonTheme.CLEAR}>
+                                <NotificationIcon />
+                            </Button>
+                        }
+                    >
+                        some
+                    </Popover>
+                    <Dropdown
+                        trigger={
+                            <Avatar size={30} src={authData.avatar || ""} />
+                        }
+                        items={[
+                            {
+                                content: t("Профиль"),
+                                href: RoutePath.profile + authData.id,
+                            },
+                            ...(isAdminPanelAvailable
+                                ? [
+                                      {
+                                          content: t("Админ панель"),
+                                          href: RoutePath.admin_panel,
+                                      },
+                                  ]
+                                : []),
+                            {
+                                content: t("Выйти"),
+                                onClick: onLogout,
+                            },
+                        ]}
+                    />
+                </div>
             </header>
         );
     }

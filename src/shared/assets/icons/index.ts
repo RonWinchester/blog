@@ -11,6 +11,7 @@ import DoneIcon from "./done.svg";
 import EyeIcon from "./eye.svg";
 import ListIcon from "./list.svg";
 import GridIcon from "./grid.svg";
+import NotificationIcon from "./notification.svg";
 
 export {
     ThemeSwitcherIcon,
@@ -26,4 +27,5 @@ export {
     EyeIcon,
     ListIcon,
     GridIcon,
+    NotificationIcon,
 };
