@@ -38,7 +38,7 @@ Feature-Sliced Design
 
 ## Создание бойлерплейтов для features, pages или entities
 
-Введите команду ``npm run generate:slice <feature|page|entity> <featureName>``
+Введите команду ``npm run generate:slice <feature|page|entities> <featureName>``
 
 ## TODO
 

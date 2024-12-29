@@ -4,14 +4,14 @@ import { LoginModal } from "features/authByUsername";
 import { Dispatch, SetStateAction, memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { NotificationIcon, SidebarIcon } from "shared/assets/icons";
+import { SidebarIcon } from "shared/assets/icons";
 import { classNames } from "shared/lib/classNames/classNames";
-import { AppLink, Avatar, Button, Dropdown, Popover } from "shared/ui";
+import { AppLink, Avatar, Button, Dropdown } from "shared/ui";
 import { ButtonTheme } from "shared/ui/Button/Button";
 import style from "./Header.module.scss";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { AppLinkTheme } from "shared/ui/AppLink/AppLink";
-
+import { NotificationBtn } from "features/notificationBtn";
 interface HeaderProps {
     className?: string;
     children?: React.ReactNode;
@@ -65,15 +65,7 @@ export const Header = memo(function Header({
                     {t("Создать статью")}
                 </AppLink>
                 <div className={style.button__container}>
-                    <Popover
-                        trigger={
-                            <Button theme={ButtonTheme.CLEAR}>
-                                <NotificationIcon />
-                            </Button>
-                        }
-                    >
-                        some
-                    </Popover>
+                    <NotificationBtn />
                     <Dropdown
                         trigger={
                             <Avatar size={30} src={authData.avatar || ""} />
