@@ -3,14 +3,14 @@ import { getArticleDetailsData } from "entities/Article/model/selectors/articleD
 import { getUserAuth } from "entities/User";
 
 const canEditPage = createSelector(
-	getUserAuth,
-	getArticleDetailsData,
-	(user, article) => {
-		if (!user || !article) {
-			return false;
-		}
-		return user.id === article.user.id;
-	}
+    getUserAuth,
+    getArticleDetailsData,
+    (user, article) => {
+        if (!user || !article) {
+            return false;
+        }
+        return user.id === article.user.id;
+    },
 );
 
 export { canEditPage };

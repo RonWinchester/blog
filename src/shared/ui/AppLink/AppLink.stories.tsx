@@ -5,29 +5,28 @@ import { Theme } from "shared/config/theme/ThemeContext";
 import { AppLink, AppLinkTheme } from "./AppLink";
 
 const meta: Meta<typeof AppLink> = {
-	title: "shared/AppLink",
-	component: AppLink,
-	parameters: {
-		layout: "centered",
-	},
-	tags: ["autodocs"],
+    title: "shared/AppLink",
+    component: AppLink,
+    parameters: {
+        layout: "centered",
+    },
+    tags: ["autodocs"],
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
-	args: {
-		children: "Главная",
-		theme: AppLinkTheme.PRIMARY
-	},
+    args: {
+        children: "Главная",
+        theme: AppLinkTheme.PRIMARY,
+    },
 };
 
 export const Dark: Story = {
-	args: {
-		children: "Главная",
-		theme: AppLinkTheme.SECONDARY
-
-	},
-	decorators: [ThemeDecorator(Theme.DARK)],
+    args: {
+        children: "Главная",
+        theme: AppLinkTheme.SECONDARY,
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
 };

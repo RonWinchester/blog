@@ -5,26 +5,28 @@ import { ArticleCodeBlock } from "entities/Article/model/types/article";
 import { Code } from "shared/ui";
 
 interface ArticleCodeBlockComponentProps {
-	className?: string;
-	children?: React.ReactNode;
-	block: ArticleCodeBlock;
+    className?: string;
+    children?: React.ReactNode;
+    block: ArticleCodeBlock;
 }
 
 export const ArticleCodeBlockComponent = memo(
-	({
-		className,
-		children,
-		block,
-		...otherProps
-	}: ArticleCodeBlockComponentProps) => {
-		return (
-			<div
-				className={classNames(style.ArticleCodeBlockComponent, {}, [className])}
-				{...otherProps}
-			>
-				<Code block={block} />
-				{children}
-			</div>
-		);
-	}
+    ({
+        className,
+        children,
+        block,
+        ...otherProps
+    }: ArticleCodeBlockComponentProps) => {
+        return (
+            <div
+                className={classNames(style.ArticleCodeBlockComponent, {}, [
+                    className,
+                ])}
+                {...otherProps}
+            >
+                <Code block={block} />
+                {children}
+            </div>
+        );
+    },
 );

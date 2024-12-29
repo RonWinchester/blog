@@ -7,36 +7,38 @@ import { Text } from "shared/ui";
 import { useGetArticleRecommendationsListQuery } from "../../api/articleRecommendationsApi";
 
 interface ArticleRecommedationsListProps {
-	className?: string;
-	children?: React.ReactNode;
+    className?: string;
+    children?: React.ReactNode;
 }
 
 export const ArticleRecommedationsList = memo(
-	(props: ArticleRecommedationsListProps) => {
-		const { className } = props;
-		const { t } = useTranslation();
+    (props: ArticleRecommedationsListProps) => {
+        const { className } = props;
+        const { t } = useTranslation();
 
-		const {
-			data: articles,
-			isLoading,
-			isError,
-		} = useGetArticleRecommendationsListQuery(4);
+        const {
+            data: articles,
+            isLoading,
+            isError,
+        } = useGetArticleRecommendationsListQuery(4);
 
-		if (isError) {
-			return <div>error</div>;
-		}
+        if (isError) {
+            return <div>error</div>;
+        }
 
-		return (
-			<div
-				className={classNames(style.ArticleRecommedationsList, {}, [className])}
-			>
-				<Text title={t("Рекомендации")} />
-				<ArticleList
-					className={style.recommendations}
-					articles={articles}
-					isLoading={isLoading}
-				/>
-			</div>
-		);
-	}
+        return (
+            <div
+                className={classNames(style.ArticleRecommedationsList, {}, [
+                    className,
+                ])}
+            >
+                <Text title={t("Рекомендации")} />
+                <ArticleList
+                    className={style.recommendations}
+                    articles={articles}
+                    isLoading={isLoading}
+                />
+            </div>
+        );
+    },
 );

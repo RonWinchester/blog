@@ -6,16 +6,20 @@ import type { Preview } from "@storybook/react";
 import { Theme } from "../../src/shared/config/theme/ThemeContext";
 
 const preview: Preview = {
-	parameters: {
-		actions: { argTypesRegex: "^on[A-Z].*" },
-		controls: {
-			matchers: {
-				color: /(background|color)$/i,
-				date: /Date$/i,
-			},
-		},
-	},
-	decorators: [ThemeDecorator(Theme.LIGHT), RouterDecorator, SuspenseDecorator],
+    parameters: {
+        actions: { argTypesRegex: "^on[A-Z].*" },
+        controls: {
+            matchers: {
+                color: /(background|color)$/i,
+                date: /Date$/i,
+            },
+        },
+    },
+    decorators: [
+        ThemeDecorator(Theme.LIGHT),
+        RouterDecorator,
+        SuspenseDecorator,
+    ],
 };
 
 export default preview;

@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare module "*.scss" {
-	interface IClassNames {
-		[className: string]: string;
-	}
-	const classnames: IClassNames;
-	export = classnames;
+    interface IClassNames {
+        [className: string]: string;
+    }
+    const classnames: IClassNames;
+    export = classnames;
 }
 
 declare module "*.svg" {
-	const content: React.FunctionComponent<React.SVGAttributes<SVGAElement>>;
-	export default content;
+    const content: React.FunctionComponent<React.SVGAttributes<SVGAElement>>;
+    export default content;
 }
 declare module "*.png";
 declare module "*.jpeg";
@@ -18,6 +18,8 @@ declare const __IS_DEV__: boolean;
 declare const __API__: string;
 declare const __PROJECT__: "storybook" | "frontend" | "jest";
 
-type DeepPartial<T> = T extends object ? {
-    [P in keyof T]?: DeepPartial<T[P]>;
-} : T;
+type DeepPartial<T> = T extends object
+    ? {
+          [P in keyof T]?: DeepPartial<T[P]>;
+      }
+    : T;

@@ -7,19 +7,24 @@ import style from "./ThemeSwitcher.module.scss";
 import { memo } from "react";
 
 interface ThemeSwitcherProps {
-	className?: string;
+    className?: string;
 }
 
-export const ThemeSwitcher = memo(function ThemeSwitcher({ className }: ThemeSwitcherProps) {
-	const { theme, toggleTheme } = useTheme();
+export const ThemeSwitcher = memo(function ThemeSwitcher({
+    className,
+}: ThemeSwitcherProps) {
+    const { theme, toggleTheme } = useTheme();
 
-	return (
-		<Button
-			theme={ButtonTheme.CLEAR}
-			className={classNames(style.themeSwitcher, {}, [className, style[theme]])}
-			onClick={toggleTheme}
-		>
-			<ThemeSwitcherIcon />
-		</Button>
-	);
+    return (
+        <Button
+            theme={ButtonTheme.CLEAR}
+            className={classNames(style.themeSwitcher, {}, [
+                className,
+                style[theme],
+            ])}
+            onClick={toggleTheme}
+        >
+            <ThemeSwitcherIcon />
+        </Button>
+    );
 });

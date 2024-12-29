@@ -4,7 +4,7 @@
     opacity: 0;
     pointer-events: none;
     z-index: -1;
-    transition: all .4s ease;
+    transition: all 0.4s ease;
 }
 
 .overlay {
@@ -18,7 +18,7 @@
 
 .content {
     padding: 2rem;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     background: var(--bg-color);
     position: relative;
     width: 25rem;

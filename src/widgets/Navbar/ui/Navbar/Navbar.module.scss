@@ -1,32 +1,32 @@
 .navbar {
-	background-color: var(--inverted);
-	box-sizing: border-box;
-	display: flex;
-	justify-content: space-between;
+    background-color: var(--inverted);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
 }
 
 .linkContainer {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .linkWrapper {
-	display: grid;
-	grid-template-columns: max-content auto;
-	gap: .5rem;
-	align-items: center;
-	color: var(--inverted-primary-color);
+    display: grid;
+    grid-template-columns: max-content auto;
+    gap: 0.5rem;
+    align-items: center;
+    color: var(--inverted-primary-color);
 }
 
 .collapsedLink {
-	display: none;
+    display: none;
 }
 
 .icon {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .active {
-	color: var(--inverted-secondary-color);
+    color: var(--inverted-secondary-color);
 }

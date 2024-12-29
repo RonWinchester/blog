@@ -6,48 +6,52 @@ import { CommentCard } from "../CommentCard/CommentCard";
 import { CommentItem } from "entities/Comment";
 
 interface CommentListProps {
-	className?: string;
-	children?: React.ReactNode;
-	comments?: CommentItem[];
-	isLoading?: boolean;
+    className?: string;
+    children?: React.ReactNode;
+    comments?: CommentItem[];
+    isLoading?: boolean;
 }
 
 export const CommentList = ({
-	className,
-	children,
-	comments,
-	isLoading,
-	...otherProps
+    className,
+    children,
+    comments,
+    isLoading,
+    ...otherProps
 }: CommentListProps) => {
-	const { t } = useTranslation("articles");
+    const { t } = useTranslation("articles");
 
-	if (isLoading) {
-		return (
-			<div
-				className={classNames(style.CommentList, {}, [className])}
-				{...otherProps}
-			>
-				<CommentCard isLoading={isLoading} />
-			</div>
-		);
-	}
+    if (isLoading) {
+        return (
+            <div
+                className={classNames(style.CommentList, {}, [className])}
+                {...otherProps}
+            >
+                <CommentCard isLoading={isLoading} />
+            </div>
+        );
+    }
 
-	if (!comments?.length) {
-		return (
-			<Text
-				text={isLoading ? t("Загрузка комментариев...") : t("Комментариев нет")}
-			/>
-		);
-	}
-	return (
-		<div
-			className={classNames(style.CommentList, {}, [className])}
-			{...otherProps}
-		>
-			{comments?.map((comment) => (
-				<CommentCard key={comment.id} comment={comment} />
-			))}
-			{children}
-		</div>
-	);
+    if (!comments?.length) {
+        return (
+            <Text
+                text={
+                    isLoading
+                        ? t("Загрузка комментариев...")
+                        : t("Комментариев нет")
+                }
+            />
+        );
+    }
+    return (
+        <div
+            className={classNames(style.CommentList, {}, [className])}
+            {...otherProps}
+        >
+            {comments?.map((comment) => (
+                <CommentCard key={comment.id} comment={comment} />
+            ))}
+            {children}
+        </div>
+    );
 };

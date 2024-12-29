@@ -14,38 +14,40 @@ import { useAppDispatch } from "shared/lib/hooks/useAppDispach/useAppDispach";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 
 interface ArticleDetailsCommentsProps {
-	className?: string;
-	id: string;
+    className?: string;
+    id: string;
 }
 
 export const ArticleDetailsComments = memo(
-	({ className, id, ...otherProps }: ArticleDetailsCommentsProps) => {
-		const dispatch = useAppDispatch();
+    ({ className, id, ...otherProps }: ArticleDetailsCommentsProps) => {
+        const dispatch = useAppDispatch();
 
-		useInitialEffect(() => {
-			dispatch(fetchCommentsByArticleId(id));
-		});
+        useInitialEffect(() => {
+            dispatch(fetchCommentsByArticleId(id));
+        });
 
-		const comments = useSelector(getArticleComments.selectAll);
-		const isLoading = useSelector(getArticleCommentsIsLoading);
+        const comments = useSelector(getArticleComments.selectAll);
+        const isLoading = useSelector(getArticleCommentsIsLoading);
 
-		const onSendComment = useCallback(
-			(text: string) => {
-				dispatch(addCommentFormArticle(text));
-			},
-			[dispatch]
-		);
-		return (
-			<div
-				className={classNames(style.ArticleDetailsComments, {}, [className])}
-				{...otherProps}
-			>
-				<Text title={t("Комментарии")} />
-				<Suspense fallback={<Text text={t("Загрузка")} />}>
-					<AddCommentForm onSendComment={onSendComment} />
-				</Suspense>
-				<CommentList comments={comments} isLoading={isLoading} />
-			</div>
-		);
-	}
+        const onSendComment = useCallback(
+            (text: string) => {
+                dispatch(addCommentFormArticle(text));
+            },
+            [dispatch]
+        );
+        return (
+            <div
+                className={classNames(style.ArticleDetailsComments, {}, [
+                    className,
+                ])}
+                {...otherProps}
+            >
+                <Text title={t("Комментарии")} />
+                <Suspense fallback={<Text text={t("Загрузка")} />}>
+                    <AddCommentForm onSendComment={onSendComment} />
+                </Suspense>
+                <CommentList comments={comments} isLoading={isLoading} />
+            </div>
+        );
+    }
 );

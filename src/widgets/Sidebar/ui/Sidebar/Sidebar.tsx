@@ -6,33 +6,35 @@ import style from "./Sidebar.module.scss";
 import { memo } from "react";
 
 interface SidebarProps {
-	className?: string;
-	children?: React.ReactNode;
-	collapsed?: boolean;
+    className?: string;
+    children?: React.ReactNode;
+    collapsed?: boolean;
 }
 
 export const Sidebar = memo(function Sidebar({
-	className,
-	children,
-	collapsed,
+    className,
+    children,
+    collapsed,
 }: SidebarProps) {
-	return (
-		<div
-			data-testid="sidebar"
-			className={classNames(style.sidebar, { [style.collapsed]: collapsed }, [
-				className,
-			])}
-		>
-			<Navbar collapsed={collapsed} />
-			<div
-				className={classNames(style.switchers, {
-					[`${style["swicher-collapsed"]}`]: collapsed,
-				})}
-			>
-				<ThemeSwitcher />
-				<LangSwitcher />
-			</div>
-			{children}
-		</div>
-	);
+    return (
+        <div
+            data-testid="sidebar"
+            className={classNames(
+                style.sidebar,
+                { [style.collapsed]: collapsed },
+                [className],
+            )}
+        >
+            <Navbar collapsed={collapsed} />
+            <div
+                className={classNames(style.switchers, {
+                    [`${style["swicher-collapsed"]}`]: collapsed,
+                })}
+            >
+                <ThemeSwitcher />
+                <LangSwitcher />
+            </div>
+            {children}
+        </div>
+    );
 });

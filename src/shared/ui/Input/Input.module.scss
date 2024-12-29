@@ -1,38 +1,38 @@
 .Input {
-	background-color: transparent;
-	border: transparent 2px solid;
-	border-bottom: var(--inverted-secondary-color) 2px solid;
-	padding: 0.3rem;
-	transition: all 0.3s ease-in;
-	border-radius: 2px;
-	color: var(--primary-color);
+    background-color: transparent;
+    border: transparent 2px solid;
+    border-bottom: var(--inverted-secondary-color) 2px solid;
+    padding: 0.3rem;
+    transition: all 0.3s ease-in;
+    border-radius: 2px;
+    color: var(--primary-color);
 
-	&:hover {
-		border: var(--secondary-color) 2px solid;
-	}
+    &:hover {
+        border: var(--secondary-color) 2px solid;
+    }
 
-	&:active,
-	&:focus {
-		border: var(--inverted-secondary-color) 2px solid;
-		outline: none;
-	}
+    &:active,
+    &:focus {
+        border: var(--inverted-secondary-color) 2px solid;
+        outline: none;
+    }
 }
 
 .readonly {
-	border-bottom: var(--inverted-secondary-color) 2px solid;
+    border-bottom: var(--inverted-secondary-color) 2px solid;
 
-	&:hover {
-		border: transparent 2px solid;
-		border-bottom: var(--inverted-secondary-color) 2px solid;
-	}
+    &:hover {
+        border: transparent 2px solid;
+        border-bottom: var(--inverted-secondary-color) 2px solid;
+    }
 
-	&:active,
-	&:focus {
-		border: transparent 2px solid;
-		border-bottom: var(--inverted-secondary-color) 2px solid;
-	}
+    &:active,
+    &:focus {
+        border: transparent 2px solid;
+        border-bottom: var(--inverted-secondary-color) 2px solid;
+    }
 }
 
 .error {
-	border: red 2px solid;
+    border: red 2px solid;
 }

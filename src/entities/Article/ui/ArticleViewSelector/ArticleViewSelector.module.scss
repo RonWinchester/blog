@@ -1,9 +1,9 @@
 .ArticleViewSelector {
-	svg {
-		color: var(--primary-color);
-	}
+    svg {
+        color: var(--primary-color);
+    }
 
-	.active svg {
-		color: var(--inverted-primary-color);
-	}
+    .active svg {
+        color: var(--inverted-primary-color);
+    }
 }

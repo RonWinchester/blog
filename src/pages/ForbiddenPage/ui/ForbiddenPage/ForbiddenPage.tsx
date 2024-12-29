@@ -6,19 +6,19 @@ import { Text } from "shared/ui";
 import { Page } from "widgets/Page";
 
 interface ForbiddenPageProps {
-	className?: string;
-	children?: React.ReactNode;
+    className?: string;
+    children?: React.ReactNode;
 }
 
 const ForbiddenPage = memo((props: ForbiddenPageProps) => {
-	const { className } = props;
-	const { t } = useTranslation("forbidden");
+    const { className } = props;
+    const { t } = useTranslation("forbidden");
 
-	return (
-		<Page className={classNames(style.ForbiddenPage, {}, [className])}>
-			<Text text={t("Доступ запрещен")} />
-		</Page>
-	);
+    return (
+        <Page className={classNames(style.ForbiddenPage, {}, [className])}>
+            <Text text={t("Доступ запрещен")} />
+        </Page>
+    );
 });
 
 export default ForbiddenPage;

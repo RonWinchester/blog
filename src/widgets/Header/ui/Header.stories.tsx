@@ -6,35 +6,35 @@ import { Theme } from "shared/config/theme/ThemeContext";
 import { Header } from "./Header";
 
 const meta: Meta<typeof Header> = {
-	title: "widget/Header",
-	component: Header,
-	tags: ["autodocs"],
+    title: "widget/Header",
+    component: Header,
+    tags: ["autodocs"],
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
-	decorators: [
-		StoreDecorator({
-			loginForm: {
-				username: "123",
-				password: "123",
-				isLoading: false
-			},
-		}),
-	],
+    decorators: [
+        StoreDecorator({
+            loginForm: {
+                username: "123",
+                password: "123",
+                isLoading: false,
+            },
+        }),
+    ],
 };
 
 export const Dark: Story = {
-	decorators: [
-		ThemeDecorator(Theme.DARK),
-		StoreDecorator({
-			loginForm: {
-				username: "123",
-				password: "123",
-				isLoading: false
-			},
-		}),
-	],
+    decorators: [
+        ThemeDecorator(Theme.DARK),
+        StoreDecorator({
+            loginForm: {
+                username: "123",
+                password: "123",
+                isLoading: false,
+            },
+        }),
+    ],
 };

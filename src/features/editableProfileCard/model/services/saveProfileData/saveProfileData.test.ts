@@ -6,39 +6,39 @@ import { Currency } from "entities/Currency";
 jest.mock("axios");
 
 describe("saveProfileData.test", () => {
-	const userValue = {
-		data: {
-			firstname: "Roman12333",
-			lastname: "lastname",
-			age: 2,
-			currency: Currency.USD,
-			country: Country.BY,
-			city: "spb",
-			username: "admin",
-			avatar: "https://mui.com/static/images/avatar/1.jpg",
-			id: "1",
-		},
-	};
+    const userValue = {
+        data: {
+            firstname: "Roman12333",
+            lastname: "lastname",
+            age: 2,
+            currency: Currency.USD,
+            country: Country.BY,
+            city: "spb",
+            username: "admin",
+            avatar: "https://mui.com/static/images/avatar/1.jpg",
+            id: "1",
+        },
+    };
 
-	test("saveProfileData", async () => {
-		const thunk = new TestAsyncThunk(saveProfileData, {
-			profile: {
-				formData: userValue.data,
-			},
-		});
-		thunk.api.put.mockReturnValue(Promise.resolve({ data: userValue }));
+    test("saveProfileData", async () => {
+        const thunk = new TestAsyncThunk(saveProfileData, {
+            profile: {
+                formData: userValue.data,
+            },
+        });
+        thunk.api.put.mockReturnValue(Promise.resolve({ data: userValue }));
 
-		const result = await thunk.callThunk();
-		expect(thunk.api.put).toHaveBeenCalled();
-		expect(result.meta.requestStatus).toBe("fulfilled");
-		expect(result.payload).toEqual(userValue);
-	});
+        const result = await thunk.callThunk();
+        expect(thunk.api.put).toHaveBeenCalled();
+        expect(result.meta.requestStatus).toBe("fulfilled");
+        expect(result.payload).toEqual(userValue);
+    });
 
-	test("saveProfileData with error", async () => {
-		const thunk = new TestAsyncThunk(saveProfileData);
+    test("saveProfileData with error", async () => {
+        const thunk = new TestAsyncThunk(saveProfileData);
 
-		thunk.api.put.mockReturnValue(Promise.resolve({ status: 403 }));
-		const result = await thunk.callThunk();
-		expect(result.meta.requestStatus).toBe("rejected");
-	});
+        thunk.api.put.mockReturnValue(Promise.resolve({ status: 403 }));
+        const result = await thunk.callThunk();
+        expect(result.meta.requestStatus).toBe("rejected");
+    });
 });

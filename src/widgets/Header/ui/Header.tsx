@@ -13,99 +13,102 @@ import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { AppLinkTheme } from "shared/ui/AppLink/AppLink";
 
 interface HeaderProps {
-	className?: string;
-	children?: React.ReactNode;
-	setCollapsed?: Dispatch<SetStateAction<boolean>>;
+    className?: string;
+    children?: React.ReactNode;
+    setCollapsed?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const Header = memo(function Header({
-	className,
-	children,
-	setCollapsed,
+    className,
+    children,
+    setCollapsed,
 }: HeaderProps) {
-	const { t } = useTranslation();
-	const authData = useSelector(getUserAuth);
-	const isUserAdmin = useSelector(isAdmin);
-	const isUserModerator = useSelector(isModerator);
-	const dispatch = useDispatch();
+    const { t } = useTranslation();
+    const authData = useSelector(getUserAuth);
+    const isUserAdmin = useSelector(isAdmin);
+    const isUserModerator = useSelector(isModerator);
+    const dispatch = useDispatch();
 
-	const isAdminPanelAvailable = isUserAdmin || isUserModerator;
+    const isAdminPanelAvailable = isUserAdmin || isUserModerator;
 
-	const onToggle = () => {
-		if (setCollapsed) {
-			setCollapsed((prev) => !prev);
-		}
-	};
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const onModalClose = () => {
-		setIsModalOpen(false);
-	};
-	const onLogout = useCallback(() => {
-		dispatch(userActions.logout());
-	}, [dispatch]);
-	if (authData) {
-		return (
-			<header className={classNames(style.header, {}, [className])}>
-				<Button
-					className={classNames(style.button)}
-					theme={ButtonTheme.CLEAR}
-					data-testid="sidebar-toggle"
-					onClick={onToggle}
-				>
-					<SidebarIcon />
-				</Button>
-				{children}
-				{isModalOpen && (
-					<LoginModal isOpen={isModalOpen} onClose={onModalClose} />
-				)}
-				<AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.article_create}>
-					{t("Создать статью")}
-				</AppLink>
-				<Dropdown
-					direction="bottom-right"
-					trigger={<Avatar size={30} src={authData.avatar || ""} />}
-					items={[
-						{
-							content: t("Профиль"),
-							href: RoutePath.profile + authData.id,
-						},
-						...(isAdminPanelAvailable
-							? [
-									{
-										content: t("Админ панель"),
-										href: RoutePath.admin_panel,
-									},
-							  ]
-							: []),
-						{
-							content: t("Выйти"),
-							onClick: onLogout,
-						},
-					]}
-				/>
-			</header>
-		);
-	}
-	return (
-		<header className={classNames(style.header, {}, [className])}>
-			<Button
-				className={classNames(style.button)}
-				theme={ButtonTheme.CLEAR}
-				data-testid="sidebar-toggle"
-				onClick={onToggle}
-			>
-				<SidebarIcon />
-			</Button>
-			{children}
-			<LoginModal isOpen={isModalOpen} onClose={onModalClose} />
-			<Button
-				theme={ButtonTheme.CLEAR_INVERTED}
-				onClick={() => {
-					setIsModalOpen(true);
-				}}
-			>
-				{t("Войти")}
-			</Button>
-		</header>
-	);
+    const onToggle = () => {
+        if (setCollapsed) {
+            setCollapsed((prev) => !prev);
+        }
+    };
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const onModalClose = () => {
+        setIsModalOpen(false);
+    };
+    const onLogout = useCallback(() => {
+        dispatch(userActions.logout());
+    }, [dispatch]);
+    if (authData) {
+        return (
+            <header className={classNames(style.header, {}, [className])}>
+                <Button
+                    className={classNames(style.button)}
+                    theme={ButtonTheme.CLEAR}
+                    data-testid="sidebar-toggle"
+                    onClick={onToggle}
+                >
+                    <SidebarIcon />
+                </Button>
+                {children}
+                {isModalOpen && (
+                    <LoginModal isOpen={isModalOpen} onClose={onModalClose} />
+                )}
+                <AppLink
+                    theme={AppLinkTheme.SECONDARY}
+                    to={RoutePath.article_create}
+                >
+                    {t("Создать статью")}
+                </AppLink>
+                <Dropdown
+                    direction="bottom-right"
+                    trigger={<Avatar size={30} src={authData.avatar || ""} />}
+                    items={[
+                        {
+                            content: t("Профиль"),
+                            href: RoutePath.profile + authData.id,
+                        },
+                        ...(isAdminPanelAvailable
+                            ? [
+                                  {
+                                      content: t("Админ панель"),
+                                      href: RoutePath.admin_panel,
+                                  },
+                              ]
+                            : []),
+                        {
+                            content: t("Выйти"),
+                            onClick: onLogout,
+                        },
+                    ]}
+                />
+            </header>
+        );
+    }
+    return (
+        <header className={classNames(style.header, {}, [className])}>
+            <Button
+                className={classNames(style.button)}
+                theme={ButtonTheme.CLEAR}
+                data-testid="sidebar-toggle"
+                onClick={onToggle}
+            >
+                <SidebarIcon />
+            </Button>
+            {children}
+            <LoginModal isOpen={isModalOpen} onClose={onModalClose} />
+            <Button
+                theme={ButtonTheme.CLEAR_INVERTED}
+                onClick={() => {
+                    setIsModalOpen(true);
+                }}
+            >
+                {t("Войти")}
+            </Button>
+        </header>
+    );
 });
