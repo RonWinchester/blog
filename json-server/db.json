@@ -583,5 +583,108 @@
             "username": "user3",
             "avatar": "https://mui.com/static/images/avatar/3.jpg"
         }
+    ],
+    "notifications": [
+        {
+            "id": "1",
+            "text": "some text",
+            "userId": "1",
+            "href": "/profile"
+        },
+        {
+            "id": "2",
+            "text": "some text 2",
+            "userId": "1"
+        },
+        {
+            "id": "3",
+            "text": "some text 3",
+            "userId": "1"
+        },
+        {
+            "id": "4",
+            "text": "some text 4",
+            "userId": "1"
+        },
+        {
+            "id": "5",
+            "text": "some text 5",
+            "userId": "1"
+        },
+        {
+            "id": "6",
+            "text": "some text 6",
+            "userId": "1"
+        },
+        {
+            "id": "7",
+            "text": "some text 7",
+            "userId": "1"
+        },
+        {
+            "id": "8",
+            "text": "some text 8",
+            "userId": "1"
+        },
+        {
+            "id": "9",
+            "text": "some text 9",
+            "userId": "1"
+        },
+        {
+            "id": "10",
+            "text": "some text 10",
+            "userId": "1"
+        },
+        {
+            "id": "11",
+            "text": "some text 11",
+            "userId": "1"
+        },
+        {
+            "id": "12",
+            "text": "some text 12",
+            "userId": "1"
+        },
+        {
+            "id": "13",
+            "text": "some text 13",
+            "userId": "1"
+        },
+        {
+            "id": "14",
+            "text": "some text 14",
+            "userId": "1"
+        },
+        {
+            "id": "15",
+            "text": "some text 15",
+            "userId": "1"
+        },
+        {
+            "id": "16",
+            "text": "some text 16",
+            "userId": "1"
+        },
+        {
+            "id": "17",
+            "text": "some text 17",
+            "userId": "1"
+        },
+        {
+            "id": "18",
+            "text": "some text 18",
+            "userId": "1"
+        },
+        {
+            "id": "19",
+            "text": "some text 19",
+            "userId": "1"
+        },
+        {
+            "id": "20",
+            "text": "some text 20",
+            "userId": "1"
+        }
     ]
 }

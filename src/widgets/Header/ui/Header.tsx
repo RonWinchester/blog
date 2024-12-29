@@ -11,7 +11,7 @@ import { ButtonTheme } from "shared/ui/Button/Button";
 import style from "./Header.module.scss";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { AppLinkTheme } from "shared/ui/AppLink/AppLink";
-
+import { NotificationBtn } from "features/notificationBtn";
 interface HeaderProps {
     className?: string;
     children?: React.ReactNode;
@@ -64,28 +64,32 @@ export const Header = memo(function Header({
                 >
                     {t("Создать статью")}
                 </AppLink>
-                <Dropdown
-                    direction="bottom-right"
-                    trigger={<Avatar size={30} src={authData.avatar || ""} />}
-                    items={[
-                        {
-                            content: t("Профиль"),
-                            href: RoutePath.profile + authData.id,
-                        },
-                        ...(isAdminPanelAvailable
-                            ? [
-                                  {
-                                      content: t("Админ панель"),
-                                      href: RoutePath.admin_panel,
-                                  },
-                              ]
-                            : []),
-                        {
-                            content: t("Выйти"),
-                            onClick: onLogout,
-                        },
-                    ]}
-                />
+                <div className={style.button__container}>
+                    <NotificationBtn />
+                    <Dropdown
+                        trigger={
+                            <Avatar size={30} src={authData.avatar || ""} />
+                        }
+                        items={[
+                            {
+                                content: t("Профиль"),
+                                href: RoutePath.profile + authData.id,
+                            },
+                            ...(isAdminPanelAvailable
+                                ? [
+                                      {
+                                          content: t("Админ панель"),
+                                          href: RoutePath.admin_panel,
+                                      },
+                                  ]
+                                : []),
+                            {
+                                content: t("Выйти"),
+                                onClick: onLogout,
+                            },
+                        ]}
+                    />
+                </div>
             </header>
         );
     }
