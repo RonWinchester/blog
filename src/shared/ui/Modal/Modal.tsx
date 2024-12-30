@@ -4,6 +4,7 @@ import { CloseIcon } from "shared/assets/icons";
 import style from "./Modal.module.scss";
 import React, { useCallback, useEffect, useState } from "react";
 import { Portal } from "../Portal/Portal";
+import { Overlay } from "../Overlay/Overlay";
 
 interface ModalProps {
     className?: string;
@@ -47,10 +48,6 @@ export const Modal = ({
         return () => window.removeEventListener("keydown", onKeyDown);
     }, [isOpen, onKeyDown]);
 
-    const onContentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
-
     if (lazy && !isMounted) {
         return null;
     }
@@ -58,15 +55,14 @@ export const Modal = ({
     return (
         <Portal element={portalElement || document.body}>
             <div className={classNames(style.modal, mods, [className])}>
-                <div
-                    className={classNames(style.overlay)}
+                <Overlay
+                    className={style.overlay}
                     onClick={() => {
                         onClose();
                     }}
                 >
                     <div
                         className={classNames(style.content)}
-                        onClick={onContentClick}
                     >
                         <Button
                             theme={ButtonTheme.CLEAR}
@@ -80,7 +76,7 @@ export const Modal = ({
                         </Button>
                         {children}
                     </div>
-                </div>
+                </Overlay>
             </div>
         </Portal>
     );
