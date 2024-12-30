@@ -10,6 +10,7 @@ import { Code } from "./Code/Code";
 import { Card, CardTheme } from "./Card/Card";
 import { Tabs, TabItem } from "./Tabs/Tabs";
 import { ListBox, Dropdown, Popover } from "./Popups";
+import { Overlay } from "./Overlay/Overlay";
 
 export {
     AppLink,
@@ -28,4 +29,5 @@ export {
     ListBox,
     Dropdown,
     Popover,
+    Overlay,
 };
