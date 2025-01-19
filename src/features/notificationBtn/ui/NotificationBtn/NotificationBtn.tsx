@@ -7,6 +7,7 @@ import { Button } from "shared/ui";
 import { ButtonTheme } from "shared/ui/Button/Button";
 import style from "./NotificationBtn.module.scss";
 import { useMediaQuery } from "shared/lib/hooks/useMediaQuery/useMediaQuery";
+import { AnimationProvider } from "shared/lib/components/AnimationProvider";
 
 export const NotificationBtn = memo(() => {
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -25,9 +26,11 @@ export const NotificationBtn = memo(() => {
                     <Button onClick={onDrawerOpen} theme={ButtonTheme.CLEAR}>
                         <NotificationIcon />
                     </Button>
-                    <Drawer onClose={onDrawerClose} isOpen={openDrawer}>
-                        <Notifications />
-                    </Drawer>
+                    <AnimationProvider>
+                        <Drawer onClose={onDrawerClose} isOpen={openDrawer}>
+                            <Notifications />
+                        </Drawer>
+                    </AnimationProvider>
                 </>
             )}
             {isDesktop && (
